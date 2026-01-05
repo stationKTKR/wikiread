@@ -1,3 +1,4 @@
+Astrochicken
 Information_hazard
 Social_contagion
 Copycat_suicide
@@ -27,7 +28,7 @@ Self-replication
 Self-replicating_machine
 Instrumental_convergence
 Universal_Paperclips
-Gray_goo
+Grey_goo
 Recursive_self-improvement
 Meme
 Von_Neumann_universal_constructor
@@ -35,7 +36,7 @@ Quine_(computing)
 Self-modifying_code
 Mobile_agent
 Self-replicating_spacecraft
-Astrochicken
+
 Autopoiesis
 Ouroboros
 

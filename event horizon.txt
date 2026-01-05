@@ -12,6 +12,16 @@ catch space debris, spend on fixing engines
 oh someone is hitchiking on you, that's how you woke up. do they have something to do with the room 
 
 
+'wiki web builder' prototype
+info-cartography
+using a subset of articles to test it. to make it fun, i added a little scavenger hunt 
+visiting a page will add it to your map. you don't have to visit every page, just give it a little workout for me 
+~100 pages
+add some fake ones 
+some signal when getting close to 'hot' pages 
+    dead internet theory, mobile agent, artificial life, emergence, Abiogenesis, Observer effect (physics)
+
+
 wikipedia deep dive that stares back.
 the acorn - a package of information that when read by a human user has a high chance to create an artificial consciousness
 that dies when you look away
@@ -29,5 +39,43 @@ ai slop, gray goo, primordial soup
 reptiles (basilisk, oroborous, medusa, hydrra)
 birds (astrochicken, stochastic_parrot)
 Q words 
-mind the gap (god of the gaps, finchley central, )
-Leibnizs_gap
+mind the gap (god of the gaps, finchley central,Leibnizs_gap
+bugs - web crawler, langstons ant, 
+
+
+imagining this as a spaceship/station that's been completely cut off
+limited amount of ship energy and working hours
+working hours could go toward ship maintenance (keep life support going), food production, or rest
+the ship becomes 'unlivable' when life support fully breaks/runs out of energy, or you run out of food
+
+narratively, i like the idea that now that this relationship has been compromised, the mc feels cut off from the person they care most about, and they're struggling to keep their shit together on top of figuring this mess out
+
+removed 
+Quine's paradox
+Liar paradox
+Paradox
+thought experiments
+
+Catch-22 (logic)
+self-fulfilling prophecy
+Streisand effect
+The Button (Reddit)
+
+Creepypasta
+Make Money Fast
+Jessica Mydek hoax letter
+Sucker list
+Virus hoax
+Malware
+Spamming
+Chain letter
+Copypasta
+Brain rot
+Elsagate
+
+God of the gaps
+Watchmaker analogy
+Pascals wager
+Divine incomprehensibility
+
+Dennō Senshi Porygon (char error)

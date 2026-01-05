@@ -17,6 +17,8 @@ def readJSON():
             #print("x : " + page2["title"])
             wikipages.append(page2)
 
+
+
 def generateGraphData():
     for i,page in enumerate(wikipages):
         page["ix"] = str(i)
