@@ -4,7 +4,7 @@ import WikiPage from './components/WikiPage'
 function App() {
   return (
     <main>
-      <WikiPage pagename="Astrochicken"/>
+      <WikiPage pagename="MMAcevedo"/>
     </main>
   );
 }

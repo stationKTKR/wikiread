@@ -79,3 +79,10 @@ Pascals wager
 Divine incomprehensibility
 
 Dennō Senshi Porygon (char error)
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="./wiki.css">
+</head>
+<body>

@@ -43,9 +43,16 @@ def get_full_page(x):
         for n in pagenames:
             if a.get('href').lower() == "/wiki/" + n.lower():
                 validlink = True
+                a['href'] = "./pages/" + n.lower()
                 break
         if not validlink:
-            a.extract()
+            if (a.string):
+                newtext = soup.new_tag("span")
+                #print(a.string)
+                newtext.string = a.string
+                a.replace_with(newtext)
+            else:
+                a.extract()
         #else:
         #    print("valid " + a.get('href'))
     #print(content)
