@@ -86,3 +86,7 @@ Dennō Senshi Porygon (char error)
   <link rel="stylesheet" href="./wiki.css">
 </head>
 <body>
+
+talkie has a mute button, but it can unmute itself
+
+SAM 49 59 188 220
