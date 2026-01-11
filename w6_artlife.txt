@@ -1,8 +1,8 @@
-Artificial life
-Neuroevolution
-Neural network (machine learning)
-Abiogenesis
-Primordial soup
-Spontaneous generation
-Warm little pond
-Conway's Game of Life
+artificial life
+neuroevolution
+neural network (machine learning)
+abiogenesis
+primordial soup
+spontaneous generation
+warm little pond
+conway's game of life

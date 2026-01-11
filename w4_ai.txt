@@ -1,16 +1,16 @@
-Intelligent agent
-Artificial intelligence
-Artificial general intelligence
-Generative artificial intelligence
-AI effect
-Chinese room
-Synthetic intelligence
-Turing test
-Internet bot
-Large language model
+intelligent agent
+artificial intelligence
+artificial general intelligence
+generative artificial intelligence
+ai effect
+chinese room
+synthetic intelligence
+turing test
+internet bot
+large language model
 AI slop
 stochastic parrot
-AI anthropomorphism
-Friendly artificial intelligence
+ai anthropomorphism
+friendly artificial intelligence
 AI takeover
-Web crawler
+web crawler

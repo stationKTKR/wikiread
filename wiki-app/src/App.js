@@ -11,7 +11,7 @@ function Page() {
 function App() {
   return (
     <main>
-      <WikiPage pagename="pages/Information_hazard"/>
+      <WikiPage pagename="Information hazard"/>
     </main>
   );
 }

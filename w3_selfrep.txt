@@ -1,16 +1,17 @@
-Self-replication
-Self-replicating machine
-Instrumental convergence
-Universal Paperclips
-Gray goo
-Recursive self-improvement
-Meme
-Von Neumann universal constructor
-Quine (computing)
-Self-modifying code
-Mobile agent
-Self-replicating spacecraft
-Astrochicken
-Autopoiesis
-Viral phenomenon
-Ouroboros
+self-replication
+self-replicating machine
+instrumental convergence
+universal paperclips
+gray goo
+recursive self-improvement
+meme
+memetics
+von neumann universal constructor
+quine (computing)
+self-modifying code
+mobile agent
+self-replicating spacecraft
+astrochicken
+autopoiesis
+viral phenomenon
+ouroboros

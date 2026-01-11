@@ -8,23 +8,27 @@ import sys
 pagenames = []
 bigwikipages = []
 wikipages = []
+wikilists = ["w1_infohazard", "w2_superorganism", "w3_selfrep", "w4_ai", "w5_consc", "w6_artlife", "w7_obs"]
 
 def get_pages():
     sphere = 0
-    with open("w1_infohazard.txt", "r") as f:
+ #   print(wikilists[4])
+    with open(wikilists[0] + ".txt", "r") as f:
         for x in f:
+            #print(x.strip())
             if (x.strip() != ""):
                 try:
                     page = wikipedia.page(title=x.strip(),auto_suggest=False)
+                    #print(page.title)
                 except wikipedia.exceptions.PageError as e:
                     #print("try again " + x.strip())
                     page = wikipedia.page(title=x.strip())
                     #print("did it work? " + page.title)
                 #pagenames.append(x.strip())
                 #print(x)
-                pagenames.append(x.strip())
+                pagenames.append(page.title)
                 bigwikipages.append(page)
-                newpage = WikiPage(x.strip())
+                newpage = WikiPage(page.title)
                 newpage.SetSphere(sphere)
                 wikipages.append(newpage)   
             else:
@@ -49,16 +53,24 @@ def get_full_page(x):
         s.extract()
     for d in soup.find_all('div', id="toc"):
         d.extract()
-    for d in soup.find_all('div', {"class":"side-box-text"}):
+    for d in soup.find_all('div', {"class":"side-box"}):
         d.extract()
-    #for header in soup.find_all('h2', id="References"):
-    #    section = header.parent
-    #    section.extract()
+    for header in soup.find_all('h2', id="References"):
+        section = header.parent
+        section.extract()
+    for header in soup.find_all('h2', id="Further_reading"):
+        header.extract()
+    
+    for u in soup.find_all('ol', {"class":"references"}):
+        u.extract()
     for header in soup.find_all('h2', id="Sources"):
         section = header.parent
         section.extract()
     for header in soup.find_all('h2', id="External_links"):
         section = header.parent
+        section.extract()
+    for c in soup.find_all('cite', {"class":"citation"}):
+        section = c.parent.parent
         section.extract()
     for header in soup.find_all('h2', id="Notes"):
         section = header.parent
@@ -71,12 +83,17 @@ def get_full_page(x):
         d.extract()
     for d in soup.find_all('div', {"role":"navigation"}):
         d.extract()
+    #for d in soup.find_all('sup', {"class":"reference"}):
+    #    d.extract()
     for t in soup.find_all('table', {"class":"infobox"}):
         t.extract()
     for t in soup.find_all('table', {"class":"sidebar"}):
         t.extract()
     for a in soup.find_all('a', {"class":"mw-file-description"}):
         del a["href"]
+    for a in soup.find_all('a', {"class":"external"}):
+        section = a.parent
+        section.extract()
     for a in soup.find_all('a', href=True):
         if (a.get("class") == "mw-file-description"):
             a['href'] = ""
@@ -86,12 +103,13 @@ def get_full_page(x):
             for n in pagenames:
                 #if n == "Roko's_basilisk":
                 #    print("testing " + a.get('href').lower())
-                if a.get('href').lower() == "/wiki/" + n.lower():
+                if a.get('href').lower() == "/wiki/" + n.lower().replace(" ", "_"):
                     #print("on " + x + " HERE " + n)
                     validlink = True
                     #a['href'] = n.lower()
                     a['href'] = ""
                     a['onclick'] = "message(this)"
+                    a['title'] = n
                     break
             if not validlink:
                 if (a.string):
@@ -135,18 +153,31 @@ def get_neighbors():
     for j,page in enumerate(bigwikipages):
         pagelinks = page.links        
         for i, pn in enumerate(pagenames):
-            #print("testing " + pn + " against " + pagelinks[0])
-            if pn.replace("_", " ") in pagelinks:
-                #print("found " + pn)
-                wikipages[j].AddNeighbor(pn)
-                #wikipages[i].AddNeighbor(pagenames[j])
+            #print("testing " + pn + " against " + pagelinks[0].lower())
+            for pl in pagelinks:
+                if pn.lower() == pl.lower():
+                    #print("found " + pn)
+                    wikipages[j].AddNeighbor(pn)
+                    wikipages[j].AddToNeighbor(pn)
+                    wikipages[i].AddFromNeighbor(page.title)
+                    #wikipages[i].AddNeighbor(pagenames[j])
 
 def getwikidata():
     get_pages()
     get_neighbors()
     with open("wikidata.json", "w") as f:
-        for w in wikipages:
-            f.write(json.dumps(w.toJson()) + "\n")
+        f.write("{\"wikipages\":[")
+        for i,w in enumerate(wikipages):
+            f.write("{\"title\":\"" + w.title + "\",")
+            f.write("\"neighbors\":[\"" + "\",\"".join(w.GetNeighbors()) + "\"],")
+            f.write("\"toneighbors\":[\"" + "\",\"".join(w.GetToNeighbors()) + "\"],")
+            f.write("\"fromneighbors\":[\"" + "\",\"".join(w.GetFromNeighbors()) + "\"],")
+            f.write("\"visited\":0,")
+            f.write("\"sphere\":" + str(w.sphere) + "}")
+            
+            if (i < len(wikipages) - 1):
+                f.write(",")
+        f.write("]}")
 
 def countneighbors():
     for page in wikipages:
@@ -158,12 +189,14 @@ def countneighbors():
 #chick = wikipedia.page(title="Astrochicken",auto_suggest=False)
 #l = chick.section("See also").split('\n')
 #print(chick.html())
-get_pages()
-get_neighbors()
+#get_pages()
+#get_neighbors()
 #print(wikipages[0].neighbors)
 #print(pagenames)
-for p in pagenames:
-    get_full_page(p)
+#for p in pagenames:
+#    get_full_page(p)
+
+getwikidata()
 
 #print(wikipages[0].GetNeighbors())
 
