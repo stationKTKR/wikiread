@@ -27,10 +27,12 @@ some signal when getting close to 'hot' pages
     dead internet theory, mobile agent, artificial life, emergence, Abiogenesis, Observer effect (physics)
     global brain/wikipedia
 
+1 new page = 1 xp 
+side tabs:
+  quests, skills
+
 backtracking allows you to find special pages 
 'talkie' actually counts as a scavenger hunt
-tip: some links are one-way! 
-click on a node you've visited before to go to that page
 
 wikipedia deep dive that stares back.
 the acorn - a package of information that when read by a human user has a high chance to create an artificial consciousness
@@ -90,13 +92,14 @@ Divine incomprehensibility
 
 Dennō Senshi Porygon (char error)
 
-<!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" href="./wiki.css">
-</head>
-<body>
+
 
 talkie has a mute button, but it can unmute itself
 
-SAM 49 59 188 220
+
+infohazard has citation numbers 
+'snow crash' should be italicized
+vitalism - energy - aura - disturbance - worms?
+
+had to add manually to Dead Internet theory : <li><a href="" onclick="message(this)" title="Mass psychogenic illness">Mass psychogenic illness</a></li>
+link from category still showing up as neighbor, but parent elemtn should've been deleted?

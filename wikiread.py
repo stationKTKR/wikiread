@@ -165,7 +165,7 @@ def get_neighbors():
 def getwikidata():
     get_pages()
     get_neighbors()
-    with open("wikidata.json", "w") as f:
+    with open("./wiki-app/public/wikidata.json", "w") as f:
         f.write("{\"wikipages\":[")
         for i,w in enumerate(wikipages):
             f.write("{\"title\":\"" + w.title + "\",")
@@ -190,9 +190,8 @@ def countneighbors():
 #l = chick.section("See also").split('\n')
 #print(chick.html())
 #get_pages()
-#get_neighbors()
-#print(wikipages[0].neighbors)
 #print(pagenames)
+#get_neighbors()
 #for p in pagenames:
 #    get_full_page(p)
 

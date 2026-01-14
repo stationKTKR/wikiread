@@ -12,7 +12,8 @@ class WikiPage:
         return json.dumps(self, default=lambda o: o.__dict__)
 
     def AddNeighbor(self, neighbor):
-        self.neighbors.append(neighbor)
+        if neighbor not in self.neighbors:
+            self.neighbors.append(neighbor)
 
     def GetNeighbors(self):
         return self.neighbors
@@ -27,7 +28,9 @@ class WikiPage:
         self.sphere = x
 
     def AddToNeighbor(self, neighbor):
-        self.toneighbors.append(neighbor)
+        if neighbor not in self.toneighbors:
+            self.toneighbors.append(neighbor)
 
     def AddFromNeighbor(self, neighbor):
-        self.fromneighbors.append(neighbor)
+        if neighbor not in self.fromneighbors:
+            self.fromneighbors.append(neighbor)

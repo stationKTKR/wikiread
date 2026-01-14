@@ -8,14 +8,14 @@ def findPage(pagename):
         if (p["title"] == pagename):
             return p["ix"]
 
-def readJSON():
-    with open("wikidata.json", "r") as f:
+def readJSON(ar):
+    with open("wiki-app/public/wikidata.json", "r") as f:
         for x in f:
             
             page1 = json.loads(x)
-            page2 = json.loads(page1)
+            #page2 = json.loads(page1)
             #print("x : " + page2["title"])
-            wikipages.append(page2)
+            ar += page1['wikipages']
 
 
 
@@ -28,9 +28,11 @@ def generateGraphData():
             f.write(str(i) + "([\"" + newtitle + "\"])\n")
             for n in page["neighbors"]:
                 nix = findPage(n)
-                f.write(str(i) + " --> " + nix + "\n")
+                if (nix):
+                    f.write(str(i) + " --> " + nix + "\n")
 
-readJSON()
+readJSON(wikipages)
+#print(wikipages)
 generateGraphData()
 #print(wikipages[0])
 #print(type(wikipages[0]))

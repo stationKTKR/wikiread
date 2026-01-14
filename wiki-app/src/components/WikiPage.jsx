@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import { useRef } from 'react';
-import Xarrow from "react-xarrows";
+
 
 import Talkie from './Talkie'
 function WikiPage({pagename}) {
@@ -17,11 +17,15 @@ function WikiPage({pagename}) {
     const currentBoxRef = useRef(null);
     const toBoxRef = useRef(null);
 
+
     useEffect(() => {
         window.addEventListener("message", e => {
             //console.log("receive message " + e.data)
             if (checkValidPage(e.data)) {
                 setNewPage(e.data + "");
+            } else {
+                console.log("Page invalid: " + e.data + "");
+                console.log(pagenames);
             }
         });
 
@@ -55,7 +59,13 @@ function WikiPage({pagename}) {
         setCurrentPage(newPage);
         console.log("new page " + newPage);
         console.log(allPagesRef.current);
-        allPagesRef.current.find(({ title }) => title === newPage).visited++;
+        if (allPagesRef.current.find(({ title }) => title === newPage)) {
+            allPagesRef.current.find(({ title }) => title === newPage).visited++;
+        }
+        else {
+            console.log("ERRIRRRR");
+        }
+        
     }
 
     function checkValidPage(p) {
@@ -75,24 +85,27 @@ function WikiPage({pagename}) {
     //}
 
     function isCurrentPage(page) {
-        console.log("testing " + page.title + " against " + currentpage);
+        //console.log("testing " + page.title + " against " + currentpage);
         return page.title === currentpage;
     }
 
+    
+
     return (
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-3" id="leftcol">
+        <div className="container">
+            <div className="row">
+                <div className="col-sm-3" id="leftcol">
                     <Talkie pagename={pagename}/>
                     <div id="mapsidebar">
+                        <h2>Pages linking here</h2>
                         <div id="fromholder" ref={fromBoxRef}>
                         {allPages.length > 0 && allPages.find(isCurrentPage) && allPages.find(isCurrentPage).fromneighbors &&
                             allPages.find(isCurrentPage).fromneighbors.map((element, i) => (
                                 <>
-                                    {allPagesRef.current.find(({ title }) => title === element).visited === 0 &&
+                                    {allPagesRef.current.find(({ title }) => title === element) && allPagesRef.current.find(({ title }) => title === element).visited === 0 &&
                                         <div className="mapnode unknown"><span>???</span></div>
                                     }
-                                    {allPagesRef.current.find(({ title }) => title === element).visited > 0 &&
+                                    {allPagesRef.current.find(({ title }) => title === element) && allPagesRef.current.find(({ title }) => title === element).visited > 0 &&
                                         <div className="mapnode seen"><a onClick={(e) => setNewPage(element, e)}>{element}</a></div>
                                     }
                                 </>
@@ -105,22 +118,24 @@ function WikiPage({pagename}) {
                             </div>
                         </div>
                         
+                        <h2>Links on this page</h2>
                         <div id="toholder" ref={toBoxRef}>
                         {allPages.length > 0 && allPages.find(isCurrentPage) && allPages.find(isCurrentPage).toneighbors &&
-                            allPages.find(isCurrentPage).toneighbors.map((element, i) => (
+                            allPages.find(isCurrentPage).toneighbors.length > 0 && allPages.find(isCurrentPage).toneighbors.map((element, i) => (
                                 <>
-                                    {allPagesRef.current.find(({ title }) => title === element).visited === 0 &&
+                                    {allPagesRef.current.find(({ title }) => title === element) && allPagesRef.current.find(({ title }) => title === element).visited === 0 &&
                                         <div className="mapnode unknown"><span>???</span></div>
                                     }
-                                    {allPagesRef.current.find(({ title }) => title === element).visited > 0 &&
+                                    {allPagesRef.current.find(({ title }) => title === element) && allPagesRef.current.find(({ title }) => title === element).visited > 0 &&
                                         <div className="mapnode seen"><a onClick={(e) => setNewPage(element, e)}>{element}</a></div>
                                     }
                                 </>
                             ))}
                         </div>
+
                     </div>
                 </div>
-                <div class="col-sm-9">
+                <div className="col-sm-9">
                     <iframe id="pageframe" src={"pages/" + currentpage + '.html'}/>
 
                 </div>
