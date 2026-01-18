@@ -3,11 +3,21 @@ html {
     line-height: 1.375;
 }
 
+
+
 h1 {
 	font-size: 1.8em;
 	font-family: Georgia, 'Times New Roman', Times, serif;
 	font-weight: normal;
 	border-bottom: 1px solid var(--border-color-base,#a2a9b1);
+}
+
+.mw-parser-output .tmbox {
+  margin: 4px 0;
+  border-collapse: collapse;
+  border: 1px solid #c0c090;
+  background-color: #f8eaba;
+  box-sizing: border-box;
 }
 
 h2 {
@@ -523,6 +533,32 @@ ul.gallery.gallery.gallery {
     margin-top: -0.5em;
   }
 }
+
+@media screen {
+  .wikitable {
+    box-sizing: border-box;
+    background-color: var(--background-color-neutral-subtle,#f8f9fa);
+    color: var(--color-base,#202122);
+    margin: 1em 0;
+    margin-top: 1em;
+    border: 1px solid var(--border-color-base,#a2a9b1);
+    border-collapse: collapse;
+  }
+}
+@media screen {
+  .wikitable > tr > th, .wikitable > * > tr > th {
+    background-color: var(--background-color-neutral,#eaecf0);
+    color: var(--color-base,#202122);
+    text-align: center;
+  }
+}
+@media screen {
+  .wikitable > tr > th, .wikitable > tr > td, .wikitable > * > tr > th, .wikitable > * > tr > td {
+    border: 1px solid var(--border-color-base,#a2a9b1);
+    padding: 0.2em 0.4em;
+  }
+}
+
 @media screen {
   ul {
     list-style-type: disc;

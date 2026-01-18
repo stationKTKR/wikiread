@@ -16,29 +16,49 @@ oh someone is hitchiking on you, that's how you woke up. do they have something 
 info-cartography
 using a subset of articles to test it. to make it fun, i added a little scavenger hunt 
 it 'hallucinated' at least one page, so if you see any others, please mark them 
-visiting a page will add it to your map. you don't have to visit every page, just give it a little workout for me 
+
 ~100 pages
 add some fake ones - Lena, sentient wikipedia bot, one on the 'guy' who sent you this 
   Lena add mind uploading
   attention = energy (Mental Energy)
   what you see sees you - bilateral observation principle . anything capable of being observed must also be capable of observing the hypothetical observer.
-    link to dark forest theory - alien life
+  silent smooth
+  fake wikipedia mascot
 some signal when getting close to 'hot' pages 
     dead internet theory, mobile agent, artificial life, emergence, Abiogenesis, Observer effect (physics)
     global brain/wikipedia
 
-1 new page = 1 xp 
-side tabs:
-  quests, skills
+anomalies (important)
+  what you see sees you 
+  
 
-backtracking allows you to find special pages 
-'talkie' actually counts as a scavenger hunt
 
-wikipedia deep dive that stares back.
-the acorn - a package of information that when read by a human user has a high chance to create an artificial consciousness
-that dies when you look away
-would we recognize another form of life if we found it?
-primordial soup of digital DNA
+Milton Gaareth
+Milton 'RAM' Gaareth was an American computer scientist. 
+
+described the internet as "a primordial soup of digital dna", theorizing that a form of intelligent, data-based lifeform was more likely to emerge naturally than   
+  to be created by humans.
+  "Our current artificial intelligence models, they just copy. And they're great at that, don't get me wrong. But it's a copy of something we already have.
+  when I say 'digital organism', i'm talking about something brand new. i don't think that's something we make on purpose. 
+  
+  But for something to be alive, it has to sustain itself
+  We should ask ourselves, if a digital organism did exists--or, perhaps, already does exist--what would it eat? where would it live? and would we recognize it 
+  if we saw it?"
+
+QUESTS
+Dubious liquids ai slop, gray goo, primordial soup
+reptiles (basilisk, oroborous, medusa, hydrra)
+birds (astrochicken, stochastic_parrot, boids)
+mind the gap finchley central,Leibnizs_gap, explanatory cap
+
+anomalies (just for fun):
+  mmacevedo
+  silent smooth
+
+skills
+  25 pages: pages list
+  50 pages: 'backtrack'
+  75 pages: teleport to unseen page in sphere
 
 an emergent form of life that exists online. has its own language
 feed on attention, sentient wikipedia rabbit hole 
@@ -48,15 +68,16 @@ you're thinking about me now
 would you recognize me? 
 this is one of my favorites!
 
-get more 'xp' the more articles you find
-scavenger hunt?
-2 video games 
-ai slop, gray goo, primordial soup 
-reptiles (basilisk, oroborous, medusa, hydrra)
-birds (astrochicken, stochastic_parrot)
-Q words 
-mind the gap (god of the gaps, finchley central,Leibnizs_gap
-bugs - web crawler, langstons ant, 
+
+infohazard has citation numbers . dead internet theory also
+medusa has weird sections, manually remove?
+'snow crash' should be italicized
+vitalism - energy - aura - disturbance - worms?
+distributed computing has weird shit at the bottom
+qualia has citations and other references at bottom
+emergence has bibliography at bottom
+
+
 
 maybe
 Multiple_discovery
@@ -90,16 +111,6 @@ Watchmaker analogy
 Pascals wager
 Divine incomprehensibility
 
+hydra effect
+
 Dennō Senshi Porygon (char error)
-
-
-
-talkie has a mute button, but it can unmute itself
-
-
-infohazard has citation numbers 
-'snow crash' should be italicized
-vitalism - energy - aura - disturbance - worms?
-
-had to add manually to Dead Internet theory : <li><a href="" onclick="message(this)" title="Mass psychogenic illness">Mass psychogenic illness</a></li>
-link from category still showing up as neighbor, but parent elemtn should've been deleted?

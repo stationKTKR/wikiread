@@ -34,3 +34,7 @@ class WikiPage:
     def AddFromNeighbor(self, neighbor):
         if neighbor not in self.fromneighbors:
             self.fromneighbors.append(neighbor)
+
+    def SortLists(self):
+        self.toneighbors = sorted(self.toneighbors)
+        self.fromneighbors = sorted(self.fromneighbors)

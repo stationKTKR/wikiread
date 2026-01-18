@@ -1,83 +1,114 @@
-div.mapnode {
-  border-radius: 10px;
+html, body {
+  margin: 0; 
+  height: 100vh; 
+  overflow:hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+
+.skillbar {
+  background-color:black;
+  height:100%;
   
-  padding: 8px;
-  margin: 8px;
-  width: fit-content;
-  height: fit-content;
-  display:flex;
 }
 
-div.current {
-  border: 2px solid #80D39B;
+.skillbarHolder {
+  height:20px;
+  border: solid black 1px;
+  margin-bottom:20px;
 }
 
-div.seen {
-  cursor: pointer;
-  border: 2px solid black;
-  background-color: rgba(174, 186, 216,0.5);
+#questHolder {
+ text-align:center;
+  padding-top:10px;
 }
 
-div.unknown {
-  background-color:rgba(174, 186, 216,0.5);
-  border: 2px solid rgba(0, 0, 0, 0.5);
-  color: rgba(0, 0, 0, 0.4);
-}
-
-div#fromholder {
-   /*border-bottom: 2px solid #0000EE;*/
+#tablist {
   text-align:center;
-  padding:10px;
-
-  display:flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-   flex-wrap: wrap;
-
 }
 
-div#toholder {
-   /*border-bottom: 2px solid #0000EE;*/
+.questBox {
+  margin:auto;
   text-align:center;
-  padding:10px;
+  max-width:150px;
+  border: 1px solid;
+  padding-top: 15px;
+  box-shadow: 8px 8px;
+  margin-bottom:20px;
+}
 
-  display:flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
+.questBox:hover {
+  box-shadow: 8px 8px blue;
+}
+
+a.validList {
+  cursor:pointer;
+}
+
+a.validList:hover {
+  text-decoration:underline;
+}
+
+.questBox:active {
+  box-shadow: none;
+  position:relative;
+  top: 8px;
+  left: 8px;
+}
+
+.questBox h5 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight:bold;
+}
+
+.questBox p {
+  font-size: 1.5em;
+}
+
+.goright {
+
+  text-align:right;
+  font-size:1.24em;
+}
+
+#topQuests {
+  text-align:center;
+}
+
+#pageframe {
+  height:95vh;
+  border: none;
+  overflow-x:wrap;
+}
+
+.mapheader {
+  font-weight:bold;
+	font-family: Arial, Helvetica, sans-serif;
+  line-height:1.75em;
 }
 
 div#mapsidebar {
-  
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  row-gap:20px;
-  align-items:center;
+  height:88vh;
+  overflow-y:scroll;
 }
 
+div#questHolder {
+  height:88vh;
+  overflow-y:scroll;
+}
 
 div#leftcol {
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-div#currentholder {
-  text-align:center;
-  padding:10px;
-  /*border: 2px solid #0000EE;*/
-  display:flex;
-  align-items: center;
-  justify-content: center;
+  padding: 20px;
+  border-right: 1px solid #c8ccd1;
   
 }
 
-div.even {
-  float:right;
+ul {
+  list-style-type: "> ";
+}
+
+span.unknown {
+  color: rgba(174, 186, 216,0.5);
 }
 
 .App {
@@ -104,6 +135,10 @@ div.even {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+li.empty {
+  color: gray;
 }
 
 .App-link {

@@ -67,8 +67,10 @@ Mind–body_problem
 Animal_consciousness
 Free_will
 Determinism
+Explanatory_gap
 
 Artificial_life
+Digital_organism
 Neuroevolution
 Neural_network_(machine_learning)
 Abiogenesis

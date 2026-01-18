@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+                    <html>
+                    <head>
+                    <link rel="stylesheet" type="text/css" href="./wiki.css">
+                    <script>
+                    let FF_FOUC_FIX;
+                    </script>
+                    </head>
+                    <body><h1>Web crawler</h1><div class="mw-content-ltr mw-parser-output" dir="ltr" lang="en"><div class="shortdescription nomobile noexcerpt noprint searchaux" style="display:none">Software that systematically browses the World Wide Web</div>
+<style data-mw-deduplicate="TemplateStyles:r1320445320">.mw-parser-output .hatnote{font-style:italic}.mw-parser-output div.hatnote{padding-left:1.6em;margin-bottom:0.5em}.mw-parser-output .hatnote i{font-style:normal}.mw-parser-output .hatnote+link+.hatnote{margin-top:-0.5em}@media print{body.ns-0 .mw-parser-output .hatnote{display:none!important}}</style><div class="hatnote navigation-not-searchable" role="note"><span>This article is about the Internet bot. For the search engine, see <span>WebCrawler</span>.</span> <span>"Web spider" redirects here; not to be confused with <span>Spider web</span>.</span> <span>"Spiderbot" redirects here; not to be confused with <span>Spiderbot (video game)</span>.</span></div>
+<p class="mw-empty-elt">
+</p>
+<figure class="mw-default-size" typeof="mw:File/Thumb"><a class="mw-file-description"><img class="mw-file-element" data-file-height="382" data-file-width="500" decoding="async" height="191" src="//upload.wikimedia.org/wikipedia/commons/thumb/d/df/WebCrawlerArchitecture.svg/250px-WebCrawlerArchitecture.svg.png" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/d/df/WebCrawlerArchitecture.svg/500px-WebCrawlerArchitecture.svg.png 1.5x" width="250"/></a><figcaption>Architecture of a Web crawler</figcaption></figure>
+<p>A <b>web crawler</b>, sometimes called a <b>spider</b> or <b>spiderbot</b> and often shortened to <b>crawler</b>, is an <a href="" onclick="message(this)" title="Internet bot">Internet bot</a> that systematically browses the <a href="" onclick="message(this)" title="World Wide Web">World Wide Web</a> and that is typically operated by <span>search engines</span> for the purpose of <span>Web indexing</span> (<i>web spidering</i>).<sup class="reference" id="cite_ref-1"></sup>
+</p><p>Web search engines and some other <span>websites</span> use Web crawling or spidering <span>software</span> to update their <span>web content</span> or indices of other sites' web content. Web crawlers copy pages for processing by a search engine, which <span>indexes</span> the downloaded pages so that users can search more efficiently.
+</p><p>Crawlers consume resources on visited systems and often visit sites unprompted. Issues of schedule, load, and "politeness" come into play when large collections of pages are accessed. Mechanisms exist for public sites not wishing to be crawled to make this known to the crawling agent. For example, including a <code><span>robots.txt</span></code> file can request <span>bots</span> to index only parts of a website, or nothing at all.
+</p><p>The number of Internet pages is extremely large; even the largest crawlers fall short of making a complete index. For this reason, search engines struggled to give relevant search results in the early years of the World Wide Web, before 2000. Today, relevant results are given almost instantly.
+</p><p>Crawlers can validate <span>hyperlinks</span> and <span>HTML</span> code. They can also be used for <span>web scraping</span> and <span>data-driven programming</span>.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Nomenclature">Nomenclature</h2></div>
+<p>A web crawler is also known as a <i>spider</i>,<sup class="reference" id="cite_ref-spekta_2-0"></sup> an <i>ant</i>, an <i>automatic indexer</i>,<sup class="reference" id="cite_ref-3"></sup> or (in the <span>FOAF</span> software context) a <i>Web scutter</i>.<sup class="reference" id="cite_ref-4"></sup>
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Overview">Overview</h2></div>
+<p>A Web crawler starts with a list of <span>URLs</span> to visit. Those first URLs are called the <i>seeds</i>. As the crawler visits these URLs, by communicating with <span>web servers</span> that respond to those URLs, it identifies all the <span>hyperlinks</span> in the retrieved web pages and adds them to the list of URLs to visit, called the <i><span>crawl frontier</span></i>. URLs from the frontier are <span>recursively</span> visited according to a set of policies. If the crawler is performing archiving of <span>websites</span> (or <span>web archiving</span>), it copies and saves the information as it goes. The archives are usually stored in such a way they can be viewed, read and navigated as if they were on the live web, but are preserved as 'snapshots'.<sup class="reference" id="cite_ref-GoogleBooks-9237380_5-0"></sup>
+</p><p>The archive is known as the <i>repository</i> and is designed to store and manage the collection of <span>web pages</span>. The <span>repository</span> only stores <span>HTML</span> pages and these pages are stored as distinct files. A repository is similar to any other system that stores data, like a modern-day database. The only difference is that a repository does not need all the functionality offered by a database system. The repository stores the most recent version of the web page retrieved by the crawler.<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">[<i><span>citation needed</span></i>]</sup>
+</p><p>The large volume implies the crawler can only download a limited number of the Web pages within a given time, so it needs to prioritize its downloads. The high rate of change can imply the pages might have already been updated or even deleted.
+</p><p>The number of possible URLs crawled being generated by server-side software has also made it difficult for web crawlers to avoid retrieving <span>duplicate content</span>. Endless combinations of <span>HTTP</span> GET (URL-based) parameters exist, of which only a small selection will actually return unique content. For example, a simple online photo gallery may offer three options to users, as specified through HTTP GET parameters in the URL. If there exist four ways to sort images, three choices of <span>thumbnail</span> size, two file formats, and an option to disable user-provided content, then the same set of content can be accessed with 48 different URLs, all of which may be linked on the site. This <span>mathematical combination</span> creates a problem for crawlers, as they must sort through endless combinations of relatively minor scripted changes in order to retrieve unique content.
+</p><p>As Edwards <i>et al.</i> noted, "Given that the <span>bandwidth</span> for conducting crawls is neither infinite nor free, it is becoming essential to crawl the Web in not only a scalable, but efficient way, if some reasonable measure of quality or freshness is to be maintained."<sup class="reference" id="cite_ref-edwards2001_6-0"></sup> A crawler must carefully choose at each step which pages to visit next.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Crawling_policy">Crawling policy</h2></div>
+<p>The behavior of a Web crawler is the outcome of a combination of policies:<sup class="reference" id="cite_ref-7"></sup>
+</p>
+<ul><li>a <i>selection policy</i> which states the pages to download,</li>
+<li>a <i>re-visit policy</i> which states when to check for changes to the pages,</li>
+<li>a <i>politeness policy</i> that states how to avoid overloading <span>websites</span>.</li>
+<li>a <i>parallelization policy</i> that states how to coordinate distributed web crawlers.</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Selection_policy">Selection policy</h3></div>
+<p>Given the current size of the Web, even large search engines cover only a portion of the publicly available part. A 2009 study showed even large-scale <span>search engines</span> index no more than 40-70% of the indexable Web;<sup class="reference" id="cite_ref-8"></sup> a previous study by <span>Steve Lawrence</span> and <span>Lee Giles</span> showed that no <span>search engine indexed</span> more than 16% of the Web in 1999.<sup class="reference" id="cite_ref-9"></sup> As a crawler always downloads just a fraction of the <span>Web pages</span>, it is highly desirable for the downloaded fraction to contain the most relevant pages and not just a random sample of the Web.
+</p><p>This requires a metric of importance for prioritizing Web pages. The importance of a page is a function of its <span>intrinsic</span> quality, its popularity in terms of links or visits, and even of its URL (the latter is the case of <span>vertical search engines</span> restricted to a single <span>top-level domain</span>, or search engines restricted to a fixed Web site). Designing a good selection policy has an added difficulty: it must work with partial information, as the complete set of Web pages is not known during crawling.
+</p><p>Junghoo Cho <i>et al.</i> made the first study on policies for crawling scheduling. Their data set was a 180,000-pages crawl from the <kbd>stanford.edu</kbd> domain, in which a crawling simulation was done with different strategies.<sup class="reference" id="cite_ref-10"></sup> The ordering metrics tested were <span>breadth-first</span>, <span>backlink</span> count and partial <span>PageRank</span> calculations. One of the conclusions was that if the crawler wants to download pages with high Pagerank early during the crawling process, then the partial Pagerank strategy is the better, followed by breadth-first and backlink-count. However, these results are for just a single domain. Cho also wrote his PhD dissertation at Stanford on web crawling.<sup class="reference" id="cite_ref-11"></sup>
+</p><p><span>Marc Najork</span> and Janet Wiener performed an actual crawl on 328 million pages, using breadth-first ordering.<sup class="reference" id="cite_ref-12"></sup> They found that a breadth-first crawl captures pages with high Pagerank early in the crawl (but they did not compare this strategy against other strategies). The explanation given by the authors for this result is that "the most important pages have many links to them from numerous hosts, and those links will be found early, regardless of on which host or page the crawl originates."
+</p><p>Abiteboul designed a crawling strategy based on an <span>algorithm</span> called OPIC (On-line Page Importance Computation).<sup class="reference" id="cite_ref-13"></sup> In OPIC, each page is given an initial sum of "cash" that is distributed equally among the pages it points to. It is similar to a PageRank computation, but it is faster and is only done in one step. An OPIC-driven crawler downloads first the pages in the crawling frontier with higher amounts of "cash". Experiments were carried in a 100,000-pages synthetic graph with a power-law distribution of in-links. However, there was no comparison with other strategies nor experiments in the real Web.
+</p><p>Boldi <i>et al.</i> used simulation on subsets of the Web of 40 million pages from the <kbd>.it</kbd> domain and 100 million pages from the WebBase crawl, testing breadth-first against depth-first, random ordering and an omniscient strategy. The comparison was based on how well PageRank computed on a partial crawl approximates the true PageRank value. Some visits that accumulate PageRank very quickly (most notably, breadth-first and the omniscient visit) provide very poor progressive approximations.<sup class="reference" id="cite_ref-14"></sup><sup class="reference" id="cite_ref-15"></sup>
+</p><p>Baeza-Yates <i>et al.</i> used simulation on two subsets of the Web of 3 million pages from the <kbd>.gr</kbd> and <kbd>.cl</kbd> domain, testing several crawling strategies.<sup class="reference" id="cite_ref-baeza2005_16-0"></sup> They showed that both the OPIC strategy and a strategy that uses the length of the per-site queues are better than <span>breadth-first</span> crawling, and that it is also very effective to use a previous crawl, when it is available, to guide the current one.
+</p><p>Daneshpajouh <i>et al.</i> designed a community based algorithm for discovering good seeds.<sup class="reference" id="cite_ref-17"></sup> Their method crawls web pages with high PageRank from different communities in less iteration in comparison with crawl starting from random seeds. One can extract good seed from a previously-crawled-Web graph using this new method. Using these seeds, a new crawl can be very effective.
+</p>
+<div class="mw-heading mw-heading4"><h4 id="Restricting_followed_links">Restricting followed links</h4></div>
+<p>A crawler may only want to seek out HTML pages and avoid all other <span>MIME types</span>. In order to request only HTML resources, a crawler may make an HTTP HEAD request to determine a Web resource's MIME type before requesting the entire resource with a GET request. To avoid making numerous HEAD requests, a crawler may examine the URL and only request a resource if the URL ends with certain characters such as .html, .htm, .asp, .aspx, .php, .jsp, .jspx or a slash. This strategy may cause numerous HTML Web resources to be unintentionally skipped.
+</p><p>Some crawlers may also avoid requesting any resources that have a <span>"?"</span> in them (are dynamically produced) in order to avoid <span>spider traps</span> that may cause the crawler to download an infinite number of URLs from a Web site. This strategy is unreliable if the site uses <span>URL rewriting</span> to simplify its URLs.
+</p>
+<div class="mw-heading mw-heading4"><h4 id="URL_normalization">URL normalization</h4></div>
+<link href="mw-data:TemplateStyles:r1320445320" rel="mw-deduplicated-inline-style"/><div class="hatnote navigation-not-searchable" role="note">Main article: <span>URL normalization</span></div>
+<p>Crawlers usually perform some type of <span>URL normalization</span> in order to avoid crawling the same resource more than once. The term <i>URL normalization</i>, also called <i>URL canonicalization</i>, refers to the process of modifying and standardizing a URL in a consistent manner. There are several types of normalization that may be performed including conversion of URLs to lowercase, removal of "." and ".." segments, and adding trailing slashes to the non-empty path component.<sup class="reference" id="cite_ref-18"></sup>
+</p>
+<div class="mw-heading mw-heading4"><h4 id="Path-ascending_crawling">Path-ascending crawling</h4></div>
+<p>Some crawlers intend to download/upload as many resources as possible from a particular web site. So <i>path-ascending crawler</i> was introduced that would ascend to every path in each URL that it intends to crawl.<sup class="reference" id="cite_ref-19"></sup> For example, when given a seed URL of http://llama.org/hamster/monkey/page.html, it will attempt to crawl /hamster/monkey/, /hamster/, and /. Cothey found that a path-ascending crawler was very effective in finding isolated resources, or resources for which no inbound link would have been found in regular crawling.
+</p>
+<div class="mw-heading mw-heading4"><h4 id="Focused_crawling">Focused crawling</h4></div>
+<link href="mw-data:TemplateStyles:r1320445320" rel="mw-deduplicated-inline-style"/><div class="hatnote navigation-not-searchable" role="note">Main article: <span>Focused crawler</span></div>
+<p>The importance of a page for a crawler can also be expressed as a function of the similarity of a page to a given query. Web crawlers that attempt to download pages that are similar to each other are called <b>focused crawler</b> or <b>topical crawlers</b>. The concepts of topical and focused crawling were first introduced by <span>Filippo Menczer</span><sup class="reference" id="cite_ref-20"></sup><sup class="reference" id="cite_ref-21"></sup> and by Soumen Chakrabarti <i>et al.</i><sup class="reference" id="cite_ref-22"></sup>
+</p><p>The main problem in focused crawling is that in the context of a Web crawler, we would like to be able to predict the similarity of the text of a given page to the query before actually downloading the page. A possible predictor is the anchor text of links; this was the approach taken by Pinkerton<sup class="reference" id="cite_ref-pinkerton1994_23-0"></sup> in the first web crawler of the early days of the Web. Diligenti <i>et al.</i><sup class="reference" id="cite_ref-24"></sup> propose using the complete content of the pages already visited to infer the similarity between the driving query and the pages that have not been visited yet. The performance of a focused crawling depends mostly on the richness of links in the specific topic being searched, and a focused crawling usually relies on a general Web search engine for providing starting points.
+</p>
+<div class="mw-heading mw-heading5"><h5 id="Academic_focused_crawler">Academic focused crawler</h5></div>
+<p>An example of the <span>focused crawlers</span> are academic crawlers, which crawls free-access academic related documents, such as the <i>citeseerxbot</i>, which is the crawler of <span>CiteSeer</span><sup>X</sup> search engine. Other academic search engines are <span>Google Scholar</span> and <span>Microsoft Academic Search</span> etc. Because most academic papers are published in <span>PDF</span> formats, such kind of crawler is particularly interested in crawling PDF, <span>PostScript</span> files, <span>Microsoft Word</span> including their <span>zipped</span> formats. Because of this, general open-source crawlers, such as <span>Heritrix</span>, must be customized to filter out other <span>MIME types</span>, or a <span>middleware</span> is used to extract these documents out and import them to the focused crawl database and repository.<sup class="reference" id="cite_ref-25"></sup> Identifying whether these documents are academic or not is challenging and can add a significant overhead to the crawling process, so this is performed as a post crawling process using <span>machine learning</span> or <span>regular expression</span> algorithms. These academic documents are usually obtained from home pages of faculties and students or from publication page of research institutes. Because academic documents make up only a small fraction of all web pages, a good seed selection is important in boosting the efficiencies of these web crawlers.<sup class="reference" id="cite_ref-26"></sup> Other academic crawlers may download plain text and <span>HTML</span> files, that contains <span>metadata</span> of academic papers, such as titles, papers, and abstracts. This increases the overall number of papers, but a significant fraction may not provide free PDF downloads.
+</p>
+<div class="mw-heading mw-heading5"><h5 id="Semantic_focused_crawler">Semantic focused crawler</h5></div>
+<p>Another type of focused crawlers is semantic focused crawler, which makes use of <span>domain ontologies</span> to represent topical maps and link Web pages with relevant ontological concepts for the selection and categorization purposes.<sup class="reference" id="cite_ref-27"></sup> In addition, ontologies can be automatically updated in the crawling process. Dong et al.<sup class="reference" id="cite_ref-28"></sup> introduced such an ontology-learning-based crawler using a <span>support-vector machine</span> to update the content of ontological concepts when crawling Web pages.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Re-visit_policy">Re-visit policy</h3></div>
+<p>The Web has a very dynamic nature, and crawling a fraction of the Web can take weeks or months. By the time a Web crawler has finished its crawl, many events could have happened, including creations, updates, and deletions.
+</p><p>From the search engine's point of view, there is a cost associated with not detecting an event, and thus having an outdated copy of a resource. The most-used cost functions are freshness and age.<sup class="reference" id="cite_ref-29"></sup>
+</p><p><b>Freshness</b>: This is a binary measure that indicates whether the local copy is accurate or not. The freshness of a page <i>p</i> in the repository at time <i>t</i> is defined as:
+</p>
+<dl><dd><span class="mwe-math-element mwe-math-element-inline"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math alttext="{\displaystyle F_{p}(t)={\begin{cases}1&amp;{\rm {if}}~p~{\rm {~is~equal~to~the~local~copy~at~time}}~t\\0&amp;{\rm {otherwise}}\end{cases}}}" xmlns="http://www.w3.org/1998/Math/MathML">
+<semantics>
+<mrow class="MJX-TeXAtom-ORD">
+<mstyle displaystyle="true" scriptlevel="0">
+<msub>
+<mi>F</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>p</mi>
+</mrow>
+</msub>
+<mo stretchy="false">(</mo>
+<mi>t</mi>
+<mo stretchy="false">)</mo>
+<mo>=</mo>
+<mrow class="MJX-TeXAtom-ORD">
+<mrow>
+<mo>{</mo>
+<mtable columnalign="left left" columnspacing="1em" displaystyle="false" rowspacing=".2em">
+<mtr>
+<mtd>
+<mn>1</mn>
+</mtd>
+<mtd>
+<mrow class="MJX-TeXAtom-ORD">
+<mrow class="MJX-TeXAtom-ORD">
+<mi mathvariant="normal">i</mi>
+<mi mathvariant="normal">f</mi>
+</mrow>
+</mrow>
+<mtext> </mtext>
+<mi>p</mi>
+<mtext> </mtext>
+<mrow class="MJX-TeXAtom-ORD">
+<mrow class="MJX-TeXAtom-ORD">
+<mtext> </mtext>
+<mi mathvariant="normal">i</mi>
+<mi mathvariant="normal">s</mi>
+<mtext> </mtext>
+<mi mathvariant="normal">e</mi>
+<mi mathvariant="normal">q</mi>
+<mi mathvariant="normal">u</mi>
+<mi mathvariant="normal">a</mi>
+<mi mathvariant="normal">l</mi>
+<mtext> </mtext>
+<mi mathvariant="normal">t</mi>
+<mi mathvariant="normal">o</mi>
+<mtext> </mtext>
+<mi mathvariant="normal">t</mi>
+<mi mathvariant="normal">h</mi>
+<mi mathvariant="normal">e</mi>
+<mtext> </mtext>
+<mi mathvariant="normal">l</mi>
+<mi mathvariant="normal">o</mi>
+<mi mathvariant="normal">c</mi>
+<mi mathvariant="normal">a</mi>
+<mi mathvariant="normal">l</mi>
+<mtext> </mtext>
+<mi mathvariant="normal">c</mi>
+<mi mathvariant="normal">o</mi>
+<mi mathvariant="normal">p</mi>
+<mi mathvariant="normal">y</mi>
+<mtext> </mtext>
+<mi mathvariant="normal">a</mi>
+<mi mathvariant="normal">t</mi>
+<mtext> </mtext>
+<mi mathvariant="normal">t</mi>
+<mi mathvariant="normal">i</mi>
+<mi mathvariant="normal">m</mi>
+<mi mathvariant="normal">e</mi>
+</mrow>
+</mrow>
+<mtext> </mtext>
+<mi>t</mi>
+</mtd>
+</mtr>
+<mtr>
+<mtd>
+<mn>0</mn>
+</mtd>
+<mtd>
+<mrow class="MJX-TeXAtom-ORD">
+<mrow class="MJX-TeXAtom-ORD">
+<mi mathvariant="normal">o</mi>
+<mi mathvariant="normal">t</mi>
+<mi mathvariant="normal">h</mi>
+<mi mathvariant="normal">e</mi>
+<mi mathvariant="normal">r</mi>
+<mi mathvariant="normal">w</mi>
+<mi mathvariant="normal">i</mi>
+<mi mathvariant="normal">s</mi>
+<mi mathvariant="normal">e</mi>
+</mrow>
+</mrow>
+</mtd>
+</mtr>
+</mtable>
+<mo fence="true" stretchy="true" symmetric="true"></mo>
+</mrow>
+</mrow>
+</mstyle>
+</mrow>
+<annotation encoding="application/x-tex">{\displaystyle F_{p}(t)={\begin{cases}1&amp;{\rm {if}}~p~{\rm {~is~equal~to~the~local~copy~at~time}}~t\\0&amp;{\rm {otherwise}}\end{cases}}}</annotation>
+</semantics>
+</math></span><img alt="{\displaystyle F_{p}(t)={\begin{cases}1&amp;{\rm {if}}~p~{\rm {~is~equal~to~the~local~copy~at~time}}~t\\0&amp;{\rm {otherwise}}\end{cases}}}" aria-hidden="true" class="mwe-math-fallback-image-inline mw-invert skin-invert" src="https://wikimedia.org/api/rest_v1/media/math/render/svg/542c7504faa720e2407afc0ec6e80639896ba14d" style="vertical-align: -2.505ex; width:52.379ex; height:6.176ex;"/></span></dd></dl>
+<p><b>Age</b>: This is a measure that indicates how outdated the local copy is. The age of a page <i>p</i> in the repository, at time <i>t</i> is defined as:
+</p>
+<dl><dd><span class="mwe-math-element mwe-math-element-inline"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math alttext="{\displaystyle A_{p}(t)={\begin{cases}0&amp;{\rm {if}}~p~{\rm {~is~not~modified~at~time}}~t\\t-{\rm {modification~time~of}}~p&amp;{\rm {otherwise}}\end{cases}}}" xmlns="http://www.w3.org/1998/Math/MathML">
+<semantics>
+<mrow class="MJX-TeXAtom-ORD">
+<mstyle displaystyle="true" scriptlevel="0">
+<msub>
+<mi>A</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>p</mi>
+</mrow>
+</msub>
+<mo stretchy="false">(</mo>
+<mi>t</mi>
+<mo stretchy="false">)</mo>
+<mo>=</mo>
+<mrow class="MJX-TeXAtom-ORD">
+<mrow>
+<mo>{</mo>
+<mtable columnalign="left left" columnspacing="1em" displaystyle="false" rowspacing=".2em">
+<mtr>
+<mtd>
+<mn>0</mn>
+</mtd>
+<mtd>
+<mrow class="MJX-TeXAtom-ORD">
+<mrow class="MJX-TeXAtom-ORD">
+<mi mathvariant="normal">i</mi>
+<mi mathvariant="normal">f</mi>
+</mrow>
+</mrow>
+<mtext> </mtext>
+<mi>p</mi>
+<mtext> </mtext>
+<mrow class="MJX-TeXAtom-ORD">
+<mrow class="MJX-TeXAtom-ORD">
+<mtext> </mtext>
+<mi mathvariant="normal">i</mi>
+<mi mathvariant="normal">s</mi>
+<mtext> </mtext>
+<mi mathvariant="normal">n</mi>
+<mi mathvariant="normal">o</mi>
+<mi mathvariant="normal">t</mi>
+<mtext> </mtext>
+<mi mathvariant="normal">m</mi>
+<mi mathvariant="normal">o</mi>
+<mi mathvariant="normal">d</mi>
+<mi mathvariant="normal">i</mi>
+<mi mathvariant="normal">f</mi>
+<mi mathvariant="normal">i</mi>
+<mi mathvariant="normal">e</mi>
+<mi mathvariant="normal">d</mi>
+<mtext> </mtext>
+<mi mathvariant="normal">a</mi>
+<mi mathvariant="normal">t</mi>
+<mtext> </mtext>
+<mi mathvariant="normal">t</mi>
+<mi mathvariant="normal">i</mi>
+<mi mathvariant="normal">m</mi>
+<mi mathvariant="normal">e</mi>
+</mrow>
+</mrow>
+<mtext> </mtext>
+<mi>t</mi>
+</mtd>
+</mtr>
+<mtr>
+<mtd>
+<mi>t</mi>
+<mo>-<!-- - --></mo>
+<mrow class="MJX-TeXAtom-ORD">
+<mrow class="MJX-TeXAtom-ORD">
+<mi mathvariant="normal">m</mi>
+<mi mathvariant="normal">o</mi>
+<mi mathvariant="normal">d</mi>
+<mi mathvariant="normal">i</mi>
+<mi mathvariant="normal">f</mi>
+<mi mathvariant="normal">i</mi>
+<mi mathvariant="normal">c</mi>
+<mi mathvariant="normal">a</mi>
+<mi mathvariant="normal">t</mi>
+<mi mathvariant="normal">i</mi>
+<mi mathvariant="normal">o</mi>
+<mi mathvariant="normal">n</mi>
+<mtext> </mtext>
+<mi mathvariant="normal">t</mi>
+<mi mathvariant="normal">i</mi>
+<mi mathvariant="normal">m</mi>
+<mi mathvariant="normal">e</mi>
+<mtext> </mtext>
+<mi mathvariant="normal">o</mi>
+<mi mathvariant="normal">f</mi>
+</mrow>
+</mrow>
+<mtext> </mtext>
+<mi>p</mi>
+</mtd>
+<mtd>
+<mrow class="MJX-TeXAtom-ORD">
+<mrow class="MJX-TeXAtom-ORD">
+<mi mathvariant="normal">o</mi>
+<mi mathvariant="normal">t</mi>
+<mi mathvariant="normal">h</mi>
+<mi mathvariant="normal">e</mi>
+<mi mathvariant="normal">r</mi>
+<mi mathvariant="normal">w</mi>
+<mi mathvariant="normal">i</mi>
+<mi mathvariant="normal">s</mi>
+<mi mathvariant="normal">e</mi>
+</mrow>
+</mrow>
+</mtd>
+</mtr>
+</mtable>
+<mo fence="true" stretchy="true" symmetric="true"></mo>
+</mrow>
+</mrow>
+</mstyle>
+</mrow>
+<annotation encoding="application/x-tex">{\displaystyle A_{p}(t)={\begin{cases}0&amp;{\rm {if}}~p~{\rm {~is~not~modified~at~time}}~t\\t-{\rm {modification~time~of}}~p&amp;{\rm {otherwise}}\end{cases}}}</annotation>
+</semantics>
+</math></span><img alt="{\displaystyle A_{p}(t)={\begin{cases}0&amp;{\rm {if}}~p~{\rm {~is~not~modified~at~time}}~t\\t-{\rm {modification~time~of}}~p&amp;{\rm {otherwise}}\end{cases}}}" aria-hidden="true" class="mwe-math-fallback-image-inline mw-invert skin-invert" src="https://wikimedia.org/api/rest_v1/media/math/render/svg/d1dfda1dc1dd66ec242ff2e4a515588d6611532a" style="vertical-align: -2.505ex; width:67.807ex; height:6.176ex;"/></span></dd></dl>
+<p><span>Coffman</span> <i>et al.</i> worked with a definition of the objective of a Web crawler that is equivalent to freshness, but use a different wording: they propose that a crawler must minimize the fraction of time pages remain outdated. They also noted that the problem of Web crawling can be modeled as a multiple-queue, single-server polling system, on which the Web crawler is the server and the Web sites are the queues. Page modifications are the arrival of the customers, and switch-over times are the interval between page accesses to a single Web site. Under this model, mean waiting time for a customer in the polling system is equivalent to the average age for the Web crawler.<sup class="reference" id="cite_ref-coffman_30-0"></sup>
+</p><p>The objective of the crawler is to keep the average freshness of pages in its collection as high as possible, or to keep the average age of pages as low as possible. These objectives are not equivalent: in the first case, the crawler is just concerned with how many pages are outdated, while in the second case, the crawler is concerned with how old the local copies of pages are.
+</p>
+<figure class="mw-default-size" typeof="mw:File/Thumb"><a class="mw-file-description"><img class="mw-file-element" data-file-height="353" data-file-width="500" decoding="async" height="177" src="//upload.wikimedia.org/wikipedia/commons/thumb/8/86/Web_Crawling_Freshness_Age.png/250px-Web_Crawling_Freshness_Age.png" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/8/86/Web_Crawling_Freshness_Age.png/500px-Web_Crawling_Freshness_Age.png 1.5x, //upload.wikimedia.org/wikipedia/commons/8/86/Web_Crawling_Freshness_Age.png 2x" width="250"/></a><figcaption>Evolution of Freshness and Age in a web crawler</figcaption></figure>
+<p>Two simple re-visiting policies were studied by Cho and Garcia-Molina:<sup class="reference" id="cite_ref-cho2003_31-0"></sup>
+</p>
+<ul><li>Uniform policy: This involves re-visiting all pages in the collection with the same frequency, regardless of their rates of change.</li>
+<li>Proportional policy: This involves re-visiting more often the pages that change more frequently. The visiting frequency is directly proportional to the (estimated) change frequency.</li></ul>
+<p>In both cases, the repeated crawling order of pages can be done either in a random or a fixed order.
+</p><p>Cho and Garcia-Molina proved the surprising result that, in terms of average freshness, the uniform policy outperforms the proportional policy in both a simulated Web and a real Web crawl. Intuitively, the reasoning is that, as web crawlers have a limit to how many pages they can crawl in a given time frame, (1) they will allocate too many new crawls to rapidly changing pages at the expense of less frequently updating pages, and (2) the freshness of rapidly changing pages lasts for shorter period than that of less frequently changing pages. In other words, a proportional policy allocates more resources to crawling frequently updating pages, but experiences less overall freshness time from them.
+</p><p>To improve freshness, the crawler should penalize the elements that change too often.<sup class="reference" id="cite_ref-cho2003a_32-0"></sup> The optimal re-visiting policy is neither the uniform policy nor the proportional policy. The optimal method for keeping average freshness high includes ignoring the pages that change too often, and the optimal for keeping average age low is to use access frequencies that monotonically (and sub-linearly) increase with the rate of change of each page. In both cases, the optimal is closer to the uniform policy than to the proportional policy: as <span>Coffman</span> <i>et al.</i> note, "in order to minimize the expected obsolescence time, the accesses to any particular page should be kept as evenly spaced as possible".<sup class="reference" id="cite_ref-coffman_30-1"></sup> Explicit formulas for the re-visit policy are not attainable in general, but they are obtained numerically, as they depend on the distribution of page changes. Cho and Garcia-Molina show that the exponential distribution is a good fit for describing page changes,<sup class="reference" id="cite_ref-cho2003a_32-1"></sup> while <span>Ipeirotis</span> <i>et al.</i> show how to use statistical tools to discover parameters that affect this distribution.<sup class="reference" id="cite_ref-33"></sup> The re-visiting policies considered here regard all pages as homogeneous in terms of quality ("all pages on the Web are worth the same"), something that is not a realistic scenario, so further information about the Web page quality should be included to achieve a better crawling policy.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Politeness_policy">Politeness policy</h3></div>
+<p>Crawlers can retrieve data much quicker and in greater depth than human searchers, so they can have a crippling impact on the performance of a site. If a single crawler is performing multiple requests per second and/or downloading large files, a server can have a hard time keeping up with requests from multiple crawlers.
+</p><p>As noted by Koster, the use of Web crawlers is useful for a number of tasks, but comes with a price for the general community.<sup class="reference" id="cite_ref-34"></sup> The costs of using Web crawlers include:
+</p>
+<ul><li>network resources, as crawlers require considerable bandwidth and operate with a high degree of parallelism during a long period of time;</li>
+<li>server overload, especially if the frequency of accesses to a given server is too high;</li>
+<li>poorly written crawlers, which can crash servers or routers, or which download pages they cannot handle; and</li>
+<li>personal crawlers that, if deployed by too many users, can disrupt networks and Web servers.</li></ul>
+<p>A partial solution to these problems is the <span>robots exclusion protocol</span>, also known as the robots.txt protocol that is a standard for administrators to indicate which parts of their Web servers should not be accessed by crawlers.<sup class="reference" id="cite_ref-35"></sup> This standard does not include a suggestion for the interval of visits to the same server, even though this interval is the most effective way of avoiding server overload. Recently commercial search engines like <span>Google</span>, <span>Ask Jeeves</span>, <span>MSN</span> and <span>Yahoo! Search</span> are able to use an extra "Crawl-delay:" parameter in the <span>robots.txt</span> file to indicate the number of seconds to delay between requests.
+</p><p>The first proposed interval between successive pageloads was 60 seconds.<sup class="reference" id="cite_ref-36"></sup> However, if pages were downloaded at this rate from a website with more than 100,000 pages over a perfect connection with zero latency and infinite bandwidth, it would take more than 2 months to download only that entire Web site; also, only a fraction of the resources from that Web server would be used.
+</p><p>Cho uses 10 seconds as an interval for accesses,<sup class="reference" id="cite_ref-cho2003_31-1"></sup> and the WIRE crawler uses 15 seconds as the default.<sup class="reference" id="cite_ref-baeza2002_37-0"></sup> The MercatorWeb crawler follows an adaptive politeness policy: if it took <i>t</i> seconds to download a document from a given server, the crawler waits for 10<i>t</i> seconds before downloading the next page.<sup class="reference" id="cite_ref-38"></sup> Dill <i>et al.</i> use 1 second.<sup class="reference" id="cite_ref-39"></sup>
+</p><p>For those using Web crawlers for research purposes, a more detailed cost-benefit analysis is needed and ethical considerations should be taken into account when deciding where to crawl and how fast to crawl.<sup class="reference" id="cite_ref-40"></sup>
+</p><p>Anecdotal evidence from access logs shows that access intervals from known crawlers vary between 20 seconds and 3-4 minutes. It is worth noticing that even when being very polite, and taking all the safeguards to avoid overloading Web servers, some complaints from Web server administrators are received. <span>Sergey Brin</span> and <span>Larry Page</span> noted in 1998, "... running a crawler which connects to more than half a million servers ... generates a fair amount of e-mail and phone calls. Because of the vast number of people coming on line, there are always those who do not know what a crawler is, because this is the first one they have seen."<sup class="reference" id="cite_ref-brin1998_41-0"></sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Parallelization_policy">Parallelization policy</h3></div>
+<link href="mw-data:TemplateStyles:r1320445320" rel="mw-deduplicated-inline-style"/><div class="hatnote navigation-not-searchable" role="note">Main article: <span>Distributed web crawling</span></div>
+<p>A <span>parallel</span> crawler is a crawler that runs multiple processes in parallel. The goal is to maximize the download rate while minimizing the overhead from parallelization and to avoid repeated downloads of the same page. To avoid downloading the same page more than once, the crawling system requires a policy for assigning the new URLs discovered during the crawling process, as the same URL can be found by two different crawling processes.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Architectures">Architectures</h2></div>
+<figure typeof="mw:File/Thumb"><a class="mw-file-description"><img class="mw-file-element" data-file-height="382" data-file-width="500" decoding="async" height="229" src="//upload.wikimedia.org/wikipedia/commons/thumb/d/df/WebCrawlerArchitecture.svg/330px-WebCrawlerArchitecture.svg.png" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/d/df/WebCrawlerArchitecture.svg/500px-WebCrawlerArchitecture.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/d/df/WebCrawlerArchitecture.svg/960px-WebCrawlerArchitecture.svg.png 2x" width="300"/></a><figcaption>High-level architecture of a standard Web crawler</figcaption></figure>
+<p>A crawler must not only have a good crawling strategy, as noted in the previous sections, but it should also have a highly optimized architecture.
+</p><p>Shkapenyuk and Suel noted that:<sup class="reference" id="cite_ref-shkapenyuk2002_42-0"></sup>
+</p>
+<style data-mw-deduplicate="TemplateStyles:r1244412712">.mw-parser-output .templatequote{overflow:hidden;margin:1em 0;padding:0 32px}.mw-parser-output .templatequotecite{line-height:1.5em;text-align:left;margin-top:0}@media(min-width:500px){.mw-parser-output .templatequotecite{padding-left:1.6em}}</style><blockquote class="templatequote"><p>While it is fairly easy to build a slow crawler that downloads a few pages per second for a short period of time, building a high-performance system that can download hundreds of millions of pages over several weeks presents a number of challenges in system design, I/O and network efficiency, and robustness and manageability.</p></blockquote>
+<p>Web crawlers are a central part of search engines, and details on their algorithms and architecture are kept as business secrets. When crawler designs are published, there is often an important lack of detail that prevents others from reproducing the work. There are also emerging concerns about "<span>search engine spamming</span>", which prevent major search engines from publishing their ranking algorithms.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Security">Security</h2></div>
+<p>While most of the website owners are keen to have their pages indexed as broadly as possible to have strong presence in <span>search engines</span>, web crawling can also have <span>unintended consequences</span> and lead to a <span>compromise</span> or <span>data breach</span> if a search engine indexes resources that should not be publicly available, or pages revealing potentially vulnerable versions of software.
+</p>
+<link href="mw-data:TemplateStyles:r1320445320" rel="mw-deduplicated-inline-style"/><div class="hatnote navigation-not-searchable" role="note">Main article: <span>Google hacking</span></div>
+<p>Apart from standard <span>web application security</span> recommendations website owners can reduce their exposure to opportunistic hacking by only allowing search engines to index the public parts of their websites (with <span>robots.txt</span>) and explicitly blocking them from indexing transactional parts (login pages, private pages, etc.).
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Crawler_identification">Crawler identification</h2></div>
+<p>Web crawlers typically identify themselves to a Web server by using the <span>User-agent</span> field of an <span>HTTP</span> request. Web site administrators typically examine their <span>Web servers</span>' log and use the user agent field to determine which crawlers have visited the web server and how often. The user agent field may include a <span>URL</span> where the Web site administrator may find out more information about the crawler. Examining Web server log is tedious task, and therefore some administrators use tools to identify, track and verify Web crawlers. <span>Spambots</span> and other malicious Web crawlers are unlikely to place identifying information in the user agent field, or they may mask their identity as a browser or other well-known crawler.
+</p><p>Web site administrators prefer Web crawlers to identify themselves so that they can contact the owner if needed. In some cases, crawlers may be accidentally trapped in a <span>crawler trap</span> or they may be overloading a Web server with requests, and the owner needs to stop the crawler. Identification is also useful for administrators that are interested in knowing when they may expect their Web pages to be indexed by a particular <span>search engine</span>.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Crawling_the_deep_web">Crawling the deep web</h2></div>
+<p>A vast amount of web pages lie in the <span>deep or invisible web</span>.<sup class="reference" id="cite_ref-43"></sup> These pages are typically only accessible by submitting queries to a database, and regular crawlers are unable to find these pages if there are no links that point to them. Google's <span>Sitemaps</span> protocol and <span>mod oai</span><sup class="reference" id="cite_ref-44"></sup> are intended to allow discovery of these <span>deep-Web</span> resources.
+</p><p>Deep web crawling also multiplies the number of web links to be crawled. Some crawlers only take some of the URLs in <code>&lt;a href="URL"&gt;</code> form. In some cases, such as the <span>Googlebot</span>, Web crawling is done on all text contained inside the hypertext content, tags, or text.
+</p><p>Strategic approaches may be taken to target deep Web content. With a technique called <span>screen scraping</span>, specialized software may be customized to automatically and repeatedly query a given Web form with the intention of aggregating the resulting data. Such software can be used to span multiple Web forms across multiple Websites. Data extracted from the results of one Web form submission can be taken and applied as input to another Web form thus establishing continuity across the Deep Web in a way not possible with traditional web crawlers.<sup class="reference" id="cite_ref-45"></sup>
+</p><p>Pages built on <span>AJAX</span> are among those causing problems to web crawlers. <span>Google</span> has proposed a format of AJAX calls that their bot can recognize and index.<sup class="reference" id="cite_ref-46"></sup>
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Visual_vs_programmatic_crawlers">Visual vs programmatic crawlers</h2></div>
+<p>There are a number of "visual web scraper/crawler" products available on the web which will crawl pages and structure data into columns and rows based on the users requirements. One of the main difference between a classic and a visual crawler is the level of programming ability required to set up a crawler. The latest generation of "visual scrapers" remove the majority of the programming skill needed to be able to program and start a crawl to scrape web data.
+</p><p>The visual scraping/crawling method relies on the user "teaching" a piece of crawler technology, which then follows patterns in semi-structured data sources. The dominant method for teaching a visual crawler is by highlighting data in a browser and training columns and rows. While the technology is not new, for example it was the basis of Needlebase which has been bought by Google (as part of a larger acquisition of ITA Labs<sup class="reference" id="cite_ref-47"></sup>), there is continued growth and investment in this area by investors and end-users.<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">[<i><span>citation needed</span></i>]</sup>
+</p>
+<div class="mw-heading mw-heading2"><h2 id="List_of_web_crawlers">List of web crawlers</h2></div>
+<link href="mw-data:TemplateStyles:r1320445320" rel="mw-deduplicated-inline-style"/><div class="hatnote navigation-not-searchable" role="note">Further information: <span>List of search engine software</span></div>
+<p>The following is a list of published crawler architectures for general-purpose crawlers (excluding focused web crawlers), with a brief description that includes the names given to the different components and outstanding features:
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Historical_web_crawlers">Historical web crawlers</h3></div>
+<ul>
+<li><span>World Wide Web Worm</span> was a crawler used to build a simple index of document titles and URLs. The index could be searched by using the <kbd><span>grep</span></kbd> <span>Unix</span> command.</li>
+<li>Yahoo! Slurp was the name of the <span>Yahoo!</span> Search crawler until Yahoo! contracted with <span>Microsoft</span> to use <span>Bingbot</span> instead.</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="In-house_web_crawlers">In-house web crawlers</h3></div>
+<ul><li>Applebot is <span>Apple</span>'s web crawler. It supports <span>Siri</span> and other products.<sup class="reference" id="cite_ref-48"></sup></li>
+<li><span>Bingbot</span> is the name of Microsoft's <span>Bing</span> webcrawler. It replaced <i><span>Msnbot</span></i>.</li>
+<li>Baiduspider is <span>Baidu</span>'s web crawler.</li>
+<li>DuckDuckBot is <span>DuckDuckGo</span>'s web crawler.</li>
+<li><span>Googlebot</span> is described in some detail, but the reference is only about an early version of its architecture, which was written in C++ and <span>Python</span>. The crawler was integrated with the indexing process, because text parsing was done for full-text indexing and also for URL extraction. There is a URL server that sends lists of URLs to be fetched by several crawling processes. During parsing, the URLs found were passed to a URL server that checked if the URL have been previously seen. If not, the URL was added to the queue of the URL server.</li>
+<li><span>WebCrawler</span> was used to build the first publicly available full-text index of a subset of the Web. It was based on <span>lib-WWW</span> to download pages, and another program to parse and order URLs for breadth-first exploration of the Web graph. It also included a real-time crawler that followed links based on the similarity of the anchor text with the provided query.</li>
+<li><span>WebFountain</span> is a distributed, modular crawler similar to Mercator but written in C++.</li>
+<li><span>Xenon</span> is a web crawler used by government tax authorities to detect fraud.<sup class="reference" id="cite_ref-Norton-2007-01-25_49-0"></sup><sup class="reference" id="cite_ref-Canada-2017-04-11_50-0"></sup></li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Commercial_web_crawlers">Commercial web crawlers</h3></div>
+<p>The following web crawlers are available, for a price::
+</p>
+<ul><li><span>Diffbot</span> - programmatic general web crawler, available as an <span>API</span></li>
+<li><span>SortSite</span> - crawler for analyzing websites, available for <span>Windows</span> and <span>Mac OS</span></li>
+<li>Swiftbot - <span>Swiftype</span>'s web crawler, available as <span>software as a service</span></li>
+<li>Aleph Search - web crawler allowing massive collection with high scalability</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Open-source_crawlers">Open-source crawlers</h3></div>
+<ul><li><span>Apache Nutch</span> is a highly extensible and scalable web crawler written in Java and released under an <span>Apache License</span>. It is based on <span>Apache Hadoop</span> and can be used with <span>Apache Solr</span> or <span>Elasticsearch</span>.</li>
+<li><span>Grub</span> was an open source distributed search crawler that <span>Wikia Search</span> used to crawl the web.</li>
+<li><span>Heritrix</span> is the <span>Internet Archive</span>'s archival-quality crawler, designed for archiving periodic snapshots of a large portion of the Web. It was written in <span>Java</span>.</li>
+<li><span>ht://Dig</span> includes a Web crawler in its indexing engine.</li>
+<li><span>HTTrack</span> uses a Web crawler to create a mirror of a web site for off-line viewing. It is written in <span>C</span> and released under the GPL.</li>
+<li>Norconex Web Crawler is a highly extensible Web Crawler written in <span>Java</span> and released under an <span>Apache License</span>. It can be used with many repositories such as <span>Apache Solr</span>, <span>Elasticsearch</span>, <span>Microsoft Azure Cognitive Search</span>, <span>Amazon CloudSearch</span> and more.</li>
+<li><span>mnoGoSearch</span> was a crawler, indexer and a search engine written in C and licensed under the GPL which was in operation from 2000 to 2022.</li>
+<li><span>Open Search Server</span> is a search engine and web crawler software release under the GPL.</li>
+<li><span>Scrapy</span>, an open source webcrawler framework, written in python (licensed under <span>BSD</span>).</li>
+<li><span>Seeks</span>, a free distributed search engine (licensed under <span>AGPL</span>).</li>
+<li><span>StormCrawler</span>, a collection of resources for building low-latency, scalable web crawlers on <span>Apache Storm</span> (Apache License).</li>
+<li><span>tkWWW Robot</span>, a crawler based on the <span>tkWWW</span> web browser (licensed under GPL).</li>
+<li><span>GNU Wget</span> is a <span>command-line</span>-operated crawler written in <span>C</span> and released under the <span>GPL</span>. It is typically used to mirror Web and FTP sites.</li>
+<li><span>YaCy</span>, a free distributed search engine, built on principles of peer-to-peer networks (licensed under GPL).</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="See_also">See also</h2></div>
+<ul><li><span>Automatic indexing</span></li>
+<li><span>Gnutella crawler</span></li>
+<li><span>Web archiving</span></li>
+<li><span>Webgraph</span></li>
+<li><span>Website mirroring software</span></li>
+<li><span>Search Engine Scraping</span></li>
+<li><span>Web scraping</span></li></ul>
+</div><script>
+                        function message(element) {
+                            window.parent.postMessage(element.title);
+                    }
+                        
+                    </script></body>
+                    </html>
