@@ -1,16 +1,14 @@
-import React,{useState,useEffect} from 'react';
+import {useState,useEffect} from 'react';
 import { useRef } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-
-
-import Talkie from './Talkie'
+import WikiAlert from './WikiAlert';
+import Spinny from './Spinny';
 
 function WikiPage({pagename}) {
 
-    let pagenames = "";
-    const [skills, setSkills] = useState([false,true,false])
-    const [xp, setxp] = useState(1);
+    const [skills, setSkills] = useState([false,false,false])
+    const [xp, setxp] = useState(0);
     const xpRef= useRef({});
     xpRef.current = xp;
     let updateFirstPage = false;
@@ -18,15 +16,22 @@ function WikiPage({pagename}) {
     const allPagesRef= useRef({});
     allPagesRef.current = allPages;
     const [currentpage, setCurrentPage] = useState("");
+    const [abnorm, setAbnorm] = useState(true);
+    const [abnormQuest, setAbnormQuest] = useState(false);
 
     const [questLists, setQuestLists] = useState([["Boids", "Stochastic parrot", "Astrochicken"],["Gray goo", "Primordial soup", "AI slop"],
-        ["Ouroboros", "Roko's basilisk", "Medusa"],["Finchley Central (game)","Leibniz's gap"], ["MMAcevedo"]]);
+        ["Ouroboros", "Roko's basilisk", "Medusa"],["Finchley Central (game)","Leibniz's gap", "Explanatory gap"], ["MMAcevedo"]]);
+
+    const puz1 = {title:"Superorganism",found:false};
+    const puz2 = {title:"DWikipedia",found:false};
+
+
     const questRef = useRef({});
     questRef.current = questLists;
 
     useEffect(() => {
         window.addEventListener("message", e => {
-            //console.log("receive message " + e.data)
+            console.log("receive message " + e.data)
             if (checkValidPage(e.data)) {
                 setNewPage(e.data + "");
             } else {
@@ -53,42 +58,38 @@ function WikiPage({pagename}) {
                 randpage = myjson.wikipages[Math.floor(Math.random() * myjson.wikipages.length)];
                 toneg = randpage.toneighbors.length;
             }
-           console.log("set new page " + randpage.title);
+           //console.log("set new page " + randpage.title);
             setNewPage(randpage.title);
-        });
-
-        fetch('w_all.txt')
-        .then(function(response){
-            return response.text();
-        }).then(function (data) {
-            //console.log(data);
-            pagenames = data;
-            
         });
         
         
     },[]);
 
+    const clearAnom = () => {
+        console.log('Clear anom');
+        setAbnorm(false);
+      };
 
     function setNewPage(newPage) {
-        console.log("called " + newPage);
+        //console.log("called " + newPage);
         if (allPagesRef.current.length == 0) {
-            console.log("set wait");
+            //console.log("set wait");
             setTimeout(setNewPage, 20, newPage);
         } else if (allPagesRef.current.find(({ title }) => title === newPage)) {
             setCurrentPage(newPage);
             if (allPagesRef.current.find(({ title }) => title === newPage).visited == 0) {
                 setxp(xpRef.current + 1);
-                if (!skills[0] && xp > 24) {
+                console.log("new xp " + xpRef.current + " , " + skills);
+                if (!skills[0] && xpRef.current > 24) {
                     setSkills([true,false,false]);
-                } else if (!skills[1] && xp > 49) {
+                } else if (!skills[1] && xpRef.current > 49) {
                     setSkills([true,true,false]);
-                } else if (!skills[2] && xp > 74) {
+                } else if (!skills[2] && xpRef.current > 74) {
                     setSkills([true,true,true]);
                 }
             }
             allPagesRef.current.find(({ title }) => title === newPage).visited++;
-            //console.log("neighbors " + allPagesRef.current.find(({ title }) => title === newPage).fromneighbors);
+            //console.log("neighbors " + allPagesRef.current.find(({ title }) => title === newPage).toneighbors);
         }
         else {
             console.log("ERRIRRRR");
@@ -127,14 +128,14 @@ function WikiPage({pagename}) {
 
     function checkValidPage(p) {
         p = p + "";
-        return pagenames.includes(p);
+        return (allPagesRef.current.find(({ title }) => title === p))
     }
 
-    if (!updateFirstPage) {
-        if (allPagesRef.current.length > 0) {
-            allPagesRef.current.find(({ title }) => title === pagename).visited++;
-        }
-    }
+    //if (!updateFirstPage) {
+    //    if (allPagesRef.current.length > 0) {
+    //        allPagesRef.current.find(({ title }) => title === pagename).visited++;
+    //    }
+    //}
 
     function isCurrentPage(page) {
         //console.log("testing " + page.title + " against " + currentpage);
@@ -142,7 +143,9 @@ function WikiPage({pagename}) {
     }
 
     return (
+        
         <div className="container">
+            
             <div className="row">
                 <div className="col-sm-4" id="leftcol">
                     <div id="tabdiv">
@@ -151,8 +154,8 @@ function WikiPage({pagename}) {
                         <Tab>Links</Tab>
                         <Tab>Quests</Tab>
                         <Tab>Skills</Tab>
-                        {
-                            <Tab>My Pages</Tab>
+                        {skills[0] &&
+                            <Tab>Pages</Tab>
                         }
                     </TabList>
 
@@ -172,13 +175,19 @@ function WikiPage({pagename}) {
                                     </>
                                 ))}
                             {allPagesRef.current.length > 0 && allPagesRef.current.find(isCurrentPage) && allPagesRef.current.find(isCurrentPage).fromneighbors &&
-                                allPagesRef.current.find(isCurrentPage).fromneighbors.map((element, i) => (
-                                    <>
-                                        {allPagesRef.current.find(({ title }) => title === element) && allPagesRef.current.find(({ title }) => title === element).visited === 0 &&
-                                            <li className="unknown">???{element}</li>
-                                        }
-                                    </>
-                                ))}
+                                    allPagesRef.current.find(isCurrentPage).fromneighbors.length > 0 && allPagesRef.current.find(isCurrentPage).fromneighbors.map((element, i) => (
+                                        <>
+                                            
+                                            {allPagesRef.current.find(({ title }) => title === element) && allPagesRef.current.find(({ title }) => title === element).visited === 0 &&
+                                                !skills[1] &&
+                                                <li className="unknown">???</li>
+                                            }
+                                            {allPagesRef.current.find(({ title }) => title === element) && allPagesRef.current.find(({ title }) => title === element).visited === 0 &&
+                                                skills[1] &&
+                                                <li className="unknown" onClick={(e) => setNewPage(element, e)}>???</li>
+                                            }
+                                        </>
+                                    ))}
                             </ul>
                             </div>
                             
@@ -200,11 +209,11 @@ function WikiPage({pagename}) {
                                             
                                             {allPagesRef.current.find(({ title }) => title === element) && allPagesRef.current.find(({ title }) => title === element).visited === 0 &&
                                                 !skills[1] &&
-                                                <li className="unknown">???{element}</li>
+                                                <li className="unknown">???</li>
                                             }
                                             {allPagesRef.current.find(({ title }) => title === element) && allPagesRef.current.find(({ title }) => title === element).visited === 0 &&
                                                 skills[1] &&
-                                                <li className="unknown" onClick={(e) => setNewPage(element, e)}>???{element}</li>
+                                                <li className="unknown" onClick={(e) => setNewPage(element, e)}>???</li>
                                             }
                                         </>
                                     ))}
@@ -236,15 +245,16 @@ function WikiPage({pagename}) {
                             </div>
                             <div className="questBox" onClick={() => checkList(3)}>
                                 <h5>Mind the Gap</h5>
-                                <p> 
+                                <p> {questLists[3].length > 2 ? "\u2610 \u00A0" : "\u2611 \u00A0"}  
                                 {questLists[3].length > 1 ? "\u2610 \u00A0" : "\u2611 \u00A0"}  
                                 {questLists[3].length > 0 ? "\u2610" : "\u2611"}</p>
                             </div>
-                            <div className="questBox" onClick={() => checkList(4)}>
+                            {abnormQuest && <div className="questBox" onClick={() => checkList(4)}>
                                 <h5>Anomalies</h5>
                                 <p>
                                 {questLists[1].length > 0 ? "\u2610" : "\u2611"}</p>
                             </div>
+                            }
                         <p>If you think you've found a quest page, click the category you think it belongs to!</p>
                         </div>
                         
@@ -269,18 +279,19 @@ function WikiPage({pagename}) {
                                 </div>
                             </div>
 
-                            <div><p>Teleporter</p>
+                            <div><p>Teleporter (WIP)</p>
                                 <div className="skillbarHolder">
                                     <div className="skillbar" style={{width: Math.min(((Math.max(0,(xp - 50)) / 25) * 100), 100) + '%'}}></div>
                                 </div>
                             </div>
 
                             </div>
+                            
                         </div>
                         
                     </TabPanel>
 
-                    {<TabPanel>
+                    {skills[0] && <TabPanel>
                         <ul>
                         {allPagesRef.current.sort((a, b) => a.title.localeCompare(b.title)).map((element, i) => (
                             <>
@@ -300,6 +311,9 @@ function WikiPage({pagename}) {
                     
                 </div>
                 <div className="col-sm-8">
+                    <div id="wikih1">{currentpage}</div>
+                    
+
                     <iframe id="pageframe" src={currentpage == "" ? "altpages/loading.html" : "pages/" + currentpage + '.html'}/>
                 </div>
             </div>

@@ -9,6 +9,7 @@ pagenames = []
 bigwikipages = []
 wikipages = []
 wikilists = ["w1_infohazard", "w2_superorganism", "w3_selfrep", "w4_ai", "w5_consc", "w6_artlife", "w7_obs"]
+wikilists1 = ["w4_ai"]
 
 def get_pages():
     sphere = 0
@@ -152,92 +153,98 @@ def get_full_page(x):
                     </html>""")
             
 def get_temp_page(x, writeFile):
-    if os.path.exists("./wiki-app/public/pages/" + x + ".html"):
+    #if not os.path.exists("./wiki-app/public/pages/" + x + ".html"):
         #print(f"The file x exists.")
     #else:
-        try:
-            page = wikipedia.page(title=x.strip(),auto_suggest=False)
-        except wikipedia.exceptions.PageError as e:
-            #print("try again " + x.strip())
-            page = wikipedia.page(title=x.strip())
-            #print("did it work? " + page.title)
-        html = "\"\"\"" + page.html() + "\"\"\""
-        #with open(html) as fp:
-        #print(html)
-        soup = BeautifulSoup(html, 'html.parser')
-        content = soup.find(class_="mw-content-ltr")
-        #content = BeautifulSoup(content.decode('utf-8','replace'))
-        
-        #print(content)
-        for s in soup.find_all('span', {"class":"mw-editsection"}):
-            s.extract()
-        for d in soup.find_all('div', id="toc"):
-            d.extract()
-        for d in soup.find_all('div', {"class":"side-box"}):
-            d.extract()
-        for header in soup.find_all('h2', id="References"):
-            section = header.parent
-            section.extract()
-        for header in soup.find_all('h2', id="Further_reading"):
-            header.extract()
-        
-        for u in soup.find_all('ol', {"class":"references"}):
-            u.extract()
-        for header in soup.find_all('h2', id="Sources"):
-            section = header.parent
-            section.extract()
-        for header in soup.find_all('h2', id="External_links"):
-            section = header.parent
-            section.extract()
-        for c in soup.find_all('cite', {"class":"citation"}):
-            section = c.parent.parent
-            section.extract()
-        for header in soup.find_all('h2', id="Notes"):
-            section = header.parent
-            section.extract()
-        for d in soup.find_all('div', {"class":"mw-references-wrap"}):
-            d.extract()
-        for d in soup.find_all('div', {"class":"spoken-wikipedia"}):
-            d.extract()
-        for d in soup.find_all('ul', {"class":"portalbox"}):
-            d.extract()
-        for d in soup.find_all('div', {"role":"navigation"}):
-            d.extract()
-        #for d in soup.find_all('sup', {"class":"reference"}):
-        #    d.extract()
-        for t in soup.find_all('table', {"class":"infobox"}):
-            t.extract()
-        for t in soup.find_all('table', {"class":"sidebar"}):
-            t.extract()
-        for t in soup.find_all('table', {"class":"ambox-content"}):
-            t.extract()
-        for a in soup.find_all('a', {"title": "Infohazard"}):
-            a['title'] = "Information hazard"
-            a['href'] = '/wiki/Information_hazard'
-        for a in soup.find_all('a', {"title": "Grey goo"}):
-            a['title'] = "Gray goo"
-            a['href'] = '/wiki/Gray_goo'
-        for a in soup.find_all('a', {"class":"mw-file-description"}):
-            del a["href"]
-        for a in soup.find_all('a', {"class":"external"}):
-            section = a.parent
-            section.extract()
-        seealso = soup.find('h2', {"id":"See_also"})
-        if seealso:
-            postul = seealso.parent.find_next('ul')
+    try:
+        page = wikipedia.page(title=x.strip(),auto_suggest=False)
+    except wikipedia.exceptions.PageError as e:
+        #print("try again " + x.strip())
+        page = wikipedia.page(title=x.strip())
+        #print("did it work? " + page.title)
+    html = "\"\"\"" + page.html() + "\"\"\""
+    #with open(html) as fp:
+    #print(html)
+    soup = BeautifulSoup(html, 'html.parser')
+    content = soup.find(class_="mw-content-ltr")
+    #content = BeautifulSoup(content.decode('utf-8','replace'))
+    
+    #print(content)
+    for s in soup.find_all('span', {"class":"mw-editsection"}):
+        s.extract()
+    for d in soup.find_all('div', id="toc"):
+        d.extract()
+    for d in soup.find_all('div', {"class":"side-box"}):
+        d.extract()
+    for header in soup.find_all('h2', id="References"):
+        section = header.parent
+        section.extract()
+    for header in soup.find_all('h2', id="Further_reading"):
+        header.extract()
+    
+    for u in soup.find_all('ol', {"class":"references"}):
+        u.extract()
+    for header in soup.find_all('h2', id="Sources"):
+        section = header.parent
+        section.extract()
+    for header in soup.find_all('h2', id="External_links"):
+        section = header.parent
+        section.extract()
+    for c in soup.find_all('cite', {"class":"citation"}):
+        section = c.parent.parent
+        section.extract()
+    for header in soup.find_all('h2', id="Notes"):
+        section = header.parent
+        section.extract()
+    for d in soup.find_all('div', {"class":"mw-references-wrap"}):
+        d.extract()
+    for d in soup.find_all('div', {"class":"spoken-wikipedia"}):
+        d.extract()
+    for d in soup.find_all('ul', {"class":"portalbox"}):
+        d.extract()
+    for d in soup.find_all('div', {"role":"navigation"}):
+        d.extract()
+    #for d in soup.find_all('sup', {"class":"reference"}):
+    #    d.extract()
+    for t in soup.find_all('table', {"class":"infobox"}):
+        t.extract()
+    for t in soup.find_all('table', {"class":"ambox-essay-like"}):
+        t.extract()
+    for t in soup.find_all('table', {"class":"ambox-Tone"}):
+        t.extract()
+    for t in soup.find_all('table', {"class":"ambox-overly_detailed"}):
+        t.extract()
+    for t in soup.find_all('table', {"class":"sidebar"}):
+        t.extract()
+    for t in soup.find_all('table', {"class":"ambox-content"}):
+        t.extract()
+    for a in soup.find_all('a', {"title": "Infohazard"}):
+        a['title'] = "Information hazard"
+        a['href'] = '/wiki/Information_hazard'
+    for a in soup.find_all('a', {"title": "Grey goo"}):
+        a['title'] = "Gray goo"
+        a['href'] = '/wiki/Gray_goo'
+    for a in soup.find_all('a', {"class":"mw-file-description"}):
+        del a["href"]
+    for a in soup.find_all('a', {"class":"external"}):
+        section = a.parent
+        section.extract()
+    seealso = soup.find('h2', {"id":"See_also"})
+    if seealso:
+        postul = seealso.parent.find_next('ul')
 
-            for next_sibling in postul.find_next_siblings():
-                next_sibling.decompose()
-        else:
-            print("----no seealso found")
-        if writeFile:
-            with open("./temppages/" + x + ".html", "w") as f:
-                try:
-                    #f.write(str(content.encode('utf8')))
-                    f.write(unidecode(str(content)))
-                except UnicodeEncodeError as e:
-                    print("issue with " + x)
-                    print(e)
+        for next_sibling in postul.find_next_siblings():
+            next_sibling.decompose()
+    else:
+        print("----no seealso found")
+    if writeFile:
+        with open("./temppages/" + x + ".html", "w") as f:
+            try:
+                #f.write(str(content.encode('utf8')))
+                f.write(unidecode(str(content)))
+            except UnicodeEncodeError as e:
+                print("issue with " + x)
+                print(e)
 
 def get_temp_neighbors(x, writeFile) :
     xindex = pagenames.index(x)
@@ -281,7 +288,7 @@ def get_temp_neighbors(x, writeFile) :
                     <body>""")
             #f.write("{\"title\": \"" + page.title + "\",")
             #f.write("\"content\": " + str(content) + "}")
-            f.write("<h1>" + x + "</h1>")
+            #f.write("<h1>" + x + "</h1>")
             try:
                 #f.write(str(content.encode('utf8')))
                 content = soup.find(class_="mw-content-ltr")
@@ -310,7 +317,7 @@ def get_neighbors():
                     wikipages[j].AddNeighbor(pn)
                     wikipages[j].AddToNeighbor(pn)
                     wikipages[i].AddFromNeighbor(page.title)
-                    #wikipages[i].AddNeighbor(pagenames[j])
+                    wikipages[i].AddNeighbor(pagenames[j])
 
 def getwikidata():
     with open("./wiki-app/public/wikidata.json", "w") as f:
@@ -318,7 +325,7 @@ def getwikidata():
         for i,w in enumerate(wikipages):
             w.SortLists()
             f.write("{\"title\":\"" + w.title + "\",")
-            #f.write("\"neighbors\":[\"" + "\",\"".join(w.GetNeighbors()) + "\"],")
+            f.write("\"neighbors\":[\"" + "\",\"".join(w.GetNeighbors()) + "\"],")
             f.write("\"toneighbors\":[\"" + "\",\"".join(w.GetToNeighbors()) + "\"],")
             f.write("\"fromneighbors\":[\"" + "\",\"".join(w.GetFromNeighbors()) + "\"],")
             f.write("\"visited\":0,")
@@ -347,12 +354,17 @@ def countneighbors():
 
 
 get_pages()
+#get_neighbors()
+#getwikidata()
 for p in pagenames:
     print(p + "1--------")
     get_temp_page(p, True)
+#get_temp_page("Dark forest hypothesis", True)
 for p in pagenames:
     print(p + "2--------")
     get_temp_neighbors(p, True)
+#get_temp_neighbors("Dark forest hypothesis", True)
+
 getwikidata()
 
 #print(wikipages[0].GetNeighbors())

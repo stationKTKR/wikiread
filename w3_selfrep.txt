@@ -15,3 +15,4 @@ astrochicken
 autopoiesis
 viral phenomenon
 ouroboros
+computer worm

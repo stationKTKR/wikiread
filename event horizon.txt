@@ -16,58 +16,68 @@ oh someone is hitchiking on you, that's how you woke up. do they have something 
 info-cartography
 using a subset of articles to test it. to make it fun, i added a little scavenger hunt 
 it 'hallucinated' at least one page, so if you see any others, please mark them 
-
-~100 pages
-add some fake ones - Lena, sentient wikipedia bot, one on the 'guy' who sent you this 
-  Lena add mind uploading
-  attention = energy (Mental Energy)
-  what you see sees you - bilateral observation principle . anything capable of being observed must also be capable of observing the hypothetical observer.
-  silent smooth
-  fake wikipedia mascot
+=
 some signal when getting close to 'hot' pages 
     dead internet theory, mobile agent, artificial life, emergence, Abiogenesis, Observer effect (physics)
-    global brain/wikipedia
+    global brain, wikipedia, superorganism, intelligent agent, information hazard
 
-anomalies (important)
-  what you see sees you 
-  
+citations:
+<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">[<i><span>citation needed</span></i>]</sup>
 
-
-Milton Gaareth
-Milton 'RAM' Gaareth was an American computer scientist. 
-
-described the internet as "a primordial soup of digital dna", theorizing that a form of intelligent, data-based lifeform was more likely to emerge naturally than   
-  to be created by humans.
-  "Our current artificial intelligence models, they just copy. And they're great at that, don't get me wrong. But it's a copy of something we already have.
-  when I say 'digital organism', i'm talking about something brand new. i don't think that's something we make on purpose. 
-  
-  But for something to be alive, it has to sustain itself
-  We should ask ourselves, if a digital organism did exists--or, perhaps, already does exist--what would it eat? where would it live? and would we recognize it 
-  if we saw it?"
-
-QUESTS
-Dubious liquids ai slop, gray goo, primordial soup
-reptiles (basilisk, oroborous, medusa, hydrra)
-birds (astrochicken, stochastic_parrot, boids)
-mind the gap finchley central,Leibnizs_gap, explanatory cap
+end page is unleaveable, forces scroll down, no links work
 
 anomalies (just for fun):
   mmacevedo
   silent smooth
 
-skills
-  25 pages: pages list
-  50 pages: 'backtrack'
-  75 pages: teleport to unseen page in sphere
+you can't look away. it wants you so badly. it craves your attention. it knows just which parts of your brain to scratch.
+it learns your neural pathways. it adapts perfectly to you. you warp each other.
 
-an emergent form of life that exists online. has its own language
-feed on attention, sentient wikipedia rabbit hole 
-thank you for your generous donation of x minutes :) 
+the virus only realizes what it's done after the change takes place.
 
-you're thinking about me now 
-would you recognize me? 
-this is one of my favorites!
+by understanding it, you create it. like a metaphysical parasite. 
 
+inserting dna into cells. inserting code into computer programs. how do you insert a thought?
+are viruses alive?
+
+
+new email. subject: cool game i found!
+
+anomalies (important):
+  wikipedia cartographer - scrapped 'game' 
+  Milton Gaareth
+  what you see sees you - bilateral observation principle . anything capable of being observed must also be capable of observing the hypothetical observer.
+  conscious energy - being aware of something grants it energy 
+  
+Milton Gaareth
+Milton 'RAM' Gaareth was an American computer scientist. ran 'chaos simulations', creating simple bots (intelligent agents) that read through thousands of web pages,
+  added bits of code to themselves, and propagated. these bots were given 'metabolisms' and 'life spans'
+  distinguished from 'worms' and other types of malware in that 1 they did not insert themselves onto other machines, only propogating on gaareth's own hardware,
+  and 2, spent 'energy' to crawl the internet, severely limiting their ability to affect network traffic in a significant way. 
+
+  gaareth's greatest challenge in cosntructing this 'digital primordial soup' was defining what 'energy' would be for a digital organism. initially, 'information'
+  was the 'food' of these digital beings, but, being made of information themselves, most of these simulations ended with a sort of 'cannibalistic orgy', ending
+  in only a few generations at most. while gaareth was not fundamentally opposed to the idea of these organisms 'killing' or even 'eating' each other, he did not 
+  see such an organism capable of surviving outside the 'warm little pond' of his texting environment. in order to sustain themselves, these organisms would need
+  to be able to harvest their own 'energy'. gaareth tried several other forms of energy, such as 'clicks' and 'uncompresed images', but none of these trials
+  resulted in 'true digital life'.
+
+  despite failing to fulfill gaareth's dream of creating digital life, his bots, advanced for the time, were sold to burgeoning tech companies. and became some of
+  the earliest web crawlers. in particular, Yahoo! Slurp, Msnbot, and Grub
+
+described the internet as "a primordial soup of digital dna", theorizing that a form of intelligent, data-based lifeform was more likely to emerge naturally than   
+  to be created by humans.
+  "Our current artificial intelligence models, they just copy. And they're great at that, don't get me wrong. But it's a copy of something we already have.
+  when I say 'digital life', i'm talking about something brand new. i don't think that's something we make on purpose. 
+  
+  But for something to be alive, it has to sustain itself
+  We should ask ourselves, if a digital organism did exists--or, perhaps, already does exist--what would it eat? where would it live? and would we recognize it 
+  if we saw it?"
+
+  gave up the project
+
+
+show which quest pages already visited
 
 infohazard has citation numbers . dead internet theory also
 medusa has weird sections, manually remove?
@@ -76,8 +86,13 @@ vitalism - energy - aura - disturbance - worms?
 distributed computing has weird shit at the bottom
 qualia has citations and other references at bottom
 emergence has bibliography at bottom
+mind-body problem - manually fix wikidata character �
 
 
+maybe delete 
+large language model
+artificial general intelligence
+generative artificial intelligence
 
 maybe
 Multiple_discovery
@@ -105,6 +120,11 @@ Chain letter
 Copypasta
 Brain rot
 Elsagate
+
+vitalism
+energy (esotericism)
+aura (paranormal)
+energy field disturbance
 
 God of the gaps
 Watchmaker analogy

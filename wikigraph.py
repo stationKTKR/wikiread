@@ -9,7 +9,7 @@ def findPage(pagename):
             return p["ix"]
 
 def readJSON(ar):
-    with open("wiki-app/public/wikidata.json", "r") as f:
+    with open("wiki-app/public/wikidata4.json", "r") as f:
         for x in f:
             
             page1 = json.loads(x)

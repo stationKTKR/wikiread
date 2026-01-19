@@ -1,13 +1,10 @@
 intelligent agent
 artificial intelligence
-artificial general intelligence
-generative artificial intelligence
 ai effect
 chinese room
 synthetic intelligence
 turing test
 internet bot
-large language model
 AI slop
 stochastic parrot
 ai anthropomorphism

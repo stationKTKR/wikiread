@@ -2,6 +2,9 @@
     "wikipages": [
         {
             "title": "Information hazard",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "BLIT (short story)",
                 "Copycat suicide",
@@ -20,6 +23,9 @@
         },
         {
             "title": "Social contagion",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Copycat suicide",
                 "Mass psychogenic illness",
@@ -34,6 +40,9 @@
         },
         {
             "title": "Copycat suicide",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Blue Whale Challenge",
                 "Meme"
@@ -49,6 +58,9 @@
         },
         {
             "title": "Blue Whale Challenge",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Copycat suicide"
             ],
@@ -60,6 +72,9 @@
         },
         {
             "title": "Mass psychogenic illness",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Social contagion"
             ],
@@ -71,6 +86,9 @@
         },
         {
             "title": "Snow Crash",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Memetics",
                 "World Wide Web"
@@ -85,6 +103,9 @@
         },
         {
             "title": "Roko's basilisk",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "BLIT (short story)",
                 "Dead Internet theory",
@@ -103,14 +124,15 @@
         },
         {
             "title": "Dead Internet theory",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "AI slop",
-                "Internet bot",
-                "Large language model"
+                "Internet bot"
             ],
             "fromneighbors": [
                 "AI slop",
-                "Generative artificial intelligence",
                 "Internet bot",
                 "Roko's basilisk"
             ],
@@ -119,6 +141,9 @@
         },
         {
             "title": "The Game (mind game)",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Finchley Central (game)",
                 "Information hazard",
@@ -136,6 +161,9 @@
         },
         {
             "title": "BLIT (short story)",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Information hazard",
                 "Ironic process theory",
@@ -152,6 +180,9 @@
         },
         {
             "title": "Medusa",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 ""
             ],
@@ -163,6 +194,9 @@
         },
         {
             "title": "Ironic process theory",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "The Game (mind game)"
             ],
@@ -175,6 +209,9 @@
         },
         {
             "title": "Finchley Central (game)",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Information hazard",
                 "Meme",
@@ -188,6 +225,9 @@
         },
         {
             "title": "Superorganism",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Collective intelligence",
                 "Synergy"
@@ -203,6 +243,9 @@
         },
         {
             "title": "Synergy",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Emergence",
                 "Free will",
@@ -216,6 +259,9 @@
         },
         {
             "title": "Global brain",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Artificial intelligence",
                 "Collective consciousness",
@@ -241,6 +287,9 @@
         },
         {
             "title": "Wikipedia",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Artificial intelligence",
                 "Computer cluster",
@@ -261,6 +310,9 @@
         },
         {
             "title": "Wikipedia bots",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Artificial intelligence",
                 "Internet bot",
@@ -275,6 +327,9 @@
         },
         {
             "title": "Collective intelligence",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Artificial intelligence",
                 "Collective consciousness",
@@ -297,6 +352,9 @@
         },
         {
             "title": "Swarm intelligence",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Artificial intelligence",
                 "Artificial life",
@@ -321,6 +379,9 @@
         },
         {
             "title": "Boids",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Artificial life",
                 "Conway's Game of Life",
@@ -337,8 +398,10 @@
         },
         {
             "title": "Technological singularity",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
-                "Artificial general intelligence",
                 "Artificial intelligence",
                 "Global brain",
                 "Instrumental convergence",
@@ -348,7 +411,6 @@
             ],
             "fromneighbors": [
                 "AI takeover",
-                "Artificial general intelligence",
                 "Artificial intelligence",
                 "Friendly artificial intelligence",
                 "Global brain",
@@ -361,12 +423,16 @@
         },
         {
             "title": "Distributed computing",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Computer cluster",
                 "World Wide Web"
             ],
             "fromneighbors": [
                 "Computer cluster",
+                "Computer worm",
                 "Neural network (machine learning)",
                 "Self-replication"
             ],
@@ -375,6 +441,9 @@
         },
         {
             "title": "Computer cluster",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Distributed computing"
             ],
@@ -388,6 +457,9 @@
         },
         {
             "title": "Self-assembly",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Autopoiesis",
                 "Self-organization"
@@ -403,6 +475,9 @@
         },
         {
             "title": "Self-organization",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Artificial intelligence",
                 "Artificial life",
@@ -426,6 +501,9 @@
         },
         {
             "title": "Noosphere",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Collective consciousness",
                 "Global brain"
@@ -440,6 +518,9 @@
         },
         {
             "title": "Collective consciousness",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Collective intelligence",
                 "Global brain",
@@ -458,6 +539,9 @@
         },
         {
             "title": "Computer cluster",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 ""
             ],
@@ -469,6 +553,9 @@
         },
         {
             "title": "Living systems",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Artificial life",
                 "Autopoiesis",
@@ -483,6 +570,9 @@
         },
         {
             "title": "World Wide Web",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Web crawler",
                 "Wikipedia"
@@ -501,13 +591,18 @@
         },
         {
             "title": "Self-replication",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Abiogenesis",
                 "Artificial life",
                 "Astrochicken",
                 "Autopoiesis",
                 "Computer cluster",
+                "Computer worm",
                 "Distributed computing",
+                "Gray goo",
                 "Meme",
                 "Memetics",
                 "Mobile agent",
@@ -523,6 +618,7 @@
                 "Artificial life",
                 "Astrochicken",
                 "Autopoiesis",
+                "Digital organism",
                 "Meme",
                 "Memetics",
                 "Quine (computing)",
@@ -535,11 +631,16 @@
         },
         {
             "title": "Self-replicating machine",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "AI takeover",
                 "Artificial life",
                 "Astrochicken",
                 "Autopoiesis",
+                "Computer worm",
+                "Gray goo",
                 "Quine (computing)",
                 "Self-replicating spacecraft",
                 "Self-replication",
@@ -549,6 +650,7 @@
                 "AI takeover",
                 "Astrochicken",
                 "Autopoiesis",
+                "Computer worm",
                 "Gray goo",
                 "Quine (computing)",
                 "Self-replicating spacecraft",
@@ -560,8 +662,10 @@
         },
         {
             "title": "Instrumental convergence",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
-                "Artificial general intelligence",
                 "Artificial intelligence",
                 "Friendly artificial intelligence",
                 "Intelligent agent",
@@ -569,7 +673,6 @@
                 "Universal Paperclips"
             ],
             "fromneighbors": [
-                "Artificial general intelligence",
                 "Perverse incentive",
                 "Recursive self-improvement",
                 "Technological singularity"
@@ -579,9 +682,11 @@
         },
         {
             "title": "Universal Paperclips",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "AI takeover",
-                "Artificial general intelligence",
                 "Artificial intelligence",
                 "Recursive self-improvement",
                 "Self-replicating spacecraft"
@@ -595,23 +700,30 @@
         },
         {
             "title": "Gray goo",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Astrochicken",
                 "Self-replicating machine",
                 "Universal Paperclips"
             ],
             "fromneighbors": [
-                ""
+                "Astrochicken",
+                "Self-replicating machine",
+                "Self-replicating spacecraft",
+                "Self-replication"
             ],
             "visited": 0,
             "sphere": 0
         },
         {
             "title": "Recursive self-improvement",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
-                "Artificial general intelligence",
-                "Instrumental convergence",
-                "Large language model"
+                "Instrumental convergence"
             ],
             "fromneighbors": [
                 "Artificial intelligence",
@@ -625,6 +737,9 @@
         },
         {
             "title": "Meme",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Copycat suicide",
                 "Memetics",
@@ -647,6 +762,9 @@
         },
         {
             "title": "Memetics",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Consciousness",
                 "Meme",
@@ -665,6 +783,9 @@
         },
         {
             "title": "Von Neumann universal constructor",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Artificial life",
                 "Quine (computing)",
@@ -681,6 +802,9 @@
         },
         {
             "title": "Quine (computing)",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Ouroboros",
                 "Self-modifying code",
@@ -701,6 +825,9 @@
         },
         {
             "title": "Self-modifying code",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Neuroevolution",
                 "Quine (computing)",
@@ -714,6 +841,9 @@
         },
         {
             "title": "Mobile agent",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 ""
             ],
@@ -725,9 +855,13 @@
         },
         {
             "title": "Self-replicating spacecraft",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Artificial intelligence",
                 "Astrochicken",
+                "Gray goo",
                 "Self-replicating machine",
                 "Von Neumann universal constructor"
             ],
@@ -741,8 +875,12 @@
         },
         {
             "title": "Astrochicken",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Artificial intelligence",
+                "Gray goo",
                 "Self-replicating machine",
                 "Self-replication"
             ],
@@ -757,9 +895,13 @@
         },
         {
             "title": "Autopoiesis",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Abiogenesis",
                 "Consciousness",
+                "Explanatory gap",
                 "Hard problem of consciousness",
                 "Living systems",
                 "Qualia",
@@ -782,6 +924,9 @@
         },
         {
             "title": "Viral phenomenon",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Collective consciousness",
                 "Meme",
@@ -798,6 +943,9 @@
         },
         {
             "title": "Ouroboros",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Autopoiesis",
                 "Quine (computing)"
@@ -809,19 +957,35 @@
             "sphere": 0
         },
         {
+            "title": "Computer worm",
+            "neighbors": [
+                ""
+            ],
+            "toneighbors": [
+                "Distributed computing",
+                "Self-replicating machine"
+            ],
+            "fromneighbors": [
+                "Self-replicating machine",
+                "Self-replication"
+            ],
+            "visited": 0,
+            "sphere": 0
+        },
+        {
             "title": "Intelligent agent",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Artificial intelligence",
                 "Friendly artificial intelligence",
-                "Generative artificial intelligence",
                 "Turing test"
             ],
             "fromneighbors": [
-                "Artificial general intelligence",
                 "Artificial intelligence",
                 "Friendly artificial intelligence",
                 "Instrumental convergence",
-                "Large language model",
                 "Swarm intelligence",
                 "Technological singularity",
                 "Wikipedia"
@@ -831,18 +995,18 @@
         },
         {
             "title": "Artificial intelligence",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "AI effect",
                 "AI takeover",
-                "Artificial general intelligence",
                 "Chinese room",
                 "Consciousness",
                 "Free will",
                 "Friendly artificial intelligence",
-                "Generative artificial intelligence",
                 "Hard problem of consciousness",
                 "Intelligent agent",
-                "Large language model",
                 "Mind",
                 "Mind uploading",
                 "Recursive self-improvement",
@@ -857,14 +1021,13 @@
                 "AI anthropomorphism",
                 "AI effect",
                 "AI takeover",
-                "Artificial general intelligence",
                 "Artificial life",
                 "Astrochicken",
                 "Chinese room",
                 "Collective intelligence",
                 "Consciousness",
+                "Explanatory gap",
                 "Friendly artificial intelligence",
-                "Generative artificial intelligence",
                 "Global brain",
                 "Instrumental convergence",
                 "Intelligent agent",
@@ -889,72 +1052,16 @@
             "sphere": 0
         },
         {
-            "title": "Artificial general intelligence",
-            "toneighbors": [
-                "AI effect",
-                "Artificial intelligence",
-                "Chinese room",
-                "Consciousness",
-                "Friendly artificial intelligence",
-                "Generative artificial intelligence",
-                "Hard problem of consciousness",
-                "Instrumental convergence",
-                "Intelligent agent",
-                "Large language model",
-                "Sentience",
-                "Synthetic intelligence",
-                "Technological singularity",
-                "Turing test"
-            ],
-            "fromneighbors": [
-                "AI takeover",
-                "Artificial intelligence",
-                "Chinese room",
-                "Friendly artificial intelligence",
-                "Generative artificial intelligence",
-                "Instrumental convergence",
-                "Large language model",
-                "Mind",
-                "Mind uploading",
-                "Recursive self-improvement",
-                "Synthetic intelligence",
-                "Technological singularity",
-                "Universal Paperclips"
-            ],
-            "visited": 0,
-            "sphere": 0
-        },
-        {
-            "title": "Generative artificial intelligence",
-            "toneighbors": [
-                "AI anthropomorphism",
-                "AI slop",
-                "Artificial general intelligence",
-                "Artificial intelligence",
-                "Artificial life",
-                "Dead Internet theory",
-                "Large language model",
-                "Stochastic parrot"
-            ],
-            "fromneighbors": [
-                "AI anthropomorphism",
-                "AI slop",
-                "Artificial general intelligence",
-                "Artificial intelligence",
-                "Intelligent agent"
-            ],
-            "visited": 0,
-            "sphere": 0
-        },
-        {
             "title": "AI effect",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Artificial intelligence",
                 "Chinese room",
                 "Consciousness"
             ],
             "fromneighbors": [
-                "Artificial general intelligence",
                 "Artificial intelligence",
                 "Friendly artificial intelligence"
             ],
@@ -963,13 +1070,14 @@
         },
         {
             "title": "Chinese room",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
-                "Artificial general intelligence",
                 "Artificial intelligence",
                 "Consciousness",
                 "Emergence",
                 "Hard problem of consciousness",
-                "Large language model",
                 "Leibniz's gap",
                 "Mind",
                 "Stochastic parrot",
@@ -978,7 +1086,6 @@
             ],
             "fromneighbors": [
                 "AI effect",
-                "Artificial general intelligence",
                 "Artificial intelligence",
                 "Consciousness",
                 "Hard problem of consciousness",
@@ -994,14 +1101,15 @@
         },
         {
             "title": "Synthetic intelligence",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
-                "Artificial general intelligence",
                 "Artificial intelligence",
                 "Chinese room",
                 "Recursive self-improvement"
             ],
             "fromneighbors": [
-                "Artificial general intelligence",
                 "Artificial intelligence",
                 "Chinese room",
                 "Turing test"
@@ -1011,13 +1119,16 @@
         },
         {
             "title": "Turing test",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Artificial intelligence",
                 "Chinese room",
                 "Consciousness",
+                "Explanatory gap",
                 "Hard problem of consciousness",
                 "Internet bot",
-                "Large language model",
                 "Mind",
                 "Sentience",
                 "Synthetic intelligence",
@@ -1025,10 +1136,10 @@
             ],
             "fromneighbors": [
                 "AI anthropomorphism",
-                "Artificial general intelligence",
                 "Artificial intelligence",
                 "Chinese room",
                 "Consciousness",
+                "Explanatory gap",
                 "Intelligent agent",
                 "Internet bot",
                 "Mind",
@@ -1041,6 +1152,9 @@
         },
         {
             "title": "Internet bot",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Dead Internet theory",
                 "Turing test",
@@ -1058,62 +1172,32 @@
             "sphere": 0
         },
         {
-            "title": "Large language model",
-            "toneighbors": [
-                "AI anthropomorphism",
-                "Artificial general intelligence",
-                "Emergence",
-                "Hard problem of consciousness",
-                "Intelligent agent",
-                "Sentience",
-                "Stochastic parrot",
-                "Web crawler"
-            ],
-            "fromneighbors": [
-                "AI anthropomorphism",
-                "AI slop",
-                "Artificial general intelligence",
-                "Artificial intelligence",
-                "Chinese room",
-                "Consciousness",
-                "Dead Internet theory",
-                "Generative artificial intelligence",
-                "Neural network (machine learning)",
-                "Recursive self-improvement",
-                "Sentience",
-                "Stochastic parrot",
-                "Turing test"
-            ],
-            "visited": 0,
-            "sphere": 0
-        },
-        {
             "title": "AI slop",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Dead Internet theory",
-                "Generative artificial intelligence",
-                "Large language model",
                 "Meme"
             ],
             "fromneighbors": [
                 "AI takeover",
-                "Dead Internet theory",
-                "Generative artificial intelligence"
+                "Dead Internet theory"
             ],
             "visited": 0,
             "sphere": 0
         },
         {
             "title": "Stochastic parrot",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
-                "Chinese room",
-                "Large language model"
+                "Chinese room"
             ],
             "fromneighbors": [
                 "Artificial intelligence",
                 "Chinese room",
-                "Generative artificial intelligence",
-                "Large language model",
                 "Neural network (machine learning)"
             ],
             "visited": 0,
@@ -1121,32 +1205,33 @@
         },
         {
             "title": "AI anthropomorphism",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Artificial intelligence",
-                "Generative artificial intelligence",
-                "Large language model",
                 "Turing test"
             ],
             "fromneighbors": [
-                "Generative artificial intelligence",
-                "Large language model"
+                ""
             ],
             "visited": 0,
             "sphere": 0
         },
         {
             "title": "Friendly artificial intelligence",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "AI effect",
                 "AI takeover",
-                "Artificial general intelligence",
                 "Artificial intelligence",
                 "Intelligent agent",
                 "Roko's basilisk",
                 "Technological singularity"
             ],
             "fromneighbors": [
-                "Artificial general intelligence",
                 "Artificial intelligence",
                 "Instrumental convergence",
                 "Intelligent agent",
@@ -1157,9 +1242,11 @@
         },
         {
             "title": "AI takeover",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "AI slop",
-                "Artificial general intelligence",
                 "Artificial intelligence",
                 "Self-replicating machine",
                 "Self-replication",
@@ -1176,12 +1263,14 @@
         },
         {
             "title": "Web crawler",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Internet bot",
                 "World Wide Web"
             ],
             "fromneighbors": [
-                "Large language model",
                 "Wikipedia",
                 "World Wide Web"
             ],
@@ -1190,6 +1279,9 @@
         },
         {
             "title": "Emergence",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Abiogenesis",
                 "Boids",
@@ -1210,28 +1302,31 @@
                 "Free will",
                 "Global brain",
                 "Hard problem of consciousness",
-                "Large language model",
                 "Leibniz's gap",
                 "Mind uploading",
                 "Self-organization",
                 "Swarm intelligence",
                 "Synergy",
-                "The purpose of a system is what it does",
-                "Vitalism"
+                "The purpose of a system is what it does"
             ],
             "visited": 0,
             "sphere": 0
         },
         {
             "title": "Leibniz's gap",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Consciousness",
                 "Emergence",
+                "Explanatory gap",
                 "Hard problem of consciousness",
                 "Qualia"
             ],
             "fromneighbors": [
                 "Chinese room",
+                "Explanatory gap",
                 "Qualia"
             ],
             "visited": 0,
@@ -1239,14 +1334,17 @@
         },
         {
             "title": "Consciousness",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Animal consciousness",
                 "Artificial intelligence",
                 "Chinese room",
+                "Explanatory gap",
                 "Free will",
                 "Hard problem of consciousness",
                 "Idealism",
-                "Large language model",
                 "Qualia",
                 "Quantum mind",
                 "Sentience",
@@ -1255,13 +1353,13 @@
             "fromneighbors": [
                 "AI effect",
                 "Animal consciousness",
-                "Artificial general intelligence",
                 "Artificial intelligence",
                 "Autopoiesis",
                 "Chinese room",
                 "Conway's Game of Life",
                 "Determinism",
                 "Emergence",
+                "Explanatory gap",
                 "Free will",
                 "Idealism",
                 "Leibniz's gap",
@@ -1279,8 +1377,10 @@
         },
         {
             "title": "Mind uploading",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
-                "Artificial general intelligence",
                 "Artificial intelligence",
                 "Chinese room",
                 "Consciousness",
@@ -1307,22 +1407,24 @@
         },
         {
             "title": "Sentience",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Animal consciousness",
                 "Artificial intelligence",
                 "Consciousness",
+                "Explanatory gap",
                 "Hard problem of consciousness",
-                "Large language model",
                 "Mind",
                 "Qualia",
                 "Turing test"
             ],
             "fromneighbors": [
                 "Animal consciousness",
-                "Artificial general intelligence",
                 "Artificial intelligence",
                 "Consciousness",
-                "Large language model",
+                "Explanatory gap",
                 "Mind",
                 "Mind uploading",
                 "Mind-body problem",
@@ -1333,10 +1435,14 @@
         },
         {
             "title": "Qualia",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Artificial intelligence",
                 "Chinese room",
                 "Consciousness",
+                "Explanatory gap",
                 "Hard problem of consciousness",
                 "Leibniz's gap"
             ],
@@ -1344,6 +1450,7 @@
                 "Animal consciousness",
                 "Autopoiesis",
                 "Consciousness",
+                "Explanatory gap",
                 "Free will",
                 "Hard problem of consciousness",
                 "Idealism",
@@ -1359,27 +1466,29 @@
         },
         {
             "title": "Hard problem of consciousness",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Abiogenesis",
                 "Animal consciousness",
                 "Chinese room",
                 "Emergence",
+                "Explanatory gap",
                 "Free will",
                 "Idealism",
                 "Qualia",
-                "Quantum mind",
-                "Vitalism"
+                "Quantum mind"
             ],
             "fromneighbors": [
                 "Animal consciousness",
-                "Artificial general intelligence",
                 "Artificial intelligence",
                 "Autopoiesis",
                 "Chinese room",
                 "Consciousness",
+                "Explanatory gap",
                 "Free will",
                 "Idealism",
-                "Large language model",
                 "Leibniz's gap",
                 "Mind",
                 "Mind uploading",
@@ -1394,10 +1503,14 @@
         },
         {
             "title": "Mind-body problem",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Artificial intelligence",
                 "Chinese room",
                 "Consciousness",
+                "Explanatory gap",
                 "Free will",
                 "Hard problem of consciousness",
                 "Idealism",
@@ -1414,8 +1527,12 @@
         },
         {
             "title": "Animal consciousness",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Consciousness",
+                "Explanatory gap",
                 "Hard problem of consciousness",
                 "Mind",
                 "Qualia",
@@ -1423,6 +1540,7 @@
             ],
             "fromneighbors": [
                 "Consciousness",
+                "Explanatory gap",
                 "Hard problem of consciousness",
                 "Mind",
                 "Sentience"
@@ -1432,6 +1550,9 @@
         },
         {
             "title": "Free will",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Consciousness",
                 "Determinism",
@@ -1457,6 +1578,9 @@
         },
         {
             "title": "Determinism",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Consciousness",
                 "Conway's Game of Life",
@@ -1474,12 +1598,15 @@
         },
         {
             "title": "Mind",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Animal consciousness",
-                "Artificial general intelligence",
                 "Artificial intelligence",
                 "Consciousness",
                 "Determinism",
+                "Explanatory gap",
                 "Free will",
                 "Hard problem of consciousness",
                 "Idealism",
@@ -1494,6 +1621,7 @@
                 "Chinese room",
                 "Determinism",
                 "Double-aspect theory",
+                "Explanatory gap",
                 "Free will",
                 "Idealism",
                 "Mind uploading",
@@ -1506,6 +1634,9 @@
         },
         {
             "title": "Mental energy",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 ""
             ],
@@ -1517,6 +1648,9 @@
         },
         {
             "title": "Idealism",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Consciousness",
                 "Hard problem of consciousness",
@@ -1526,6 +1660,7 @@
             "fromneighbors": [
                 "Consciousness",
                 "Determinism",
+                "Explanatory gap",
                 "Hard problem of consciousness",
                 "Mind",
                 "Mind uploading",
@@ -1535,10 +1670,47 @@
             "sphere": 0
         },
         {
+            "title": "Explanatory gap",
+            "neighbors": [
+                ""
+            ],
+            "toneighbors": [
+                "Animal consciousness",
+                "Artificial intelligence",
+                "Consciousness",
+                "Hard problem of consciousness",
+                "Idealism",
+                "Leibniz's gap",
+                "Mind",
+                "Qualia",
+                "Quantum mind",
+                "Sentience",
+                "Turing test"
+            ],
+            "fromneighbors": [
+                "Animal consciousness",
+                "Autopoiesis",
+                "Consciousness",
+                "Hard problem of consciousness",
+                "Leibniz's gap",
+                "Mind",
+                "Mind-body problem",
+                "Qualia",
+                "Sentience",
+                "Turing test"
+            ],
+            "visited": 0,
+            "sphere": 0
+        },
+        {
             "title": "Artificial life",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Abiogenesis",
                 "Artificial intelligence",
+                "Digital organism",
                 "Emergence",
                 "Neuroevolution",
                 "Self-replication",
@@ -1547,7 +1719,7 @@
             "fromneighbors": [
                 "Boids",
                 "Conway's Game of Life",
-                "Generative artificial intelligence",
+                "Digital organism",
                 "Living systems",
                 "Neuroevolution",
                 "Self-organization",
@@ -1561,6 +1733,9 @@
         },
         {
             "title": "Neuroevolution",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Artificial intelligence",
                 "Artificial life"
@@ -1575,10 +1750,12 @@
         },
         {
             "title": "Neural network (machine learning)",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Artificial intelligence",
                 "Distributed computing",
-                "Large language model",
                 "Mind uploading",
                 "Neuroevolution",
                 "Stochastic parrot"
@@ -1591,6 +1768,9 @@
         },
         {
             "title": "Abiogenesis",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Autopoiesis",
                 "Primordial soup",
@@ -1614,6 +1794,9 @@
         },
         {
             "title": "Primordial soup",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Abiogenesis",
                 "Spontaneous generation"
@@ -1627,19 +1810,24 @@
         },
         {
             "title": "Spontaneous generation",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Abiogenesis"
             ],
             "fromneighbors": [
                 "Abiogenesis",
-                "Primordial soup",
-                "Vitalism"
+                "Primordial soup"
             ],
             "visited": 0,
             "sphere": 0
         },
         {
             "title": "Warm little pond",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Abiogenesis",
                 "Primordial soup"
@@ -1652,6 +1840,9 @@
         },
         {
             "title": "Conway's Game of Life",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Artificial life",
                 "Boids",
@@ -1668,58 +1859,39 @@
             "sphere": 0
         },
         {
-            "title": "Vitalism",
+            "title": "Digital organism",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
-                "Emergence",
-                "Energy (esotericism)",
-                "Spontaneous generation"
+                "Artificial life",
+                "Self-replication"
             ],
             "fromneighbors": [
-                "Energy (esotericism)",
-                "Hard problem of consciousness"
+                "Artificial life"
             ],
             "visited": 0,
             "sphere": 0
         },
         {
-            "title": "Energy (esotericism)",
+            "title": "Dark forest hypothesis",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
-                "Aura (paranormal)",
-                "Vitalism"
+                ""
             ],
             "fromneighbors": [
-                "Aura (paranormal)",
-                "Vitalism"
-            ],
-            "visited": 0,
-            "sphere": 0
-        },
-        {
-            "title": "Aura (paranormal)",
-            "toneighbors": [
-                "Energy (esotericism)",
-                "Energy field disturbance"
-            ],
-            "fromneighbors": [
-                "Energy (esotericism)",
-                "Energy field disturbance"
-            ],
-            "visited": 0,
-            "sphere": 0
-        },
-        {
-            "title": "Energy field disturbance",
-            "toneighbors": [
-                "Aura (paranormal)"
-            ],
-            "fromneighbors": [
-                "Aura (paranormal)"
+                ""
             ],
             "visited": 0,
             "sphere": 0
         },
         {
             "title": "Observer effect (physics)",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Uncertainty principle"
             ],
@@ -1734,6 +1906,9 @@
         },
         {
             "title": "Uncertainty principle",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Observer effect (physics)"
             ],
@@ -1746,6 +1921,9 @@
         },
         {
             "title": "Campbell's law",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Observer effect (physics)",
                 "Perverse incentive",
@@ -1759,6 +1937,9 @@
         },
         {
             "title": "Perverse incentive",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Campbell's law",
                 "Instrumental convergence",
@@ -1772,6 +1953,9 @@
         },
         {
             "title": "The purpose of a system is what it does",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Emergence"
             ],
@@ -1784,6 +1968,9 @@
         },
         {
             "title": "Double-aspect theory",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Mind",
                 "Observer effect (physics)"
@@ -1796,6 +1983,9 @@
         },
         {
             "title": "Quantum mind",
+            "neighbors": [
+                ""
+            ],
             "toneighbors": [
                 "Consciousness",
                 "Hard problem of consciousness",
@@ -1803,19 +1993,9 @@
             ],
             "fromneighbors": [
                 "Consciousness",
+                "Explanatory gap",
                 "Hard problem of consciousness",
                 "Mind uploading"
-            ],
-            "visited": 0,
-            "sphere": 0
-        },
-        {
-            "title": "Hydra effect",
-            "toneighbors": [
-                ""
-            ],
-            "fromneighbors": [
-                ""
             ],
             "visited": 0,
             "sphere": 0
