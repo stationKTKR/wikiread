@@ -1,14 +1,19 @@
 {
-  "dependencies": {
-    "cytoscape": "^3.33.1",
-    "react-cytoscape": "^1.0.6",
-    "unidecode": "^1.1.0",
-    "homepage": "https://stationktkr.github.io/wikiread"
-  },
+  "name": "wikiread",
+  "version": "1.0.0",
+  "homepage": "https://stationktkr.github.io/wikiread",
+  "description": "wiki read",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build"
+  },
+  "dependencies": {
+    "cytoscape": "^3.33.1",
+    "react-cytoscape": "^1.0.6",
+    "unidecode": "^1.1.0"
+    
   }
+  
 }
