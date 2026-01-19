@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/wikiread-react/static/css/main.f855e6bc.css",
+    "main.js": "/wikiread-react/static/js/main.44843c82.js",
+    "static/js/453.e91f6618.chunk.js": "/wikiread-react/static/js/453.e91f6618.chunk.js",
+    "static/media/logo.svg": "/wikiread-react/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/wikiread-react/index.html",
+    "main.f855e6bc.css.map": "/wikiread-react/static/css/main.f855e6bc.css.map",
+    "main.44843c82.js.map": "/wikiread-react/static/js/main.44843c82.js.map",
+    "453.e91f6618.chunk.js.map": "/wikiread-react/static/js/453.e91f6618.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.44843c82.js"
+  ]
+}
