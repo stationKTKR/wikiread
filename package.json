@@ -3,12 +3,12 @@
     "cytoscape": "^3.33.1",
     "react-cytoscape": "^1.0.6",
     "unidecode": "^1.1.0",
-    "homepage": "http://stationktkr.github.io/wikiread"
+    "homepage": "https://stationktkr.github.io/wikiread"
   },
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build"
   }
 }
