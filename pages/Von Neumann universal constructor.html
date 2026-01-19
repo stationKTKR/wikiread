@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+                    <html>
+                    <head>
+                    <link rel="stylesheet" type="text/css" href="./wiki.css">
+                    <script>
+                    let FF_FOUC_FIX;
+                    </script>
+                    </head>
+                    <body><div class="mw-content-ltr mw-parser-output" dir="ltr" lang="en"><div class="shortdescription nomobile noexcerpt noprint searchaux" style="display:none">Self-replicating cellular automaton</div>
+<figure class="mw-halign-right" typeof="mw:File/Thumb"><a class="mw-file-description"><img class="mw-file-element" data-file-height="492" data-file-width="681" decoding="async" height="289" src="//upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Nobili_Pesavento_2reps.png/500px-Nobili_Pesavento_2reps.png" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Nobili_Pesavento_2reps.png/681px-Nobili_Pesavento_2reps.png 1.5x, //upload.wikimedia.org/wikipedia/commons/c/c4/Nobili_Pesavento_2reps.png 2x" width="400"/></a><figcaption>The first implementation of von Neumann's self-reproducing universal constructor.<sup class="reference" id="cite_ref-Pesavento1995_1-0"></sup> Three generations of machine are shown: the second has nearly finished constructing the third. The lines running to the right are the tapes of genetic instructions, which are copied along with the body of the machines. The machine shown runs in a 32-state version of von Neumann's cellular automata environment, not his original 29-state specification.</figcaption></figure>
+<p><span>John von Neumann</span>'s <b>universal constructor</b> is a <a href="" onclick="message(this)" title="Self-replicating machine">self-replicating machine</a> in a <span>cellular automaton</span> (CA) environment. It was designed in the 1940s, without the use of a computer. The fundamental details of the machine were published in von Neumann's book <i>Theory of Self-Reproducing Automata</i>, completed in 1966 by <span>Arthur W. Burks</span> after von Neumann's death.<sup class="reference" id="cite_ref-TSRA_2-0"></sup> It is regarded as foundational for <span>automata theory</span>, <span>complex systems</span>, and <a href="" onclick="message(this)" title="Artificial life">artificial life</a>.<sup class="reference" id="cite_ref-McMullin2000_3-0"></sup><sup class="reference" id="cite_ref-Rocha1998_4-0"></sup> Indeed, Nobel Laureate <span>Sydney Brenner</span> considered von Neumann's work on self-reproducing automata (together with <span>Turing</span>'s work on computing machines) central to <span>biological theory</span> as well, allowing us to "discipline our thoughts about machines, both natural and artificial."<sup class="reference" id="cite_ref-Brenner2012_5-0"></sup>
+</p><p>Von Neumann's goal, as specified in his lectures at the University of Illinois in 1949,<sup class="reference" id="cite_ref-TSRA_2-1"></sup> was to design a machine whose complexity could grow automatically akin to biological organisms under <span>natural selection</span>. He asked what is the <i>threshold of complexity</i> that must be crossed for machines to be able to evolve.<sup class="reference" id="cite_ref-Rocha1998_4-1"></sup> His answer was to specify an <span>abstract machine</span> which, when run, would replicate itself. In his design, the self-replicating machine consists of three parts: a "description" of ('blueprint' or program for) itself, a <i>universal constructor</i> mechanism that can read any description and construct the machine (sans description) encoded in that description, and a <i>universal copy machine</i> that can make copies of any description. After the universal constructor has been used to construct a new machine encoded in the description, the copy machine is used to create a copy of that description, and this copy is passed on to the new machine, resulting in a working replication of the original machine that can keep on reproducing. Some machines will do this backwards, copying the description and then building a machine. Crucially, the self-reproducing machine can evolve by accumulating mutations of the description, not the machine itself, thus gaining the ability to grow in complexity.<sup class="reference" id="cite_ref-Rocha1998_4-2"></sup><sup class="reference" id="cite_ref-Brenner2012_5-1"></sup>
+</p><p>To define his machine in more detail, von Neumann invented the concept of a <span>cellular automaton</span>. The <span>one he used</span> consists of a two-dimensional grid of cells, each of which can be in one of 29 states at any point in time. At each timestep, each cell updates its state depending on the states of the surrounding cells at the prior timestep. The rules governing these updates are identical for all cells.
+</p><p>The universal constructor is a certain pattern of cell states in this cellular automaton. It contains one line of cells that serve as the description (akin to <span>Turing's tape</span>), encoding a sequence of instructions that serve as a 'blueprint' for the machine. The machine reads these instructions one by one and performs the corresponding actions. The instructions direct the machine to use its 'construction arm' (another automaton that functions like an <span>operating system</span><sup class="reference" id="cite_ref-Rocha1998_4-3"></sup>) to build a copy of the machine, without the description tape, at some other location in the cell grid. The description cannot contain instructions to build an equally long description tape, just as a container cannot contain a container of the same size. Therefore, the machine includes the separate copy machine which reads the description tape and passes a copy to the newly constructed machine. The resulting new set of universal constructor and copy machines plus description tape is identical to the old one, and it proceeds to replicate again.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Purpose">Purpose</h2></div>
+<figure class="mw-halign-right" typeof="mw:File/Thumb"><a class="mw-file-description"><img class="mw-file-element" data-file-height="613" data-file-width="1000" decoding="async" height="245" src="//upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Von_Neuman_Self-replication_2.jpg/500px-Von_Neuman_Self-replication_2.jpg" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Von_Neuman_Self-replication_2.jpg/960px-Von_Neuman_Self-replication_2.jpg 1.5x" width="400"/></a><figcaption>Von Neumann's System of Self-Replication Automata with the ability to evolve (Figure adapted from <span>Luis Rocha</span>'s Lecture Notes at Binghamton University<sup class="reference" id="cite_ref-Rocha_lec_notes_6-0"></sup>). i) the self-replicating system is composed of several automata plus a separate description (an encoding formalized as a <span>Turing 'tape'</span>) of all the automata: Universal Constructor (A), Universal Copier (B), operating system (C), extra functions not involved with replication (D), and separate description Ph(A,B,C,D) encoding all automata. ii) (Top) Universal Constructor produces (decodes) automata from their description (<i>active</i> mode of description); (Bottom) Universal Copier copies description of automata (<i>passive</i> mode of description); Mutations Ph(D') to description Ph(D) (not changes in automaton D directly) propagate to the set of automata produced in next generation, allowing (automata + description) system to continue replicating and evolving (D - D').<sup class="reference" id="cite_ref-Rocha1998_4-4"></sup> The active process of construction from a description parallels <span>DNA translation</span>, the passive process of copying the description parallels <span>DNA replication</span>, and inheritance of mutated descriptions parallels <span>Vertical inheritance of DNA mutations</span> in Biology,<sup class="reference" id="cite_ref-Rocha1998_4-5"></sup><sup class="reference" id="cite_ref-Brenner2012_5-2"></sup> and were proposed by Von Neumann before the discovery of the structure of the DNA molecule and how it is separately translated and replicated in the Cell.<sup class="reference" id="cite_ref-Rocha_lec_notes_6-1"></sup></figcaption></figure>
+<p>Von Neumann's design has traditionally been understood to be a demonstration of the logical requirements for machine self-replication.<sup class="reference" id="cite_ref-McMullin2000_3-1"></sup> However, it is clear that far simpler machines can achieve self-replication. Examples include trivial <span>crystal-like growth</span>, <span>template replication</span>, and <span>Langton's loops</span>. But von Neumann was interested in something more profound: construction, universality, and evolution.<sup class="reference" id="cite_ref-Rocha1998_4-6"></sup><sup class="reference" id="cite_ref-Brenner2012_5-3"></sup>
+</p><p>Note that the simpler self-replicating CA structures (especially, <span>Byl's loop</span> and the <span>Chou-Reggia loop</span>) cannot exist in a wide variety of forms and thus have very limited <span>evolvability</span>. Other CA structures such as the <span>Evoloop</span> are somewhat evolvable but still don't support open-ended evolution. Commonly, simple replicators do not fully contain the machinery of construction, there being a degree to which the replicator is information copied by its surrounding environment. Although the Von Neumann design is a logical construction, it is in principle a design that could be instantiated as a physical machine. Indeed, this universal constructor can be seen as an abstract <span>simulation</span> of a physical <span>universal assembler</span>. The issue of the environmental contribution to replication is somewhat open, since there are different conceptions of raw material and its availability.
+</p><p>Von Neumann's crucial insight is that the description of the machine, which is copied and passed to offspring separately via the universal copier, has a double use; being both an <i>active</i> component of the construction mechanism in reproduction, and being the target of a <i>passive</i> copying process. This part is played by the description (akin to <span>Turing</span>'s <span>tape of instructions</span>) in Von Neumann's combination of universal constructor and universal copier.<sup class="reference" id="cite_ref-Rocha1998_4-7"></sup> The combination of a universal constructor and copier, plus a tape of instructions conceptualizes and formalizes i) self-replication, and ii) open-ended evolution, or growth of complexity observed in biological organisms.<sup class="reference" id="cite_ref-McMullin2000_3-2"></sup>
+</p><p>This insight is all the more remarkable because it preceded the discovery of the structure of the DNA molecule by <span>Watson</span> and <span>Crick</span> and how it is separately translated and replicated in the cell--though it followed the <span>Avery-MacLeod-McCarty experiment</span> which identified <span>DNA</span> as the molecular carrier of genetic information in living organisms.<sup class="reference" id="cite_ref-Rocha_lec_notes_6-2"></sup> The DNA molecule is processed by separate mechanisms that carry out its instructions (<span>translation</span>) and copy (<span>replicate</span>) the DNA for newly constructed cells. The ability to achieve open-ended evolution lies in the fact that, just as in nature, errors (<span>mutations</span>) in the copying of the genetic tape can lead to viable variants of the automaton, which can then evolve via <span>natural selection</span>.<sup class="reference" id="cite_ref-Rocha1998_4-8"></sup> As Brenner put it:
+</p>
+<style data-mw-deduplicate="TemplateStyles:r1244412712">.mw-parser-output .templatequote{overflow:hidden;margin:1em 0;padding:0 32px}.mw-parser-output .templatequotecite{line-height:1.5em;text-align:left;margin-top:0}@media(min-width:500px){.mw-parser-output .templatequotecite{padding-left:1.6em}}</style><blockquote class="templatequote"><p>Turing invented the stored-program computer, and von Neumann showed that the description is separate from the universal constructor. This is not trivial. Physicist Erwin Schrodinger confused the program and the constructor in his 1944 book What is Life?, in which he saw chromosomes as ''architect's plan and builder's craft in one''. This is wrong. The code script contains only a description of the executive function, not the function itself.<sup class="reference" id="cite_ref-Brenner2012_5-4"></sup></p></blockquote><div class="templatequotecite"><p style="display: inline; padding-left: 2.3em;">-- <span>Sydney Brenner</span><span data-plural="0" style="display:none"></span></p></div>
+<div class="mw-heading mw-heading3"><h3 id="Evolution_of_Complexity">Evolution of Complexity</h3></div>
+<p>Von Neumann's goal, as specified in his lectures at the University of Illinois in 1949,<sup class="reference" id="cite_ref-TSRA_2-2"></sup> was to design a machine whose complexity could grow automatically akin to biological organisms under <span>natural selection</span>. He asked what is the <i>threshold of complexity</i> that must be crossed for machines to be able to evolve and grow in complexity.<sup class="reference" id="cite_ref-Rocha1998_4-9"></sup><sup class="reference" id="cite_ref-McMullin2000_3-3"></sup>  His "proof-of-principle" designs showed how it is logically possible. By using an architecture that separates a general purpose programmable ("universal") constructor from a general purpose copier, he showed how the descriptions (tapes) of machines could accumulate mutations in self-replication and thus evolve more complex machines (the image below illustrates this possibility.). This is a very important result, as prior to that, it might have been conjectured that there is a fundamental logical barrier to the existence of such machines; in which case, biological organisms, which do evolve and grow in complexity, could not be "machines", as conventionally understood. Von Neumann's insight was to think of life as a Turing Machine, which, is similarly defined by a state-determined machine "head" separated from a memory tape.<sup class="reference" id="cite_ref-Brenner2012_5-5"></sup>
+</p><p>In practice, when we consider the particular automata implementation Von Neumann pursued, we conclude that it does not yield much evolutionary dynamics because the machines are too fragile - the vast majority of perturbations cause them effectively to disintegrate.<sup class="reference" id="cite_ref-McMullin2000_3-4"></sup> Thus, it is the conceptual model outlined in his Illinois lectures<sup class="reference" id="cite_ref-TSRA_2-3"></sup> that is of greater interest today because it shows how a machine can in principle evolve.<sup class="reference" id="cite_ref-Pattee1995_7-0"></sup><sup class="reference" id="cite_ref-Rocha1998_4-10"></sup> This insight is all the more remarkable because the model preceded the discovery of the structure of the DNA molecule as discussed above.<sup class="reference" id="cite_ref-Rocha_lec_notes_6-3"></sup> It is also noteworthy that Von Neumann's design considers that mutations towards greater complexity need to occur in the (descriptions of) subsystems not involved in self-reproduction itself, as conceptualized by the additional automaton <i>D</i> he considered to perform all functions not directly involved in reproduction (see Figure above with Von Neumann's System of Self-Replication Automata with the ability to evolve.) Indeed, in biological organisms only very minor variations of the genetic code have been observed, which matches Von Neumann's rationale that the universal constructor (<i>A</i>) and Copier (<i>B</i>) would not themselves evolve, leaving all evolution (and growth of complexity) to automaton <i>D</i>.<sup class="reference" id="cite_ref-Rocha1998_4-11"></sup> In his unfinished work, Von Neumann also briefly considers conflict and interactions between his self-reproducing machines, towards understanding the evolution of ecological and social interactions from his theory of self-reproducing machines.<sup class="reference" id="cite_ref-TSRA_2-4"></sup><sup class="reference nowrap"><span title="Page / location: 147">: 147 </span></sup>
+</p>
+<figure class="mw-halign-center" typeof="mw:File/Thumb"><a class="mw-file-description"><img class="mw-file-element" data-file-height="703" data-file-width="1268" decoding="async" height="388" src="//upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Pesavento_replicator_inherited_mutations.png/960px-Pesavento_replicator_inherited_mutations.png" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Pesavento_replicator_inherited_mutations.png/1268px-Pesavento_replicator_inherited_mutations.png 1.5x, //upload.wikimedia.org/wikipedia/commons/f/f2/Pesavento_replicator_inherited_mutations.png 2x" width="700"/></a><figcaption>A demonstration of the ability of von Neumann's machine to support inheritable mutations. (1) At an earlier timestep, a mutation was manually added to the second generation machine's tape. (2) Later generations both display the <span>phenotype</span> of the mutation (a drawing of a flower) and pass the mutation on to their children, since the tape is copied each time. This example illustrates how von Neumann's design allows for complexity growth (in theory) since the tape could specify a machine that is more complex than the one making it.</figcaption></figure>
+<div class="mw-heading mw-heading2"><h2 id="Implementations">Implementations</h2></div>
+<p>In automata theory, the concept of a <i>universal constructor</i> is non-trivial because of the existence of <span>Garden of Eden patterns</span> (configurations that have no predecessor). But a simple definition is that a universal constructor is able to construct any finite pattern of non-excited (quiescent) cells.
+</p><p><span>Arthur Burks</span> and others extended the work of von Neumann, giving a much clearer and complete set of details regarding the design and operation of von Neumann's self-replicator. The work of J. W. Thatcher is particularly noteworthy, for he greatly simplified the design. Still, their work did not yield a complete design, cell by cell, of a configuration capable of demonstrating self-replication.
+</p><p><span>Renato Nobili</span> and Umberto Pesavento published the first fully implemented self-reproducing cellular automaton in 1995, nearly fifty years after von Neumann's work.<sup class="reference" id="cite_ref-Pesavento1995_1-1"></sup><sup class="reference" id="cite_ref-NobiliPesavento1996_8-0"></sup> They used a 32-state cellular automaton instead of von Neumann's original <span>29-state specification</span>, extending it to allow for easier signal-crossing, <span>explicit memory</span> function and a more compact design. They also published an implementation of a general constructor within the original 29-state CA but not one capable of complete replication - the configuration cannot duplicate its tape, nor can it trigger its offspring; the configuration can only construct.<sup class="reference" id="cite_ref-NobiliPesavento1996_8-1"></sup><sup class="reference" id="cite_ref-Automata2008_9-0"></sup>
+</p><p>In 2004, D. Mange et al. reported an implementation of a self-replicator that is consistent with the designs of von Neumann.<sup class="reference" id="cite_ref-10"></sup>
+</p><p>In 2007, Nobili published a 32-state implementation that uses <span>run-length encoding</span> to greatly reduce the size of the tape.<sup class="reference" id="cite_ref-nobili2007_11-0"></sup>
+</p><p>In 2008, William R. Buckley published two configurations which are self-replicators within the original 29-state CA of von Neumann.<sup class="reference" id="cite_ref-Automata2008_9-1"></sup> Buckley claims that the crossing of signal within von Neumann 29-state cellular automata is not necessary to the construction of self-replicators.<sup class="reference" id="cite_ref-Automata2008_9-2"></sup> Buckley also points out that for the purposes of evolution, each replicator should return to its original configuration after replicating, in order to be capable (in theory) of making more than one copy. As published, the 1995 design of Nobili-Pesavento does not fulfill this requirement but the 2007 design of Nobili does; the same is true of Buckley's configurations.
+</p><p>In 2009, Buckley published with <span>Golly</span> a third configuration for von Neumann 29-state cellular automata, which can perform either holistic self-replication, or self-replication by partial construction.  This configuration also demonstrates that signal crossing is not necessary to the construction of self-replicators within von Neumann 29-state cellular automata.
+</p><p>C. L. Nehaniv in 2002, and also Y. Takada et al. in 2004, proposed a universal constructor directly implemented upon an <span>asynchronous cellular automaton</span>, rather than upon a synchronous cellular automaton.
+<sup class="reference" id="cite_ref-12"></sup>
+<sup class="reference" id="cite_ref-13"></sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Comparison_of_implementations">Comparison of implementations</h3></div>
+<style data-mw-deduplicate="TemplateStyles:r1303987615">@media screen{.mw-parser-output .sort-under.sortable.wikitable th.headerSort,.mw-parser-output .sort-under-center.sortable.wikitable th.headerSort{padding-right:0.4em}.mw-parser-output .sort-under.sortable:not(.wikitable) th.headerSort,.mw-parser-output .sort-under-center.sortable:not(.wikitable) th.headerSort{padding-right:1px}body.skin-minerva .mw-parser-output .sort-under.sortable.wikitable th.headerSort,body.skin-minerva .mw-parser-output .sort-under-center.sortable.wikitable th.headerSort{padding-right:0.2em}body.skin-timeless .mw-parser-output .sort-under.sortable.wikitable th.headerSort,body.skin-timeless .mw-parser-output .sort-under-center.sortable.wikitable th.headerSort{padding-right:0.5em}html.client-js .mw-parser-output .sort-under.sortable th.headerSort{background-position:right bottom 0.2em}html.client-js .mw-parser-output .sort-under-center.sortable th.headerSort{background-position:center bottom 0.2em}.mw-parser-output .sort-under.sortable th.headerSort,.mw-parser-output .sort-under.sortable th.unsortable,.mw-parser-output .sort-under-center.sortable th.headerSort,.mw-parser-output .sort-under-center.sortable th.unsortable{padding-bottom:1em}body.skin-timeless .mw-parser-output .sort-under.sortable.wikitable th.headerSort,body.skin-timeless .mw-parser-output .sort-under.sortable.wikitable th.unsortable,body.skin-timeless .mw-parser-output .sort-under-center.sortable.wikitable th.headerSort,body.skin-timeless .mw-parser-output .sort-under-center.sortable.wikitable th.unsortable{padding-bottom:1.2em}body.skin-timeless .mw-parser-output .sort-under.sortable:not(.wikitable) th.headerSort,body.skin-timeless .mw-parser-output .sort-under.sortable:not(.wikitable) th.unsortable,body.skin-timeless .mw-parser-output .sort-under-center.sortable:not(.wikitable) th.headerSort,body.skin-timeless .mw-parser-output .sort-under-center.sortable:not(.wikitable) th.unsortable,body.skin-minerva .mw-parser-output .sort-under.sortable:not(.wikitable) th.headerSort,body.skin-minerva .mw-parser-output .sort-under.sortable:not(.wikitable) th.unsortable,body.skin-minerva .mw-parser-output .sort-under-center.sortable:not(.wikitable) th.headerSort,body.skin-minerva .mw-parser-output .sort-under-center.sortable:not(.wikitable) th.unsortable{padding-bottom:0.8em}.mw-parser-output .static-row-numbers.sort-under.sortable thead tr:only-child::before,.mw-parser-output .static-row-numbers.sort-under-center.sortable thead tr:only-child::before{padding-bottom:0.9em}body.skin-timeless .mw-parser-output .static-row-numbers.sort-under.sortable thead tr:only-child::before,body.skin-timeless .mw-parser-output .static-row-numbers.sort-under-center.sortable thead tr:only-child::before,body.skin-minerva .mw-parser-output .static-row-numbers.sort-under.sortable thead tr:only-child::before,body.skin-minerva .mw-parser-output .static-row-numbers.sort-under-center.sortable thead tr:only-child::before{padding-bottom:0.8em}.mw-parser-output .sort-under.sortable th.ts-vertical-header.headerSort,.mw-parser-output .sort-under-center.sortable th.ts-vertical-header.headerSort{padding-top:0.4em;padding-right:0.4em}}@media screen and (pointer:coarse){html.client-js .mw-parser-output .sort-under.sortable.wikitable th.headerSort{background-position:right bottom 0.5em}html.client-js .mw-parser-output .sort-under-center.sortable.wikitable th.headerSort{background-position:center bottom 0.5em}.mw-parser-output .sort-under.sortable.wikitable th.headerSort,.mw-parser-output .sort-under.sortable.wikitable th.unsortable,.mw-parser-output .sort-under-center.sortable.wikitable th.headerSort,.mw-parser-output .sort-under-center.sortable.wikitable th.unsortable{padding-bottom:1.6em}body.skin-timeless .mw-parser-output .sort-under.sortable.wikitable th.headerSort,body.skin-timeless .mw-parser-output .sort-under.sortable.wikitable th.unsortable,body.skin-timeless .mw-parser-output .sort-under-center.sortable.wikitable th.headerSort,body.skin-timeless .mw-parser-output .sort-under-center.sortable.wikitable th.unsortable{padding-bottom:1.8em}.mw-parser-output .static-row-numbers.sort-under.sortable.wikitable thead tr:only-child::before,.mw-parser-output .static-row-numbers.sort-under-center.sortable.wikitable thead tr:only-child::before{padding-bottom:1.5em}body.skin-timeless .mw-parser-output .static-row-numbers.sort-under.sortable.wikitable thead tr:only-child::before,body.skin-timeless .mw-parser-output .static-row-numbers.sort-under-center.sortable.wikitable thead tr:only-child::before,body.skin-minerva .mw-parser-output .static-row-numbers.sort-under.sortable.wikitable thead tr:only-child::before,body.skin-minerva .mw-parser-output .static-row-numbers.sort-under-center.sortable.wikitable thead tr:only-child::before{padding-bottom:1.4em}}</style>
+<style data-mw-deduplicate="TemplateStyles:r1329905908">.mw-parser-output .defaultleft,.mw-parser-output .col1left td:nth-child(1),.mw-parser-output .col2left td:nth-child(2),.mw-parser-output .col3left td:nth-child(3),.mw-parser-output .col4left td:nth-child(4),.mw-parser-output .col5left td:nth-child(5),.mw-parser-output .col6left td:nth-child(6),.mw-parser-output .col7left td:nth-child(7),.mw-parser-output .col8left td:nth-child(8),.mw-parser-output .col9left td:nth-child(9),.mw-parser-output .col10left td:nth-child(10),.mw-parser-output .col11left td:nth-child(11),.mw-parser-output .col12left td:nth-child(12),.mw-parser-output .col13left td:nth-child(13),.mw-parser-output .col14left td:nth-child(14),.mw-parser-output .col15left td:nth-child(15),.mw-parser-output .col16left td:nth-child(16),.mw-parser-output .col17left td:nth-child(17),.mw-parser-output .col18left td:nth-child(18),.mw-parser-output .col19left td:nth-child(19),.mw-parser-output .col20left td:nth-child(20),.mw-parser-output .col21left td:nth-child(21),.mw-parser-output .col22left td:nth-child(22),.mw-parser-output .col23left td:nth-child(23),.mw-parser-output .col24left td:nth-child(24),.mw-parser-output .col25left td:nth-child(25),.mw-parser-output .col26left td:nth-child(26),.mw-parser-output .col27left td:nth-child(27),.mw-parser-output .col28left td:nth-child(28),.mw-parser-output .col29left td:nth-child(29),.mw-parser-output .col-1left td:nth-last-child(1),.mw-parser-output .col-2left td:nth-last-child(2),.mw-parser-output .col-3left td:nth-last-child(3),.mw-parser-output .col-4left td:nth-last-child(4),.mw-parser-output .col-5left td:nth-last-child(5),.mw-parser-output .col-6left td:nth-last-child(6),.mw-parser-output .col-7left td:nth-last-child(7),.mw-parser-output .col-8left td:nth-last-child(8),.mw-parser-output .col-9left td:nth-last-child(9){text-align:left}.mw-parser-output .defaultcenter,.mw-parser-output .col1center td:nth-child(1),.mw-parser-output .col2center td:nth-child(2),.mw-parser-output .col3center td:nth-child(3),.mw-parser-output .col4center td:nth-child(4),.mw-parser-output .col5center td:nth-child(5),.mw-parser-output .col6center td:nth-child(6),.mw-parser-output .col7center td:nth-child(7),.mw-parser-output .col8center td:nth-child(8),.mw-parser-output .col9center td:nth-child(9),.mw-parser-output .col10center td:nth-child(10),.mw-parser-output .col11center td:nth-child(11),.mw-parser-output .col12center td:nth-child(12),.mw-parser-output .col13center td:nth-child(13),.mw-parser-output .col14center td:nth-child(14),.mw-parser-output .col15center td:nth-child(15),.mw-parser-output .col16center td:nth-child(16),.mw-parser-output .col17center td:nth-child(17),.mw-parser-output .col18center td:nth-child(18),.mw-parser-output .col19center td:nth-child(19),.mw-parser-output .col20center td:nth-child(20),.mw-parser-output .col21center td:nth-child(21),.mw-parser-output .col22center td:nth-child(22),.mw-parser-output .col23center td:nth-child(23),.mw-parser-output .col24center td:nth-child(24),.mw-parser-output .col25center td:nth-child(25),.mw-parser-output .col26center td:nth-child(26),.mw-parser-output .col27center td:nth-child(27),.mw-parser-output .col28center td:nth-child(28),.mw-parser-output .col29center td:nth-child(29),.mw-parser-output .col-1center td:nth-last-child(1),.mw-parser-output .col-2center td:nth-last-child(2),.mw-parser-output .col-3center td:nth-last-child(3),.mw-parser-output .col-4center td:nth-last-child(4),.mw-parser-output .col-5center td:nth-last-child(5),.mw-parser-output .col-6center td:nth-last-child(6),.mw-parser-output .col-7center td:nth-last-child(7),.mw-parser-output .col-8center td:nth-last-child(8),.mw-parser-output .col-9center td:nth-last-child(9){text-align:center}.mw-parser-output .defaultright,.mw-parser-output .col1right td:nth-child(1),.mw-parser-output .col2right td:nth-child(2),.mw-parser-output .col3right td:nth-child(3),.mw-parser-output .col4right td:nth-child(4),.mw-parser-output .col5right td:nth-child(5),.mw-parser-output .col6right td:nth-child(6),.mw-parser-output .col7right td:nth-child(7),.mw-parser-output .col8right td:nth-child(8),.mw-parser-output .col9right td:nth-child(9),.mw-parser-output .col10right td:nth-child(10),.mw-parser-output .col11right td:nth-child(11),.mw-parser-output .col12right td:nth-child(12),.mw-parser-output .col13right td:nth-child(13),.mw-parser-output .col14right td:nth-child(14),.mw-parser-output .col15right td:nth-child(15),.mw-parser-output .col16right td:nth-child(16),.mw-parser-output .col17right td:nth-child(17),.mw-parser-output .col18right td:nth-child(18),.mw-parser-output .col19right td:nth-child(19),.mw-parser-output .col20right td:nth-child(20),.mw-parser-output .col21right td:nth-child(21),.mw-parser-output .col22right td:nth-child(22),.mw-parser-output .col23right td:nth-child(23),.mw-parser-output .col24right td:nth-child(24),.mw-parser-output .col25right td:nth-child(25),.mw-parser-output .col26right td:nth-child(26),.mw-parser-output .col27right td:nth-child(27),.mw-parser-output .col28right td:nth-child(28),.mw-parser-output .col29right td:nth-child(29),.mw-parser-output .col-1right td:nth-last-child(1),.mw-parser-output .col-2right td:nth-last-child(2),.mw-parser-output .col-3right td:nth-last-child(3),.mw-parser-output .col-4right td:nth-last-child(4),.mw-parser-output .col-5right td:nth-last-child(5),.mw-parser-output .col-6right td:nth-last-child(6),.mw-parser-output .col-7right td:nth-last-child(7),.mw-parser-output .col-8right td:nth-last-child(8),.mw-parser-output .col-9right td:nth-last-child(9){text-align:right}</style>
+<table class="wikitable sortable sort-under col4center col5right col6right col7right col10right col12center">
+<tbody><tr>
+<th>Implementation</th>
+<th>Source</th>
+<th>Ruleset</th>
+<th>Rectangular area</th>
+<th>Number of cells</th>
+<th>Length of tape</th>
+<th>Ratio</th>
+<th>Period</th>
+<th>Tape code compression</th>
+<th>Tape code length</th>
+<th>Tape code type</th>
+<th>Replication mechanism</th>
+<th>Replication type</th>
+<th>Growth rate
+</th></tr>
+<tr>
+<th>Nobili-Pesavento, 1995<sup class="reference" id="cite_ref-Pesavento1995_1-2"></sup>
+</th>
+<td class="table-cast" style="background: #CCC; color:black; vertical-align: middle; text-transform: capitalize;">.<sup class="reference" id="cite_ref-Pesavento1995_1-3"></sup></td>
+<td>Nobili 32-state</td>
+<td>97 x 170</td>
+<td>6,329</td>
+<td>145,315</td>
+<td>22.96</td>
+<td><span class="nowrap"><span data-sort-value="7010634000000000000spades"></span>6.34<span style="margin-left:0.25em;margin-right:0.15em;">x</span>10<sup>10</sup></span></td>
+<td class="table-cast" style="background: #EEE; color:black; vertical-align: middle; text-align: center;">none</td>
+<td>5 bits</td>
+<td>binary</td>
+<td>Holistic constructor</td>
+<td class="table-no2" style="background: #FFE3E3; color: black; vertical-align: middle; text-align: center;">non-repeatable</td>
+<td>linear
+</td></tr>
+<tr>
+<th>Nobili, 2007
+</th>
+<td>SR_CCN_AP.EVN<sup class="reference" id="cite_ref-nobili2007_11-1"></sup></td>
+<td>Nobili 32-state</td>
+<td>97 x 100</td>
+<td>5,313</td>
+<td>56,325</td>
+<td>10.60</td>
+<td><span class="nowrap"><span data-sort-value="7009959000000000000spades"></span>9.59<span style="margin-left:0.25em;margin-right:0.15em;">x</span>10<sup>9</sup></span></td>
+<td>run-length limited encoding</td>
+<td>5 bits</td>
+<td>binary</td>
+<td>Holistic constructor</td>
+<td class="table-yes2" style="background:#bfd; color:black; vertical-align:middle; text-align:center;">repeatable</td>
+<td>super-linear
+</td></tr>
+<tr>
+<th>Buckley, 2008
+</th>
+<td>codon5.rle<sup class="reference" id="cite_ref-sourceforge.net_14-0"></sup></td>
+<td>Nobili 32-state</td>
+<td>112 x 50</td>
+<td>3,343</td>
+<td>44,155</td>
+<td>13.21</td>
+<td><span class="nowrap"><span data-sort-value="7009587000000000000spades"></span>5.87<span style="margin-left:0.25em;margin-right:0.15em;">x</span>10<sup>9</sup></span></td>
+<td>auto-retraction</td>
+<td>5 bits</td>
+<td>binary</td>
+<td>Holistic constructor</td>
+<td class="table-yes2" style="background:#bfd; color:black; vertical-align:middle; text-align:center;">repeatable</td>
+<td>linear
+</td></tr>
+<tr>
+<th>Buckley, 2008<sup class="reference" id="cite_ref-Automata2008_9-3"></sup>
+</th>
+<td>replicator.mc</td>
+<td>von Neumann 29-state</td>
+<td>312 x 132</td>
+<td>18,589</td>
+<td>294,844</td>
+<td>15.86</td>
+<td><span class="nowrap"><span data-sort-value="7011261000000000000spades"></span>2.61<span style="margin-left:0.25em;margin-right:0.15em;">x</span>10<sup>11</sup></span></td>
+<td>auto-retraction</td>
+<td>5 bits</td>
+<td>binary</td>
+<td>Holistic constructor</td>
+<td class="table-yes2" style="background:#bfd; color:black; vertical-align:middle; text-align:center;">repeatable</td>
+<td>linear
+</td></tr>
+<tr>
+<th>Buckley, 2008
+</th>
+<td>codon4.rle<sup class="reference" id="cite_ref-sourceforge.net_14-1"></sup></td>
+<td>Nobili 32-state</td>
+<td>109 x 59</td>
+<td>3,574</td>
+<td>37,780</td>
+<td>10.57</td>
+<td><span class="nowrap"><span data-sort-value="7009431000000000000spades"></span>4.31<span style="margin-left:0.25em;margin-right:0.15em;">x</span>10<sup>9</sup></span></td>
+<td><style data-mw-deduplicate="TemplateStyles:r1333133064">.mw-parser-output .hlist dl,.mw-parser-output .hlist ol,.mw-parser-output .hlist ul{margin:0;padding:0}.mw-parser-output .hlist dd,.mw-parser-output .hlist dt,.mw-parser-output .hlist li{margin:0;display:inline}.mw-parser-output .hlist.inline,.mw-parser-output .hlist.inline dl,.mw-parser-output .hlist.inline ol,.mw-parser-output .hlist.inline ul,.mw-parser-output .hlist dl dl,.mw-parser-output .hlist dl ol,.mw-parser-output .hlist dl ul,.mw-parser-output .hlist ol dl,.mw-parser-output .hlist ol ol,.mw-parser-output .hlist ol ul,.mw-parser-output .hlist ul dl,.mw-parser-output .hlist ul ol,.mw-parser-output .hlist ul ul{display:inline}.mw-parser-output .hlist .mw-empty-li{display:none}.mw-parser-output .hlist dt::after{content:": "}.mw-parser-output .hlist dd::after,.mw-parser-output .hlist li::after{content:"\a0 * ";font-weight:bold}.mw-parser-output .hlist dd:last-child::after,.mw-parser-output .hlist dt:last-child::after,.mw-parser-output .hlist li:last-child::after{content:none}.mw-parser-output .hlist dd dd:first-child::before,.mw-parser-output .hlist dd dt:first-child::before,.mw-parser-output .hlist dd li:first-child::before,.mw-parser-output .hlist dt dd:first-child::before,.mw-parser-output .hlist dt dt:first-child::before,.mw-parser-output .hlist dt li:first-child::before,.mw-parser-output .hlist li dd:first-child::before,.mw-parser-output .hlist li dt:first-child::before,.mw-parser-output .hlist li li:first-child::before{content:" (";font-weight:normal}.mw-parser-output .hlist dd dd:last-child::after,.mw-parser-output .hlist dd dt:last-child::after,.mw-parser-output .hlist dd li:last-child::after,.mw-parser-output .hlist dt dd:last-child::after,.mw-parser-output .hlist dt dt:last-child::after,.mw-parser-output .hlist dt li:last-child::after,.mw-parser-output .hlist li dd:last-child::after,.mw-parser-output .hlist li dt:last-child::after,.mw-parser-output .hlist li li:last-child::after{content:")";font-weight:normal}.mw-parser-output .hlist ol{counter-reset:listitem}.mw-parser-output .hlist ol>li{counter-increment:listitem}.mw-parser-output .hlist ol>li::before{content:" "counter(listitem)"\a0 "}.mw-parser-output .hlist dd ol>li:first-child::before,.mw-parser-output .hlist dt ol>li:first-child::before,.mw-parser-output .hlist li ol>li:first-child::before{content:" ("counter(listitem)"\a0 "}</style><div class="hlist"><ul><li>auto-retraction</li><li>bit generation</li></ul></div></td>
+<td>4 bits</td>
+<td>binary</td>
+<td>Holistic constructor</td>
+<td class="table-yes2" style="background:#bfd; color:black; vertical-align:middle; text-align:center;">repeatable</td>
+<td>linear
+</td></tr>
+<tr>
+<th>Buckley, 2009
+</th>
+<td>codon3.rle</td>
+<td>Nobili 32-state</td>
+<td>116 x 95</td>
+<td>4,855</td>
+<td>23,577</td>
+<td>4.86</td>
+<td><span class="nowrap"><span data-sort-value="7009163000000000000spades"></span>1.63<span style="margin-left:0.25em;margin-right:0.15em;">x</span>10<sup>9</sup></span></td>
+<td><link href="mw-data:TemplateStyles:r1333133064" rel="mw-deduplicated-inline-style"/><div class="hlist"><ul><li>auto-retraction</li><li>bit generation</li><li>code overlay</li></ul></div></td>
+<td>3 bits</td>
+<td>binary</td>
+<td>Holistic constructor</td>
+<td class="table-yes2" style="background:#bfd; color:black; vertical-align:middle; text-align:center;">repeatable</td>
+<td>super-linear
+</td></tr>
+<tr>
+<th>Buckley, 2009
+</th>
+<td>PartialReplicator.mc<sup class="reference" id="cite_ref-sourceforge.net_14-2"></sup></td>
+<td>von Neumann 29-state</td>
+<td>2063 x 377</td>
+<td>264,321</td>
+<td class="table-na" data-sort-value="" style="background: var(--background-color-interactive, #ececec); color: var(--color-base, inherit); vertical-align: middle; text-align: center;"><span aria-hidden="true">--</span><style data-mw-deduplicate="TemplateStyles:r1152813436">.mw-parser-output .sr-only{border:0;clip:rect(0,0,0,0);clip-path:polygon(0px 0px,0px 0px,0px 0px);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;white-space:nowrap}</style><span class="sr-only">N/a</span></td>
+<td class="table-na" data-sort-value="" style="background: var(--background-color-interactive, #ececec); color: var(--color-base, inherit); vertical-align: middle; text-align: center;"><span aria-hidden="true">--</span><link href="mw-data:TemplateStyles:r1152813436" rel="mw-deduplicated-inline-style"/><span class="sr-only">N/a</span></td>
+<td><span class="nowrap"><span data-sort-value="7014112000000000000spades"></span>1.12<span style="margin-left:0.25em;margin-right:0.15em;">x</span>10<sup>14</sup></span></td>
+<td class="table-cast" style="background: #EEE; color:black; vertical-align: middle; text-align: center;">none</td>
+<td>4 bits</td>
+<td>binary</td>
+<td class="table-partial" style="background:#FFB; color:black;vertical-align:middle;text-align:center;">Partial constructor</td>
+<td class="table-yes2" style="background:#bfd; color:black; vertical-align:middle; text-align:center;">repeatable</td>
+<td>linear
+</td></tr>
+<tr>
+<th>Goucher &amp; Buckley, 2012
+</th>
+<td>phi9.rle<sup class="reference" id="cite_ref-15"></sup></td>
+<td>Nobili 32-state</td>
+<td>122 x 60</td>
+<td>3957</td>
+<td>8920</td>
+<td>2.25</td>
+<td><span class="nowrap"><span data-sort-value="7008180000000000000spades"></span>1.8<span style="margin-left:0.25em;margin-right:0.15em;">x</span>10<sup>8</sup></span></td>
+<td><link href="mw-data:TemplateStyles:r1333133064" rel="mw-deduplicated-inline-style"/><div class="hlist"><ul><li>auto-retraction</li><li>bit generation</li><li>code overlay</li><li>run length limited</li></ul></div></td>
+<td>3+ bits</td>
+<td>ternary</td>
+<td>Holistic constructor</td>
+<td class="table-yes2" style="background:#bfd; color:black; vertical-align:middle; text-align:center;">repeatable</td>
+<td>super-linear
+</td></tr></tbody></table>
+<p>As defined by von Neumann, universal construction entails the construction of passive configurations, only. As such, the concept of universal construction constituted nothing more than a literary (or, in this case, mathematical) device. It facilitated other proof, such as that a machine well constructed may engage in self-replication, while universal construction itself was simply assumed over a most minimal case. Universal construction under this standard is trivial. Hence, while all the configurations given here can construct any passive configuration, none can construct the real-time crossing organ devised by Gorman.<sup class="reference" id="cite_ref-Automata2008_9-4"></sup>
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Practicality_and_computational_cost">Practicality and computational cost</h2></div>
+<p>All the implementations of von Neumann's self-reproducing machine require considerable resources to run on computer. For example, in the Nobili-Pesavento 32-state implementation shown above, while the body of the machine is just 6,329 non-empty cells (within a rectangle of size 97x170), it requires a tape that is 145,315 cells long, and takes 63 billion timesteps to replicate. A simulator running at 1,000 timesteps per second would take over 2 years to make the first copy. In 1995, when the first implementation was published, the authors had not seen their own machine replicate. However, in 2008, the <span>hashlife</span> algorithm was extended to support the 29-state and 32-state rulesets in <span>Golly</span>. On a modern desktop PC, replication now takes only a few minutes, although a significant amount of memory is required.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Animation_gallery">Animation gallery</h2></div>
+<ul class="gallery mw-gallery-traditional">
+<li class="gallerybox" style="width: 155px">
+<div class="thumb" style="width: 150px; height: 150px;"><span typeof="mw:File"><a class="mw-file-description" title="Example of a 29-state read arm."><img alt="Example of a 29-state read arm." class="mw-file-element" data-file-height="602" data-file-width="1157" decoding="async" height="62" src="//upload.wikimedia.org/wikipedia/commons/thumb/0/09/320_jump_read_arm.gif/120px-320_jump_read_arm.gif" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/0/09/320_jump_read_arm.gif/250px-320_jump_read_arm.gif 1.5x" width="120"/></a></span></div>
+<div class="gallerytext">Example of a 29-state read arm.</div>
+</li>
+</ul>
+<div class="mw-heading mw-heading2"><h2 id="See_also">See also</h2></div>
+<ul><li><span>Codd's cellular automaton</span></li>
+<li><span>Langton's loops</span></li>
+<li><span>Nobili cellular automata</span></li>
+<li><a href="" onclick="message(this)" title="Quine (computing)">Quine</a>, a program that produces itself as output</li>
+<li><span>Santa Claus machine</span></li>
+<li><span>Wireworld</span></li></ul>
+</div><script>
+                        function message(element) {
+                            window.parent.postMessage(element.title);
+                    }
+                        
+                    </script></body>
+                    </html>
