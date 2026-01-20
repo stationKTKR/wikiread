@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/wikiread-react/static/css/main.56f6218b.css",
-    "main.js": "/wikiread-react/static/js/main.eee36da5.js",
+    "main.js": "/wikiread-react/static/js/main.87b0cb30.js",
     "static/js/453.e91f6618.chunk.js": "/wikiread-react/static/js/453.e91f6618.chunk.js",
     "index.html": "/wikiread-react/index.html",
     "main.56f6218b.css.map": "/wikiread-react/static/css/main.56f6218b.css.map",
-    "main.eee36da5.js.map": "/wikiread-react/static/js/main.eee36da5.js.map",
+    "main.87b0cb30.js.map": "/wikiread-react/static/js/main.87b0cb30.js.map",
     "453.e91f6618.chunk.js.map": "/wikiread-react/static/js/453.e91f6618.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.56f6218b.css",
-    "static/js/main.eee36da5.js"
+    "static/js/main.87b0cb30.js"
   ]
 }
