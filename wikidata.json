@@ -402,6 +402,7 @@
                 ""
             ],
             "toneighbors": [
+                "AI effect",
                 "Artificial intelligence",
                 "Global brain",
                 "Instrumental convergence",
@@ -978,6 +979,7 @@
                 ""
             ],
             "toneighbors": [
+                "AI effect",
                 "Artificial intelligence",
                 "Friendly artificial intelligence",
                 "Turing test"
@@ -1009,6 +1011,7 @@
                 "Intelligent agent",
                 "Mind",
                 "Mind uploading",
+                "Mind-body problem",
                 "Recursive self-improvement",
                 "Sentience",
                 "Stochastic parrot",
@@ -1063,7 +1066,9 @@
             ],
             "fromneighbors": [
                 "Artificial intelligence",
-                "Friendly artificial intelligence"
+                "Friendly artificial intelligence",
+                "Intelligent agent",
+                "Technological singularity"
             ],
             "visited": 0,
             "sphere": 0
@@ -1080,6 +1085,7 @@
                 "Hard problem of consciousness",
                 "Leibniz's gap",
                 "Mind",
+                "Mind-body problem",
                 "Stochastic parrot",
                 "Synthetic intelligence",
                 "Turing test"
@@ -1322,6 +1328,7 @@
                 "Emergence",
                 "Explanatory gap",
                 "Hard problem of consciousness",
+                "Mind-body problem",
                 "Qualia"
             ],
             "fromneighbors": [
@@ -1345,6 +1352,7 @@
                 "Free will",
                 "Hard problem of consciousness",
                 "Idealism",
+                "Mind-body problem",
                 "Qualia",
                 "Quantum mind",
                 "Sentience",
@@ -1387,7 +1395,6 @@
                 "Emergence",
                 "Hard problem of consciousness",
                 "Idealism",
-                "MMAcevedo",
                 "Mind",
                 "Neural network (machine learning)",
                 "Qualia",
@@ -1398,7 +1405,6 @@
             ],
             "fromneighbors": [
                 "Artificial intelligence",
-                "MMAcevedo",
                 "Neural network (machine learning)",
                 "Technological singularity"
             ],
@@ -1417,6 +1423,7 @@
                 "Explanatory gap",
                 "Hard problem of consciousness",
                 "Mind",
+                "Mind-body problem",
                 "Qualia",
                 "Turing test"
             ],
@@ -1444,7 +1451,8 @@
                 "Consciousness",
                 "Explanatory gap",
                 "Hard problem of consciousness",
-                "Leibniz's gap"
+                "Leibniz's gap",
+                "Mind-body problem"
             ],
             "fromneighbors": [
                 "Animal consciousness",
@@ -1477,6 +1485,7 @@
                 "Explanatory gap",
                 "Free will",
                 "Idealism",
+                "Mind-body problem",
                 "Qualia",
                 "Quantum mind"
             ],
@@ -1520,7 +1529,16 @@
                 "Turing test"
             ],
             "fromneighbors": [
-                ""
+                "Animal consciousness",
+                "Artificial intelligence",
+                "Chinese room",
+                "Consciousness",
+                "Free will",
+                "Hard problem of consciousness",
+                "Leibniz's gap",
+                "Mind",
+                "Qualia",
+                "Sentience"
             ],
             "visited": 0,
             "sphere": 0
@@ -1535,6 +1553,7 @@
                 "Explanatory gap",
                 "Hard problem of consciousness",
                 "Mind",
+                "Mind-body problem",
                 "Qualia",
                 "Sentience"
             ],
@@ -1559,6 +1578,7 @@
                 "Emergence",
                 "Hard problem of consciousness",
                 "Mind",
+                "Mind-body problem",
                 "Qualia",
                 "Uncertainty principle"
             ],
@@ -1611,6 +1631,7 @@
                 "Hard problem of consciousness",
                 "Idealism",
                 "Mental energy",
+                "Mind-body problem",
                 "Qualia",
                 "Sentience",
                 "Turing test"
