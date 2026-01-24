@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/wikiread-react/static/css/main.54bb91ff.css",
-    "main.js": "/wikiread-react/static/js/main.0f4b213d.js",
-    "static/js/453.e91f6618.chunk.js": "/wikiread-react/static/js/453.e91f6618.chunk.js",
-    "static/media/blackhole.jpg": "/wikiread-react/static/media/blackhole.b4cd93a64f5d497c23cc.jpg",
-    "index.html": "/wikiread-react/index.html",
-    "main.54bb91ff.css.map": "/wikiread-react/static/css/main.54bb91ff.css.map",
-    "main.0f4b213d.js.map": "/wikiread-react/static/js/main.0f4b213d.js.map",
-    "453.e91f6618.chunk.js.map": "/wikiread-react/static/js/453.e91f6618.chunk.js.map"
+    "main.css": "/wikinav/static/css/main.9cf11a16.css",
+    "main.js": "/wikinav/static/js/main.02ff23f2.js",
+    "static/js/453.66aba7d4.chunk.js": "/wikinav/static/js/453.66aba7d4.chunk.js",
+    "static/media/blackhole.jpg": "/wikinav/static/media/blackhole.b4cd93a64f5d497c23cc.jpg",
+    "index.html": "/wikinav/index.html",
+    "main.9cf11a16.css.map": "/wikinav/static/css/main.9cf11a16.css.map",
+    "main.02ff23f2.js.map": "/wikinav/static/js/main.02ff23f2.js.map",
+    "453.66aba7d4.chunk.js.map": "/wikinav/static/js/453.66aba7d4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.54bb91ff.css",
-    "static/js/main.0f4b213d.js"
+    "static/css/main.9cf11a16.css",
+    "static/js/main.02ff23f2.js"
   ]
 }
