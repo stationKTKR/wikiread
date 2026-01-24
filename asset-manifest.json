@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/wikiread-react/static/css/main.b76d1f86.css",
-    "main.js": "/wikiread-react/static/js/main.e35d12a4.js",
+    "main.css": "/wikiread-react/static/css/main.aefb4c9b.css",
+    "main.js": "/wikiread-react/static/js/main.e4bb7708.js",
     "static/js/453.e91f6618.chunk.js": "/wikiread-react/static/js/453.e91f6618.chunk.js",
+    "static/media/blackhole.jpg": "/wikiread-react/static/media/blackhole.b4cd93a64f5d497c23cc.jpg",
     "index.html": "/wikiread-react/index.html",
-    "main.b76d1f86.css.map": "/wikiread-react/static/css/main.b76d1f86.css.map",
-    "main.e35d12a4.js.map": "/wikiread-react/static/js/main.e35d12a4.js.map",
+    "main.aefb4c9b.css.map": "/wikiread-react/static/css/main.aefb4c9b.css.map",
+    "main.e4bb7708.js.map": "/wikiread-react/static/js/main.e4bb7708.js.map",
     "453.e91f6618.chunk.js.map": "/wikiread-react/static/js/453.e91f6618.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b76d1f86.css",
-    "static/js/main.e35d12a4.js"
+    "static/css/main.aefb4c9b.css",
+    "static/js/main.e4bb7708.js"
   ]
 }

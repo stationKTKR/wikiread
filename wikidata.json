@@ -9,6 +9,7 @@
                 "BLIT (short story)",
                 "Copycat suicide",
                 "Roko's basilisk",
+                "Silent Smooth",
                 "Social contagion",
                 "The Game (mind game)"
             ],
@@ -115,6 +116,7 @@
                 "The Game (mind game)"
             ],
             "fromneighbors": [
+                "Bilateral observation theory",
                 "BLIT (short story)",
                 "Friendly artificial intelligence",
                 "Information hazard"
@@ -964,7 +966,8 @@
             ],
             "toneighbors": [
                 "Distributed computing",
-                "Self-replicating machine"
+                "Self-replicating machine",
+                "The Shaman, the Outsider, and the Diet of Worms"
             ],
             "fromneighbors": [
                 "Self-replicating machine",
@@ -1396,6 +1399,7 @@
                 "Hard problem of consciousness",
                 "Idealism",
                 "Mind",
+                "MMAcevedo",
                 "Neural network (machine learning)",
                 "Qualia",
                 "Quantum mind",
@@ -1405,6 +1409,7 @@
             ],
             "fromneighbors": [
                 "Artificial intelligence",
+                "MMAcevedo",
                 "Neural network (machine learning)",
                 "Technological singularity"
             ],
@@ -1589,6 +1594,7 @@
                 "Determinism",
                 "Emergence",
                 "Hard problem of consciousness",
+                "MMAcevedo",
                 "Mind",
                 "Mind-body problem",
                 "Synergy"
@@ -1731,6 +1737,7 @@
             "toneighbors": [
                 "Abiogenesis",
                 "Artificial intelligence",
+                "Bilateral observation theory",
                 "Digital organism",
                 "Emergence",
                 "Neuroevolution",
@@ -1738,6 +1745,7 @@
                 "Swarm intelligence"
             ],
             "fromneighbors": [
+                "Bilateral observation theory",
                 "Boids",
                 "Conway's Game of Life",
                 "Digital organism",
@@ -1903,7 +1911,7 @@
                 ""
             ],
             "fromneighbors": [
-                ""
+                "Bilateral observation theory"
             ],
             "visited": 0,
             "sphere": 0
@@ -1914,9 +1922,11 @@
                 ""
             ],
             "toneighbors": [
+                "Bilateral observation theory",
                 "Uncertainty principle"
             ],
             "fromneighbors": [
+                "Bilateral observation theory",
                 "Campbell's law",
                 "Double-aspect theory",
                 "Quantum mind",
@@ -2017,6 +2027,67 @@
                 "Explanatory gap",
                 "Hard problem of consciousness",
                 "Mind uploading"
+            ],
+            "visited": 0,
+            "sphere": 0
+        },
+        {
+            "title": "MMAcevedo",
+            "neighbors": [
+                ""
+            ],
+            "toneighbors": [
+                "Mind uploading",
+                "Free will"
+            ],
+            "fromneighbors": [
+                "Mind uploading"
+            ],
+            "visited": 0,
+            "sphere": 0
+        },
+        {
+            "title": "Silent Smooth",
+            "neighbors": [
+                ""
+            ],
+            "toneighbors": [
+                ""
+            ],
+            "fromneighbors": [
+                "Information hazard"
+            ],
+            "visited": 0,
+            "sphere": 0
+        },
+        {
+            "title": "Bilateral observation theory",
+            "neighbors": [
+                ""
+            ],
+            "toneighbors": [
+                "Artificial life",
+                "Dark forest hypothesis",
+                "Observer effect",
+                "Roko's basilisk"
+            ],
+            "fromneighbors": [
+                "Artificial life",
+                "Observer effect"
+            ],
+            "visited": 0,
+            "sphere": 0
+        },
+        {
+            "title": "The Shaman, the Outsider, and the Diet of Worms",
+            "neighbors": [
+                ""
+            ],
+            "toneighbors": [
+                ""
+            ],
+            "fromneighbors": [
+                "Computer worm"
             ],
             "visited": 0,
             "sphere": 0
