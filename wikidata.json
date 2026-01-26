@@ -303,6 +303,7 @@
             ],
             "fromneighbors": [
                 "Collective intelligence",
+                "Gaareth's virtual robots",
                 "Global brain",
                 "Wikipedia bots",
                 "World Wide Web"
@@ -622,6 +623,7 @@
                 "Astrochicken",
                 "Autopoiesis",
                 "Digital organism",
+                "Gaareth's virtual robots",
                 "Meme",
                 "Memetics",
                 "Quine (computing)",
@@ -837,6 +839,7 @@
                 "Self-replication"
             ],
             "fromneighbors": [
+                "Gaareth's virtual robots",
                 "Quine (computing)"
             ],
             "visited": 0,
@@ -970,6 +973,7 @@
                 "The Shaman, the Outsider, and the Diet of Worms"
             ],
             "fromneighbors": [
+                "Gaareth's virtual robots",
                 "Self-replicating machine",
                 "Self-replication"
             ],
@@ -1280,6 +1284,7 @@
                 "World Wide Web"
             ],
             "fromneighbors": [
+                "Gaareth's virtual robots",
                 "Wikipedia",
                 "World Wide Web"
             ],
@@ -1435,6 +1440,7 @@
             "fromneighbors": [
                 "Animal consciousness",
                 "Artificial intelligence",
+                "Bilateral observation theory",
                 "Consciousness",
                 "Explanatory gap",
                 "Mind",
@@ -1749,6 +1755,7 @@
                 "Boids",
                 "Conway's Game of Life",
                 "Digital organism",
+                "Gaareth's virtual robots",
                 "Living systems",
                 "Neuroevolution",
                 "Self-organization",
@@ -1832,6 +1839,7 @@
             ],
             "fromneighbors": [
                 "Abiogenesis",
+                "Gaareth's virtual robots",
                 "Warm little pond"
             ],
             "visited": 0,
@@ -1894,10 +1902,12 @@
             ],
             "toneighbors": [
                 "Artificial life",
+                "Gaareth's virtual robots",
                 "Self-replication"
             ],
             "fromneighbors": [
-                "Artificial life"
+                "Artificial life",
+                "Gaareth's virtual robots"
             ],
             "visited": 0,
             "sphere": 0
@@ -2069,7 +2079,8 @@
                 "Artificial life",
                 "Dark forest hypothesis",
                 "Observer effect",
-                "Roko's basilisk"
+                "Roko's basilisk",
+                "Sentience"
             ],
             "fromneighbors": [
                 "Artificial life",
@@ -2089,6 +2100,25 @@
             "fromneighbors": [
                 "Computer worm"
             ],
+            "visited": 0,
+            "sphere": 0
+        },
+        {
+            "title": "Gaareth's virtual robots",
+            "neighbors": [
+                ""
+            ],
+            "toneighbors": [
+                "Self-modifying code",
+                "Self-replication",
+                "Web crawler",
+                "Computer worm",
+                "Primordial soup",
+                "Artificial life",
+                "Wikipedia",
+                "Digital organism"
+            ],
+            "fromneighbors": [],
             "visited": 0,
             "sphere": 0
         }
