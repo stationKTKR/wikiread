@@ -1746,6 +1746,7 @@
                 "Bilateral observation theory",
                 "Digital organism",
                 "Emergence",
+                "Gaareth's virtual robots",
                 "Neuroevolution",
                 "Self-replication",
                 "Swarm intelligence"
@@ -1902,7 +1903,6 @@
             ],
             "toneighbors": [
                 "Artificial life",
-                "Gaareth's virtual robots",
                 "Self-replication"
             ],
             "fromneighbors": [
@@ -2118,7 +2118,9 @@
                 "Wikipedia",
                 "Digital organism"
             ],
-            "fromneighbors": [],
+            "fromneighbors": [
+                "Artificial life"
+            ],
             "visited": 0,
             "sphere": 0
         }
