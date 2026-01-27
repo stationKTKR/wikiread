@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/wikiread-react/static/css/main.83bd6db2.css",
+    "main.css": "/wikiread-react/static/css/main.6105bfd2.css",
     "main.js": "/wikiread-react/static/js/main.20a887fa.js",
     "static/js/453.66aba7d4.chunk.js": "/wikiread-react/static/js/453.66aba7d4.chunk.js",
     "static/media/blackhole.jpg": "/wikiread-react/static/media/blackhole.b4cd93a64f5d497c23cc.jpg",
     "index.html": "/wikiread-react/index.html",
-    "main.83bd6db2.css.map": "/wikiread-react/static/css/main.83bd6db2.css.map",
+    "main.6105bfd2.css.map": "/wikiread-react/static/css/main.6105bfd2.css.map",
     "main.20a887fa.js.map": "/wikiread-react/static/js/main.20a887fa.js.map",
     "453.66aba7d4.chunk.js.map": "/wikiread-react/static/js/453.66aba7d4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.83bd6db2.css",
+    "static/css/main.6105bfd2.css",
     "static/js/main.20a887fa.js"
   ]
 }
