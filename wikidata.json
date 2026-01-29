@@ -2124,6 +2124,20 @@
             ],
             "visited": 0,
             "sphere": 0
+        },
+        {
+            "title": "End",
+            "neighbors": [
+                ""
+            ],
+            "toneighbors": [
+                ""
+            ],
+            "fromneighbors": [
+                ""
+            ],
+            "visited":10,
+            "sphere": 0
         }
     ]
 }
