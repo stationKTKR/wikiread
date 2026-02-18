@@ -2079,13 +2079,13 @@
             "toneighbors": [
                 "Artificial life",
                 "Dark forest hypothesis",
-                "Observer effect",
+                "Observer effect (physics)",
                 "Roko's basilisk",
                 "Sentience"
             ],
             "fromneighbors": [
                 "Artificial life",
-                "Observer effect"
+                "Observer effect (physics)"
             ],
             "visited": 0,
             "sphere": 0
