@@ -2,8 +2,6 @@ import {useState,useEffect} from 'react';
 import { useRef } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import WikiAlert from './WikiAlert';
-import Spinny from './Spinny';
 
 function WikiPage({pagename}) {
 
@@ -147,7 +145,7 @@ function WikiPage({pagename}) {
         <div className="container">
             
             <div className="row">
-                <div className="col-sm-4" id="leftcol">
+                <div id="leftcol">
                     <div id="tabdiv">
                     <Tabs>
                     <TabList id="tablist">

@@ -1,7 +1,7 @@
 {
   "name": "wikiread",
   "version": "1.0.0",
-  "homepage": "https://stationktkr.github.io/wikiread",
+  "homepage": "https://gaareth-bots.github.io/wikiread",
   "description": "wiki read",
   "scripts": {
     "predeploy": "npm run build",

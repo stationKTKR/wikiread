@@ -33,13 +33,14 @@ def get_pages():
                     newpage = WikiPage(page.title)
                     newpage.SetSphere(sphere)
                     wikipages.append(newpage)   
+                    #print(page.title)
                 else:
                     sphere += 1
 
 def get_full_page(x):
     if os.path.exists("./wiki-app/public/pages/" + x + ".html"):
-        #print(f"The file x exists.")
-    #else:
+        print(f"The file x exists.")
+    else:
         try:
             page = wikipedia.page(title=x.strip(),auto_suggest=False)
         except wikipedia.exceptions.PageError as e:
@@ -247,35 +248,23 @@ def get_temp_page(x, writeFile):
                 print(e)
 
 def get_temp_neighbors(x, writeFile) :
-    xindex = pagenames.index(x)
+
     with open("./temppages/" + x + ".html", "r") as f:
         soup = BeautifulSoup(f, 'html.parser')
         souplinks = soup.find_all('a', href=True)
         for s in souplinks:
-            validlink = False
-            for j,p in enumerate(pagenames):
-                if s['href'].lower().replace("%27", "'") == "/wiki/" + p.lower().replace(" ", "_"):
-                    validlink = True
-                    wikipages[xindex].AddToNeighbor(p)
-                    wikipages[j].AddFromNeighbor(x)
-                    s['href'] = ""
-                    s['onclick'] = "message(this)"
-                    s['title'] = p
-                    break
-            if not validlink:
-                if (s.string):
-                    newtext = soup.new_tag("span")
-                    #print(a.string)
-                    newtext.string = s.string
-                    s.replace_with(newtext)
-                else:
-                    s.extract()
-    # special neighbors
-    if (x == "Mind uploading"):
-        wikipages[xindex].AddToNeighbor("MMAcevedo")
-        wikipages[xindex].AddFromNeighbor("MMAcevedo")
+            
+            if (s.string):
+                newtext = soup.new_tag("span")
+                #print(a.string)
+                newtext.string = s.string
+                s.replace_with(newtext)
+            else:
+                s.extract()
+
     
     if writeFile:
+        print("write")
         with open("./wiki-app/public/pages/" + x + ".html", "w") as f:
             f.write("""<!DOCTYPE html>
                     <html>
@@ -353,19 +342,22 @@ def countneighbors():
 #getwikidata()
 
 
-get_pages()
+#get_pages()
 #get_neighbors()
 #getwikidata()
-for p in pagenames:
-    print(p + "1--------")
-    get_temp_page(p, True)
+#for p in pagenames:
+    #print(p + "1--------")
+#get_temp_page("Event horizon", True)
 #get_temp_page("Dark forest hypothesis", True)
-for p in pagenames:
-    print(p + "2--------")
-    get_temp_neighbors(p, True)
-#get_temp_neighbors("Dark forest hypothesis", True)
+#for p in pagenames:
+    #print(p + "2--------")
+    #get_temp_neighbors(p, True)
+#get_temp_neighbors("Event horizon", True)
 
-getwikidata()
+pagenames = []
+get_full_page("README")
+
+#getwikidata()
 
 #print(wikipages[0].GetNeighbors())
 

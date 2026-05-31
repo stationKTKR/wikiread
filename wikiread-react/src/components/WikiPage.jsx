@@ -716,11 +716,11 @@ function WikiPage({ setEnding }) {
                                                 <div class="skillbutton" onClick={() => { teleportRandPage(false) }}>Random page</div>
 
                                             }
-                                            
+                                            {skills[2] && xpRef.current < allPagesRef.current.length &&
                                                 <div>
-                                                    <div class="skillbutton" onClick={() => { teleportRandPage(true) }}>Random new page</div>
+                                                    {questsdone == 0 ? <p>Complete 1 quest to unlock</p> : <div class="skillbutton" onClick={() => { teleportRandPage(true) }}>Random new page</div>}
                                                 </div>
-                                            
+                                            }
                                             {skills[2] && !sawend &&
                                                 <div>
                                                     {questsdone < 2 ? <p>Complete 2 quests to unlock</p> : <div class="skillbutton" onClick={() => { endingScene() }}>Singularity</div>}

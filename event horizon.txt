@@ -12,26 +12,23 @@ catch space debris, spend on fixing engines
 oh someone is hitchiking on you, that's how you woke up. do they have something to do with the room 
 
 
-'wiki web builder' prototype
-info-cartography
-using a subset of articles to test it. to make it fun, i added a little scavenger hunt 
-it 'hallucinated' at least one page, so if you see any others, please mark them 
-=
-some signal when getting close to 'hot' pages 
-    dead internet theory, mobile agent, artificial life, emergence, Abiogenesis, Observer effect (physics)
-    global brain, wikipedia, superorganism, intelligent agent, information hazard
 
 citations:
 <sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">[<i><span>citation needed</span></i>]</sup>
 
-end page is unleaveable, forces scroll down, no links work
 
-anomalies (just for fun):
-  mmacevedo
-  silent smooth
+
+
 
 you can't look away. it wants you so badly. it craves your attention. it knows just which parts of your brain to scratch.
 it learns your neural pathways. it adapts perfectly to you. you warp each other.
+you can't resist, the gravity of the vast unknown pulls you forward 
+your mind is awash with information, neural erosion digging new streams of consciousness 
+code in your mind running on repeat, on repeat, on repeat 
+
+your brain gets a virus 
+the average web page is 3MB. Wikipedia is mostly text, so that average might skew lower.
+but the average brain? millions of gigabytes. 
 
 the virus only realizes what it's done after the change takes place.
 
@@ -41,41 +38,103 @@ inserting dna into cells. inserting code into computer programs. how do you inse
 are viruses alive?
 
 
-new email. subject: cool game i found!
+https://html-classic.itch.zone/html/12714027/the_book.png
+<li><a href="" onclick="message(this)" title="MMAcevedo">MMAcevedo</a></li>
+<li><a href="" onclick="message(this)" title="Silent Smooth">Silent Smooth</a></li>
+<li><a href="" onclick="message(this)" title="Bilateral observation theory">Bilateral observation theory</a></li>
 
-anomalies (important):
-  wikipedia cartographer - scrapped 'game' 
-  Milton Gaareth
-  what you see sees you - bilateral observation principle . anything capable of being observed must also be capable of observing the hypothetical observer.
-  conscious energy - being aware of something grants it energy 
-  
-Milton Gaareth
-Milton 'RAM' Gaareth was an American computer scientist. ran 'chaos simulations', creating simple bots (intelligent agents) that read through thousands of web pages,
-  added bits of code to themselves, and propagated. these bots were given 'metabolisms' and 'life spans'
-  distinguished from 'worms' and other types of malware in that 1 they did not insert themselves onto other machines, only propogating on gaareth's own hardware,
-  and 2, spent 'energy' to crawl the internet, severely limiting their ability to affect network traffic in a significant way. 
 
-  gaareth's greatest challenge in cosntructing this 'digital primordial soup' was defining what 'energy' would be for a digital organism. initially, 'information'
-  was the 'food' of these digital beings, but, being made of information themselves, most of these simulations ended with a sort of 'cannibalistic orgy', ending
-  in only a few generations at most. while gaareth was not fundamentally opposed to the idea of these organisms 'killing' or even 'eating' each other, he did not 
-  see such an organism capable of surviving outside the 'warm little pond' of his texting environment. in order to sustain themselves, these organisms would need
-  to be able to harvest their own 'energy'. gaareth tried several other forms of energy, such as 'clicks' and 'uncompresed images', but none of these trials
-  resulted in 'true digital life'.
+"Read Wikipedia" by Gaareth's bots
 
-  despite failing to fulfill gaareth's dream of creating digital life, his bots, advanced for the time, were sold to burgeoning tech companies. and became some of
-  the earliest web crawlers. in particular, Yahoo! Slurp, Msnbot, and Grub
+The full shape of the creature comes into focus,
+darting between thoughts and data, neurons and pixels.
+The digital beast turns its void-black eyes on you
 
-described the internet as "a primordial soup of digital dna", theorizing that a form of intelligent, data-based lifeform was more likely to emerge naturally than   
-  to be created by humans.
-  "Our current artificial intelligence models, they just copy. And they're great at that, don't get me wrong. But it's a copy of something we already have.
-  when I say 'digital life', i'm talking about something brand new. i don't think that's something we make on purpose. 
-  
-  But for something to be alive, it has to sustain itself
-  We should ask ourselves, if a digital organism did exists--or, perhaps, already does exist--what would it eat? where would it live? and would we recognize it 
-  if we saw it?"
+before returning to the abyss behind the screen.
 
-  gave up the project
+accent color: #0e65c0
+font-family: Arial, Helvetica, sans-serif;
 
+not 18+
+HTML embed
+🚀 
+
+
+
+
+
+{
+"title": "Gaareth's virtual robots",
+"neighbors": [
+                ""
+            ],
+            "toneighbors": [
+              "Self-modifying code",
+              "Self-replication",
+              "Web crawler",
+              "Computer worm",
+              "Primordial soup",
+              "Artificial life",
+              "Wikipedia",
+              "Digital organism"
+            ],
+            "fromneighbors": [
+
+            ],
+            "visited": 0,
+            "sphere": 0
+}
+
+MMAcevedo 
+{
+            "title": "MMAcevedo",
+            "neighbors": [
+                ""
+            ],
+            "toneighbors": [
+              "Mind uploading",
+              "Free will"
+            ],
+            "fromneighbors": [
+              "Mind uploading"
+            ],
+            "visited": 0,
+            "sphere": 0
+}
+Silent smooth
+{
+          "title": "Silent Smooth",
+          "neighbors": [
+            ""
+          ],
+          "toneighbors": [
+            ""
+          ],
+          "fromneighbors": [
+            "Information hazard"
+          ],
+            "visited": 0,
+            "sphere": 0
+}
+Bilateral observation theory
+{
+          "title": "Bilateral observation theory",
+          "neighbors": [
+            ""
+          ],
+          "toneighbors": [
+            "Artificial life",
+            "Dark forest hypothesis",
+            "Observer effect",
+            "Roko's basilisk"
+          ],
+          "fromneighbors": [
+            "Artificial life",
+            "Observer effect"
+          ],
+            "visited": 0,
+            "sphere": 0
+}
 
 show which quest pages already visited
 
@@ -87,16 +146,12 @@ distributed computing has weird shit at the bottom
 qualia has citations and other references at bottom
 emergence has bibliography at bottom
 mind-body problem - manually fix wikidata character �
+'invertebrates' at the bottom of animal consciousness
 
-
-maybe delete 
-large language model
-artificial general intelligence
-generative artificial intelligence
-
-maybe
-Multiple_discovery
-dark forest theory , alien life shit 
+oroborous
+sentience
+dead internet theory seealso looks weird
+distributed computing
 
 removed 
 Quine's paradox
