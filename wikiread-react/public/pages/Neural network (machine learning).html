@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+                    <html>
+                    <head>
+                    <link rel="stylesheet" type="text/css" href="./wiki.css">
+                    <script>
+                    let FF_FOUC_FIX;
+                    </script>
+                    </head>
+                    <body><div class="mw-content-ltr mw-parser-output" dir="ltr" lang="en"><div class="shortdescription nomobile noexcerpt noprint searchaux" style="display:none">Computational model used in machine learning, based on connected, hierarchical functions</div>
+<style data-mw-deduplicate="TemplateStyles:r1320445320">.mw-parser-output .hatnote{font-style:italic}.mw-parser-output div.hatnote{padding-left:1.6em;margin-bottom:0.5em}.mw-parser-output .hatnote i{font-style:normal}.mw-parser-output .hatnote+link+.hatnote{margin-top:-0.5em}@media print{body.ns-0 .mw-parser-output .hatnote{display:none!important}}</style><div class="hatnote navigation-not-searchable" role="note">This article is about the computational models used for artificial intelligence. For other uses, see <span>Neural network (disambiguation)</span>.</div>
+<p class="mw-empty-elt">
+</p>
+<figure class="mw-default-size" typeof="mw:File/Thumb"><a class="mw-file-description"><img class="mw-file-element" data-file-height="356" data-file-width="296" decoding="async" height="349" src="//upload.wikimedia.org/wikipedia/commons/thumb/4/46/Colored_neural_network.svg/330px-Colored_neural_network.svg.png" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/4/46/Colored_neural_network.svg/500px-Colored_neural_network.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/4/46/Colored_neural_network.svg/960px-Colored_neural_network.svg.png 2x" width="290"/></a><figcaption>An artificial neural network is an interconnected group of nodes, inspired by a simplification of <span>neurons</span> in a <span>brain</span>. Here, each circular node represents an <span>artificial neuron</span> and an arrow represents a connection from the output of one artificial neuron to the input of another.</figcaption></figure>
+<style data-mw-deduplicate="TemplateStyles:r1333133064">.mw-parser-output .hlist dl,.mw-parser-output .hlist ol,.mw-parser-output .hlist ul{margin:0;padding:0}.mw-parser-output .hlist dd,.mw-parser-output .hlist dt,.mw-parser-output .hlist li{margin:0;display:inline}.mw-parser-output .hlist.inline,.mw-parser-output .hlist.inline dl,.mw-parser-output .hlist.inline ol,.mw-parser-output .hlist.inline ul,.mw-parser-output .hlist dl dl,.mw-parser-output .hlist dl ol,.mw-parser-output .hlist dl ul,.mw-parser-output .hlist ol dl,.mw-parser-output .hlist ol ol,.mw-parser-output .hlist ol ul,.mw-parser-output .hlist ul dl,.mw-parser-output .hlist ul ol,.mw-parser-output .hlist ul ul{display:inline}.mw-parser-output .hlist .mw-empty-li{display:none}.mw-parser-output .hlist dt::after{content:": "}.mw-parser-output .hlist dd::after,.mw-parser-output .hlist li::after{content:"\a0 * ";font-weight:bold}.mw-parser-output .hlist dd:last-child::after,.mw-parser-output .hlist dt:last-child::after,.mw-parser-output .hlist li:last-child::after{content:none}.mw-parser-output .hlist dd dd:first-child::before,.mw-parser-output .hlist dd dt:first-child::before,.mw-parser-output .hlist dd li:first-child::before,.mw-parser-output .hlist dt dd:first-child::before,.mw-parser-output .hlist dt dt:first-child::before,.mw-parser-output .hlist dt li:first-child::before,.mw-parser-output .hlist li dd:first-child::before,.mw-parser-output .hlist li dt:first-child::before,.mw-parser-output .hlist li li:first-child::before{content:" (";font-weight:normal}.mw-parser-output .hlist dd dd:last-child::after,.mw-parser-output .hlist dd dt:last-child::after,.mw-parser-output .hlist dd li:last-child::after,.mw-parser-output .hlist dt dd:last-child::after,.mw-parser-output .hlist dt dt:last-child::after,.mw-parser-output .hlist dt li:last-child::after,.mw-parser-output .hlist li dd:last-child::after,.mw-parser-output .hlist li dt:last-child::after,.mw-parser-output .hlist li li:last-child::after{content:")";font-weight:normal}.mw-parser-output .hlist ol{counter-reset:listitem}.mw-parser-output .hlist ol>li{counter-increment:listitem}.mw-parser-output .hlist ol>li::before{content:" "counter(listitem)"\a0 "}.mw-parser-output .hlist dd ol>li:first-child::before,.mw-parser-output .hlist dt ol>li:first-child::before,.mw-parser-output .hlist li ol>li:first-child::before{content:" ("counter(listitem)"\a0 "}</style><style data-mw-deduplicate="TemplateStyles:r1246091330">.mw-parser-output .sidebar{width:22em;float:right;clear:right;margin:0.5em 0 1em 1em;background:var(--background-color-neutral-subtle,#f8f9fa);border:1px solid var(--border-color-base,#a2a9b1);padding:0.2em;text-align:center;line-height:1.4em;font-size:88%;border-collapse:collapse;display:table}body.skin-minerva .mw-parser-output .sidebar{display:table!important;float:right!important;margin:0.5em 0 1em 1em!important}.mw-parser-output .sidebar-subgroup{width:100%;margin:0;border-spacing:0}.mw-parser-output .sidebar-left{float:left;clear:left;margin:0.5em 1em 1em 0}.mw-parser-output .sidebar-none{float:none;clear:both;margin:0.5em 1em 1em 0}.mw-parser-output .sidebar-outer-title{padding:0 0.4em 0.2em;font-size:125%;line-height:1.2em;font-weight:bold}.mw-parser-output .sidebar-top-image{padding:0.4em}.mw-parser-output .sidebar-top-caption,.mw-parser-output .sidebar-pretitle-with-top-image,.mw-parser-output .sidebar-caption{padding:0.2em 0.4em 0;line-height:1.2em}.mw-parser-output .sidebar-pretitle{padding:0.4em 0.4em 0;line-height:1.2em}.mw-parser-output .sidebar-title,.mw-parser-output .sidebar-title-with-pretitle{padding:0.2em 0.8em;font-size:145%;line-height:1.2em}.mw-parser-output .sidebar-title-with-pretitle{padding:0.1em 0.4em}.mw-parser-output .sidebar-image{padding:0.2em 0.4em 0.4em}.mw-parser-output .sidebar-heading{padding:0.1em 0.4em}.mw-parser-output .sidebar-content{padding:0 0.5em 0.4em}.mw-parser-output .sidebar-content-with-subgroup{padding:0.1em 0.4em 0.2em}.mw-parser-output .sidebar-above,.mw-parser-output .sidebar-below{padding:0.3em 0.8em;font-weight:bold}.mw-parser-output .sidebar-collapse .sidebar-above,.mw-parser-output .sidebar-collapse .sidebar-below{border-top:1px solid #aaa;border-bottom:1px solid #aaa}.mw-parser-output .sidebar-navbar{text-align:right;font-size:115%;padding:0 0.4em 0.4em}.mw-parser-output .sidebar-list-title{padding:0 0.4em;text-align:left;font-weight:bold;line-height:1.6em;font-size:105%}.mw-parser-output .sidebar-list-title-c{padding:0 0.4em;text-align:center;margin:0 3.3em}@media(max-width:640px){body.mediawiki .mw-parser-output .sidebar{width:100%!important;clear:both;float:none!important;margin-left:0!important;margin-right:0!important}}body.skin--responsive .mw-parser-output .sidebar a>img{max-width:none!important}@media screen{html.skin-theme-clientpref-night .mw-parser-output .sidebar:not(.notheme) .sidebar-list-title,html.skin-theme-clientpref-night .mw-parser-output .sidebar:not(.notheme) .sidebar-title-with-pretitle{background:transparent!important}html.skin-theme-clientpref-night .mw-parser-output .sidebar:not(.notheme) .sidebar-title-with-pretitle a{color:var(--color-progressive)!important}}@media screen and (prefers-color-scheme:dark){html.skin-theme-clientpref-os .mw-parser-output .sidebar:not(.notheme) .sidebar-list-title,html.skin-theme-clientpref-os .mw-parser-output .sidebar:not(.notheme) .sidebar-title-with-pretitle{background:transparent!important}html.skin-theme-clientpref-os .mw-parser-output .sidebar:not(.notheme) .sidebar-title-with-pretitle a{color:var(--color-progressive)!important}}@media print{body.ns-0 .mw-parser-output .sidebar{display:none!important}}</style><style data-mw-deduplicate="TemplateStyles:r886047488">.mw-parser-output .nobold{font-weight:normal}</style><link href="mw-data:TemplateStyles:r886047488" rel="mw-deduplicated-inline-style"/>
+<p>In <span>machine learning</span>, a <b>neural network</b> or <b>neural net</b> (<b>NN</b>), also called <b>artificial neural network</b> (<b>ANN</b>), is a <span>computational model</span> inspired by the structure and functions of <span>biological neural networks</span>.<sup class="reference" id="cite_ref-1"></sup><sup class="reference" id="cite_ref-2"></sup>
+</p><p>A neural network consists of connected units or nodes called <i><span>artificial neurons</span></i>, which loosely model the <span>neurons</span> in the brain. Artificial neuron models that mimic biological neurons more closely have also been recently investigated and shown to significantly improve performance. These are connected by <i>edges</i>, which model the <span>synapses</span> in the brain. Each artificial neuron receives signals from connected neurons, then processes them and sends a signal to other connected neurons. The "signal" is a <span>real number</span>, and the output of each neuron is computed by some non-linear function of the totality of its inputs, called the <i><span>activation function</span></i>. The strength of the signal at each connection is determined by a <i>weight</i>, which adjusts during the learning process.
+</p><p>Typically, neurons are aggregated into layers. Different layers may perform different transformations on their inputs. Signals travel from the first layer (the <i>input layer</i>) to the last layer (the <i>output layer</i>), possibly passing through multiple intermediate layers (<i><span>hidden layers</span></i>). A network is typically called a deep neural network if it has at least two hidden layers.<sup class="reference" id="cite_ref-3"></sup>
+</p><p>Artificial neural networks are used for various tasks, including <span>predictive modeling</span>, <span>adaptive control</span>, and solving problems in <a href="" onclick="message(this)" title="Artificial intelligence">artificial intelligence</a>. They can learn from experience, and can derive conclusions from a complex and seemingly unrelated set of information.
+</p>
+<style data-mw-deduplicate="TemplateStyles:r886046785">.mw-parser-output .toclimit-2 .toclevel-1 ul,.mw-parser-output .toclimit-3 .toclevel-2 ul,.mw-parser-output .toclimit-4 .toclevel-3 ul,.mw-parser-output .toclimit-5 .toclevel-4 ul,.mw-parser-output .toclimit-6 .toclevel-5 ul,.mw-parser-output .toclimit-7 .toclevel-6 ul{display:none}</style><div class="toclimit-3">
+</div>
+<div class="mw-heading mw-heading2"><h2 id="Training">Training</h2></div><p>
+Neural networks are typically trained through <span>empirical risk minimization</span>, which is based on the idea of optimizing the network's parameters to minimize the difference, or empirical risk, between the predicted output and the actual target values in a given dataset.<sup class="reference" id="cite_ref-:2_4-0"></sup> Gradient-based methods such as <span>backpropagation</span> are usually used to estimate the parameters of the network.<sup class="reference" id="cite_ref-:2_4-1"></sup> During the training phase, ANNs learn from <span>labeled</span> training data by iteratively updating their parameters to minimize a defined <span>loss function</span>.<sup class="reference" id="cite_ref-:4_5-0"></sup> This method allows the network to generalize to unseen data.<style data-mw-deduplicate="TemplateStyles:r1273380762/mw-parser-output/.tmulti">.mw-parser-output .tmulti .multiimageinner{display:flex;flex-direction:column}.mw-parser-output .tmulti .trow{display:flex;flex-direction:row;clear:left;flex-wrap:wrap;width:100%;box-sizing:border-box}.mw-parser-output .tmulti .tsingle{margin:1px;float:left}.mw-parser-output .tmulti .theader{clear:both;font-weight:bold;text-align:center;align-self:center;background-color:transparent;width:100%}.mw-parser-output .tmulti .thumbcaption{background-color:transparent}.mw-parser-output .tmulti .text-align-left{text-align:left}.mw-parser-output .tmulti .text-align-right{text-align:right}.mw-parser-output .tmulti .text-align-center{text-align:center}@media all and (max-width:720px){.mw-parser-output .tmulti .thumbinner{width:100%!important;box-sizing:border-box;max-width:none!important;align-items:center}.mw-parser-output .tmulti .trow{justify-content:center}.mw-parser-output .tmulti .tsingle{float:none!important;max-width:100%!important;box-sizing:border-box;text-align:center}.mw-parser-output .tmulti .tsingle .thumbcaption{text-align:left}.mw-parser-output .tmulti .trow>.thumbcaption{text-align:center}}@media screen{html.skin-theme-clientpref-night .mw-parser-output .tmulti .multiimageinner span:not(.skin-invert-image):not(.skin-invert):not(.bg-transparent) img{background-color:white}}@media screen and (prefers-color-scheme:dark){html.skin-theme-clientpref-os .mw-parser-output .tmulti .multiimageinner span:not(.skin-invert-image):not(.skin-invert):not(.bg-transparent) img{background-color:white}}</style></p><div class="thumb tmulti tright"><div class="thumbinner multiimageinner" style="width:392px;max-width:392px"><div class="trow"><div class="tsingle" style="width:167px;max-width:167px"><div class="thumbimage" style="height:188px;overflow:hidden"><span typeof="mw:File"><a class="mw-file-description"><img class="mw-file-element" data-file-height="884" data-file-width="773" decoding="async" height="189" src="//upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Simplified_neural_network_training_example.svg/250px-Simplified_neural_network_training_example.svg.png" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Simplified_neural_network_training_example.svg/330px-Simplified_neural_network_training_example.svg.png 2x" width="165"/></a></span></div><div class="thumbcaption">Simplified example of training a neural network in object detection: The network is trained by multiple images that are known to depict <span>starfish</span> and <span>sea urchins</span>, which are correlated with "nodes" that represent visual <span>features</span>. The starfish match with a ringed texture and a star outline, whereas most sea urchins match with a striped texture and oval shape. However, the instance of a ring textured sea urchin creates a weakly weighted association between them.</div></div><div class="tsingle" style="width:221px;max-width:221px"><div class="thumbimage" style="height:188px;overflow:hidden"><span typeof="mw:File"><a class="mw-file-description"><img class="mw-file-element" data-file-height="882" data-file-width="1028" decoding="async" height="188" src="//upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Simplified_neural_network_example.svg/250px-Simplified_neural_network_example.svg.png" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Simplified_neural_network_example.svg/330px-Simplified_neural_network_example.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Simplified_neural_network_example.svg/500px-Simplified_neural_network_example.svg.png 2x" width="219"/></a></span></div><div class="thumbcaption">Subsequent run of the network on an input image (left):<sup class="reference" id="cite_ref-6"></sup> The network correctly detects the starfish. However, the weakly weighted association between ringed texture and sea urchin also confers a weak signal to the latter from one of two intermediate nodes. In addition, a shell that was not included in the training gives a weak signal for the oval shape, also resulting in a weak signal for the sea urchin output. These weak signals may result in a <span>false positive</span> result for sea urchin.<br/>In reality, textures and outlines would not be represented by single nodes, but rather by associated weight patterns of multiple nodes.</div></div></div></div></div>
+<div class="mw-heading mw-heading2"><h2 id="History">History</h2></div>
+<link href="mw-data:TemplateStyles:r1320445320" rel="mw-deduplicated-inline-style"/><div class="hatnote navigation-not-searchable" role="note">Main article: <span>History of artificial neural networks</span></div>
+<div class="mw-heading mw-heading3"><h3 id="Early_work">Early work</h3></div>
+<p>Today's deep neural networks are based on early work in <span>statistics</span> over 200 years ago. The simplest kind of <span>feedforward neural network</span> (FNN) is a linear network, which consists of a single layer of output nodes with linear activation functions; the inputs are fed directly to the outputs via a series of weights. The sum of the products of the weights and the inputs is calculated at each node. The <span>mean squared errors</span> between these calculated outputs and the given target values are minimized by creating an adjustment to the weights. This technique has been known for over two centuries as the <span>method of least squares</span> or <span>linear regression</span>. It was used as a means of finding a good rough linear fit to a set of points by <span>Legendre</span> (1805) and <span>Gauss</span> (1795) for the prediction of planetary movement.<sup class="reference" id="cite_ref-legendre1805_7-0"></sup><sup class="reference" id="cite_ref-gauss1795_8-0"></sup><sup class="reference" id="cite_ref-brertscher_9-0"></sup><sup class="reference" id="cite_ref-DLhistory_10-0"></sup><sup class="reference" id="cite_ref-stigler_11-0"></sup>
+</p><p>Historically, digital computers such as the <span>von Neumann model</span> operate via the execution of explicit instructions with access to memory by a number of processors. Some neural networks, on the other hand, originated from efforts to model information processing in biological systems through the framework of <span>connectionism</span>. Unlike the von Neumann model, connectionist computing does not separate memory and processing.
+</p><p><span>Warren McCulloch</span> and <span>Walter Pitts</span><sup class="reference" id="cite_ref-WM_12-0"></sup> (1943) considered a non-learning computational model for neural networks.<sup class="reference" id="cite_ref-13"></sup> This model paved the way for research to split into two approaches. One approach focused on biological processes while the other focused on the application of neural networks to artificial intelligence.
+</p><p>In the late 1940s, <span>D. O. Hebb</span><sup class="reference" id="cite_ref-14"></sup> proposed a learning <span>hypothesis</span> based on the mechanism of <span>neural plasticity</span> that became known as <span>Hebbian learning</span>. It was used in many early neural networks, such as Rosenblatt's <span>perceptron</span> and the <span>Hopfield network</span>. Farley and <span>Clark</span><sup class="reference" id="cite_ref-15"></sup> (1954) used computational machines to simulate a Hebbian network. Other neural network computational machines were created by <span>Rochester</span>, Holland, Habit and Duda (1956).<sup class="reference" id="cite_ref-16"></sup>
+</p><p>In 1958, psychologist <span>Frank Rosenblatt</span> described the perceptron, one of the first implemented artificial neural networks,<sup class="reference" id="cite_ref-17"></sup><sup class="reference" id="cite_ref-18"></sup><sup class="reference" id="cite_ref-Werbos_1975_19-0"></sup><sup class="reference" id="cite_ref-20"></sup> funded by the United States <span>Office of Naval Research</span>.<sup class="reference" id="cite_ref-Olazaran_21-0"></sup>
+R. D. Joseph (1960)<sup class="reference" id="cite_ref-joseph1960_22-0"></sup> mentions an even earlier perceptron-like device by Farley and Clark:<sup class="reference" id="cite_ref-DLhistory_10-1"></sup> "Farley and Clark of MIT Lincoln Laboratory actually preceded Rosenblatt in the development of a perceptron-like device." However, "they dropped the subject."
+The perceptron raised public excitement for research in Artificial Neural Networks, causing the US government to drastically increase funding. This contributed to "the Golden Age of AI" fueled by the optimistic claims made by computer scientists regarding the ability of perceptrons to emulate human intelligence.<sup class="reference" id="cite_ref-:08_23-0"></sup>
+</p><p>The first perceptrons did not have adaptive hidden units. However, Joseph (1960)<sup class="reference" id="cite_ref-joseph1960_22-1"></sup> also discussed <span>multilayer perceptrons</span> with an adaptive hidden layer. Rosenblatt (1962)<sup class="reference" id="cite_ref-rosenblatt1962_24-0"></sup><sup class="reference nowrap"><span title="Page / location: section 16">: section 16 </span></sup> cited and adopted these ideas, also crediting work by H. D. Block and B. W. Knight. Unfortunately, these early efforts did not lead to a working learning algorithm for hidden units, i.e., <span>deep learning</span>.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Deep_learning_breakthroughs_in_the_1960s_and_1970s">Deep learning breakthroughs in the 1960s and 1970s</h3></div>
+<p>Fundamental research was conducted on ANNs in the 1960s and 1970s. The first working deep learning algorithm was the <span>Group method of data handling</span>, a method to train arbitrarily deep neural networks, published by <span>Alexey Ivakhnenko</span> and Lapa in the <span>Soviet Union</span> (1965). They regarded it as a form of polynomial regression,<sup class="reference" id="cite_ref-ivak1965_25-0"></sup> or a generalization of Rosenblatt's perceptron.<sup class="reference" id="cite_ref-26"></sup> A 1971 paper described a deep network with eight layers trained by this method,<sup class="reference" id="cite_ref-ivak1971_27-0"></sup> which is based on layer by layer training through regression analysis. Superfluous hidden units are pruned using a separate validation set. Since the activation functions of the nodes are Kolmogorov-Gabor polynomials, these were also the first deep networks with multiplicative units or "gates."<sup class="reference" id="cite_ref-DLhistory_10-2"></sup>
+</p><p>The first deep learning <span>multilayer perceptron</span> trained by <span>stochastic gradient descent</span><sup class="reference" id="cite_ref-robbins1951_28-0"></sup> was published in 1967 by <span>Shun'ichi Amari</span>.<sup class="reference" id="cite_ref-Amari1967_29-0"></sup> In computer experiments conducted by Amari's student Saito, a five layer MLP with two modifiable layers learned <span>internal representations</span> to classify non-linearily separable pattern classes.<sup class="reference" id="cite_ref-DLhistory_10-3"></sup> Subsequent developments in hardware and hyperparameter tunings have made end-to-end stochastic gradient descent the currently dominant training technique.
+</p><p>In 1969, <span>Kunihiko Fukushima</span> introduced the <span>ReLU</span> (rectified linear unit) activation function.<sup class="reference" id="cite_ref-DLhistory_10-4"></sup><sup class="reference" id="cite_ref-Fukushima1969_30-0"></sup><sup class="reference" id="cite_ref-sonoda17_31-0"></sup> The rectifier has become the most popular activation function for deep learning.<sup class="reference" id="cite_ref-32"></sup>
+</p><p>Nevertheless, research stagnated in the United States following the work of <span>Minsky</span> and <span>Papert</span> (1969),<sup class="reference" id="cite_ref-:132_33-0"></sup> who emphasized that basic perceptrons were incapable of processing the exclusive-or circuit. This insight was irrelevant for the deep networks of Ivakhnenko (1965) and Amari (1967).
+</p><p>In 1976 transfer learning was introduced in neural networks learning.<sup class="reference" id="cite_ref-34"></sup><sup class="reference" id="cite_ref-35"></sup>
+</p><p>Deep learning architectures for <span>convolutional neural networks</span> (CNNs) with convolutional layers and downsampling layers and weight replication began with the <span>neocognitron</span> introduced by Kunihiko Fukushima in 1979, though not trained by backpropagation.<sup class="reference" id="cite_ref-FUKU1979_36-0"></sup><sup class="reference" id="cite_ref-FUKU1980_37-0"></sup><sup class="reference" id="cite_ref-SCHIDHUB4_38-0"></sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Backpropagation">Backpropagation</h3></div>
+<p><span>Backpropagation</span> is an efficient application of the <span>chain rule</span> derived by <span>Gottfried Wilhelm Leibniz</span> in 1673<sup class="reference" id="cite_ref-leibniz16762_39-0"></sup> to networks of differentiable nodes. The terminology "back-propagating errors" was actually introduced in 1962 by Rosenblatt,<sup class="reference" id="cite_ref-rosenblatt1962_24-1"></sup> but he did not know how to implement this, although <span>Henry J. Kelley</span> had a continuous precursor of backpropagation in 1960 in the context of <span>control theory</span>.<sup class="reference" id="cite_ref-kelley19602_40-0"></sup> In 1970, <span>Seppo Linnainmaa</span> published the modern form of backpropagation in his Master's <span>thesis</span> (1970).<sup class="reference" id="cite_ref-lin19703_41-0"></sup><sup class="reference" id="cite_ref-lin19763_42-0"></sup><sup class="reference" id="cite_ref-DLhistory_10-5"></sup> G.M. Ostrovski et al. republished it in 1971.<sup class="reference" id="cite_ref-ostrowski1971_43-0"></sup><sup class="reference" id="cite_ref-backprop_44-0"></sup> <span>Paul Werbos</span> applied backpropagation to neural networks in 1982<sup class="reference" id="cite_ref-werbos1982_45-0"></sup><sup class="reference" id="cite_ref-:1_46-0"></sup> (his 1974 PhD thesis, reprinted in a 1994 book,<sup class="reference" id="cite_ref-werbos1974_47-0"></sup> did not yet describe the algorithm<sup class="reference" id="cite_ref-backprop_44-1"></sup>). In 1986, <span>David E. Rumelhart</span> et al. popularised backpropagation but did not cite the original work.<sup class="reference" id="cite_ref-48"></sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Convolutional_neural_networks">Convolutional neural networks</h3></div>
+<p>Kunihiko Fukushima's <span>convolutional neural network</span> (CNN) architecture of 1979<sup class="reference" id="cite_ref-FUKU1979_36-1"></sup> also introduced <span>max pooling</span>,<sup class="reference" id="cite_ref-49"></sup> a popular downsampling procedure for CNNs. CNNs have become an essential tool for <span>computer vision</span>.
+</p><p>The <span>time delay neural network</span> (TDNN) was introduced in 1987 by <span>Alex Waibel</span> to apply CNN to phoneme recognition. It used convolutions, weight sharing, and backpropagation.<sup class="reference" id="cite_ref-Waibel1987_50-0"></sup><sup class="reference" id="cite_ref-speechsignal_51-0"></sup> In 1988, Wei Zhang applied a backpropagation-trained CNN to alphabet recognition.<sup class="reference" id="cite_ref-wz1988_52-0"></sup>
+In 1989, <span>Yann LeCun</span> et al. created a CNN called <span>LeNet</span> for <span>recognizing handwritten ZIP codes</span> on mail. Training required 3 days.<sup class="reference" id="cite_ref-LECUN1989_53-0"></sup> In 1990, Wei Zhang implemented a CNN on <span>optical computing</span> hardware.<sup class="reference" id="cite_ref-wz1990_54-0"></sup> In 1991, a CNN was applied to medical image object segmentation<sup class="reference" id="cite_ref-55"></sup> and breast cancer detection in mammograms.<sup class="reference" id="cite_ref-56"></sup> <span>LeNet</span>-5 (1998), a 7-level CNN by Yann LeCun et al., that classifies digits, was applied by several banks to recognize hand-written numbers on checks digitized in 32x32 pixel images.<sup class="reference" id="cite_ref-lecun98_57-0"></sup>
+</p><p>From 1988 onward,<sup class="reference" id="cite_ref-Qian1988_58-0"></sup><sup class="reference" id="cite_ref-Bohr1988_59-0"></sup> the use of neural networks transformed the field of <span>protein structure prediction</span>, in particular when the first cascading networks were trained on <i>profiles</i> (matrices) produced by multiple <span>sequence alignments</span>.<sup class="reference" id="cite_ref-Rost1993_60-0"></sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Recurrent_neural_networks">Recurrent neural networks</h3></div>
+<p>One origin of RNN was <span>statistical mechanics</span>. In 1972, <span>Shun'ichi Amari</span> proposed to modify the weights of an <span>Ising model</span> by <span>Hebbian learning</span> rule as a model of <span>associative memory</span>, adding in the component of learning.<sup class="reference" id="cite_ref-61"></sup> This was popularized as the Hopfield network by <span>John Hopfield</span> (1982).<sup class="reference" id="cite_ref-Hopfield19822_62-0"></sup> Another origin of RNN was neuroscience. The word "recurrent" is used to describe loop-like structures in anatomy. In 1901, <span>Cajal</span> observed "recurrent semicircles" in the <span>cerebellar cortex</span>.<sup class="reference" id="cite_ref-63"></sup> <span>Hebb</span> considered "reverberating circuit" as an explanation for short-term memory.<sup class="reference" id="cite_ref-64"></sup> The McCulloch and Pitts paper (1943) considered neural networks that contain cycles, and noted that the current activity of such networks can be affected by activity indefinitely far in the past.<sup class="reference" id="cite_ref-WM_12-1"></sup>
+</p><p>In 1982 a recurrent neural network with an array architecture (rather than a multilayer perceptron architecture), namely a Crossbar Adaptive Array,<sup class="reference" id="cite_ref-CAA1982_65-0"></sup><sup class="reference" id="cite_ref-66"></sup> used direct recurrent connections from the output to the supervisor (teaching) inputs. In addition of computing actions (decisions), it computed internal state evaluations (emotions) of the consequence situations. Eliminating the external supervisor, it introduced the self-learning method in neural networks.  
+</p><p>In cognitive psychology, the journal American Psychologist in early 1980's carried out a debate on the relation between cognition and emotion. Zajonc in 1980 stated that emotion is computed first and is independent from cognition, while Lazarus in 1982 stated that cognition is computed first and is inseparable from emotion.<sup class="reference" id="cite_ref-67"></sup><sup class="reference" id="cite_ref-68"></sup> In 1982 the Crossbar Adaptive Array gave a neural network model of cognition-emotion relation.<sup class="reference" id="cite_ref-CAA1982_65-1"></sup><sup class="reference" id="cite_ref-69"></sup> It was an example of a debate where an AI system, a recurrent neural network, contributed to an issue in the same time addressed by cognitive psychology.
+</p><p>Two early influential works were the <span>Jordan network</span> (1986) and the <span>Elman network</span> (1990), which applied RNN to study <span>cognitive psychology</span>. 
+</p><p>In the 1980s, backpropagation did not work well for deep RNNs. To overcome this problem, in 1991, <span>Jurgen Schmidhuber</span> proposed the "neural sequence chunker" or "neural history compressor"<sup class="reference" id="cite_ref-chunker1991_70-0"></sup><sup class="reference" id="cite_ref-schmidhuber1992_71-0"></sup> which introduced the important concepts of self-supervised pre-training (the "P" in <span>ChatGPT</span>) and neural <span>knowledge distillation</span>.<sup class="reference" id="cite_ref-DLhistory_10-6"></sup> In 1993, a neural history compressor system solved a "Very Deep Learning" task that required more than 1000 subsequent <span>layers</span> in an RNN unfolded in time.<sup class="reference" id="cite_ref-schmidhuber19932_72-0"></sup>
+</p><p>In 1991, <span>Sepp Hochreiter</span>'s diploma thesis<sup class="reference" id="cite_ref-HOCH1991_73-0"></sup> identified and analyzed the <span>vanishing gradient problem</span><sup class="reference" id="cite_ref-HOCH1991_73-1"></sup><sup class="reference" id="cite_ref-HOCH2001_74-0"></sup> and proposed recurrent <span>residual</span> connections to solve it. He and Schmidhuber introduced <span>long short-term memory</span> (LSTM), which set accuracy records in multiple applications domains.<sup class="reference" id="cite_ref-75"></sup><sup class="reference" id="cite_ref-lstm2_76-0"></sup> This was not yet the modern version of LSTM, which required the forget gate, which was introduced in 1999.<sup class="reference" id="cite_ref-lstm1999_77-0"></sup> It became the default choice for RNN architecture.
+</p><p>During 1985-1995, inspired by statistical mechanics, several architectures and methods were developed by <span>Terry Sejnowski</span>, <span>Peter Dayan</span>, <span>Geoffrey Hinton</span>, etc., including the <span>Boltzmann machine</span>,<sup class="reference" id="cite_ref-78"></sup> <span>restricted Boltzmann machine</span>,<sup class="reference" id="cite_ref-79"></sup> <span>Helmholtz machine</span>,<sup class="reference" id="cite_ref-80"></sup> and the <span>wake-sleep algorithm</span>.<sup class="reference" id="cite_ref-:13_81-0"></sup> These were designed for unsupervised learning of deep generative models.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Deep_learning">Deep learning</h3></div>
+<p>Between 2009 and 2012, ANNs began winning prizes in image recognition contests, approaching human level performance on various tasks, initially in <span>pattern recognition</span> and <span>handwriting recognition</span>.<sup class="reference" id="cite_ref-82"></sup><sup class="reference" id="cite_ref-83"></sup> In 2011, a CNN named <i>DanNet<sup class="reference" id="cite_ref-:32_84-0"></sup></i><sup class="reference" id="cite_ref-:62_85-0"></sup> by Dan Ciresan, Ueli Meier, Jonathan Masci, <span>Luca Maria Gambardella</span>, and Jurgen Schmidhuber achieved for the first time superhuman performance in a visual pattern recognition contest, outperforming traditional methods by a factor of 3.<sup class="reference" id="cite_ref-SCHIDHUB4_38-1"></sup> It then won more contests.<sup class="reference" id="cite_ref-:82_86-0"></sup><sup class="reference" id="cite_ref-ciresan2013miccai_87-0"></sup> They also showed how <span>max-pooling</span> CNNs on GPU improved performance significantly.<sup class="reference" id="cite_ref-:9_88-0"></sup>
+</p><p>In October 2012, <span>AlexNet</span> by <span>Alex Krizhevsky</span>, <span>Ilya Sutskever</span>, and Geoffrey Hinton<sup class="reference" id="cite_ref-krizhevsky20122_89-0"></sup> won the large-scale <span>ImageNet competition</span> by a significant margin over shallow machine learning methods. Further incremental improvements included the VGG-16 network by Karen Simonyan and <span>Andrew Zisserman</span><sup class="reference" id="cite_ref-VGG_90-0"></sup> and Google's <span>Inceptionv3</span>.<sup class="reference" id="cite_ref-szegedy_91-0"></sup>
+</p><p>In 2012, <span>Ng</span> and <span>Dean</span> created a network that learned to recognize higher-level concepts, such as cats, only from watching unlabeled images.<sup class="reference" id="cite_ref-ng2012_92-0"></sup> Unsupervised pre-training and increased computing power from <span>GPUs</span> and <a href="" onclick="message(this)" title="Distributed computing">distributed computing</a> allowed the use of larger networks, particularly in image and visual recognition problems, which became known as "deep learning".<sup class="reference" id="cite_ref-:4_5-1"></sup>
+</p><p><span>Radial basis function</span> and wavelet networks were introduced in 2013. These can be shown to offer best approximation properties and have been applied in <span>nonlinear system identification</span> and classification applications.<sup class="reference" id="cite_ref-SAB1_93-0"></sup>
+</p><p><span>Generative adversarial network</span> (GAN) (<span>Ian Goodfellow</span> et al., 2014)<sup class="reference" id="cite_ref-GANnips_94-0"></sup> became state of the art in generative modeling during 2014-2018 period. The GAN principle was originally published in 1991 by Jurgen Schmidhuber who called it "artificial curiosity": two neural networks contest with each other in the form of a <span>zero-sum game</span>, where one network's gain is the other network's loss.<sup class="reference" id="cite_ref-curiosity1991_95-0"></sup><sup class="reference" id="cite_ref-gancurpm2020_96-0"></sup> The first network is a <span>generative model</span> that models a <span>probability distribution</span> over output patterns. The second network learns by <span>gradient descent</span> to predict the reactions of the environment to these patterns. Excellent image quality is achieved by <span>Nvidia</span>'s <span>StyleGAN</span> (2018)<sup class="reference" id="cite_ref-SyncedReview201822_97-0"></sup> based on the Progressive GAN by Tero Karras et al.<sup class="reference" id="cite_ref-progressiveGAN201722_98-0"></sup> Here, the GAN generator is grown from small to large scale in a pyramidal fashion. Image generation by GAN reached popular success, and provoked discussions concerning <span>deepfakes</span>.<sup class="reference" id="cite_ref-99"></sup> <span>Diffusion models</span> (2015)<sup class="reference" id="cite_ref-100"></sup> eclipsed GANs in generative modeling since then, with systems such as <span>DALL*E 2</span> (2022) and <span>Stable Diffusion</span> (2022).
+</p><p>In 2014, the state of the art was training "very deep neural network" with 20 to 30 layers.<sup class="reference" id="cite_ref-101"></sup> Stacking too many layers led to a steep reduction in <span>training</span> accuracy,<sup class="reference" id="cite_ref-prelu2_102-0"></sup> known as the "degradation" problem.<sup class="reference" id="cite_ref-resnet2_103-0"></sup> In 2015, two techniques were developed to train very deep networks: the <span>highway network</span> was published in May 2015,<sup class="reference" id="cite_ref-highway20153_104-0"></sup> and the residual neural network (ResNet) in December 2015.<sup class="reference" id="cite_ref-resnet20153_105-0"></sup><sup class="reference" id="cite_ref-106"></sup> ResNet behaves like an open-gated Highway Net. 
+</p>
+<link href="mw-data:TemplateStyles:r1320445320" rel="mw-deduplicated-inline-style"/><div class="hatnote navigation-not-searchable" role="note">Main article: <span>Transformer (deep learning architecture) SS History</span></div>
+<p>During the 2010s, the <span>seq2seq</span> model was developed, and attention mechanisms were added. It led to the modern Transformer architecture in 2017 in <i><span>Attention Is All You Need</span></i>.<sup class="reference" id="cite_ref-vaswani2017_107-0"></sup>
+It requires computation time that is quadratic in the size of the context window. Jurgen Schmidhuber's fast weight controller (1992)<sup class="reference" id="cite_ref-transform19922_108-0"></sup> scales linearly and was later shown to be equivalent to the unnormalized linear Transformer.<sup class="reference" id="cite_ref-fastlinear20202_109-0"></sup><sup class="reference" id="cite_ref-schlag20212_110-0"></sup><sup class="reference" id="cite_ref-DLhistory_10-7"></sup>
+Transformers have increasingly become the model of choice for <span>natural language processing</span>.<sup class="reference" id="cite_ref-wolf2020_111-0"></sup> Many modern <span>large language models</span> such as <span>ChatGPT</span>, <span>GPT-4</span>, and <span>BERT</span> use this architecture.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Models">Models</h2></div>
+<style data-mw-deduplicate="TemplateStyles:r1305433154">.mw-parser-output .ambox{border:1px solid #a2a9b1;border-left:10px solid #36c;background-color:#fbfbfb;box-sizing:border-box}.mw-parser-output .ambox+link+.ambox,.mw-parser-output .ambox+link+style+.ambox,.mw-parser-output .ambox+link+link+.ambox,.mw-parser-output .ambox+.mw-empty-elt+link+.ambox,.mw-parser-output .ambox+.mw-empty-elt+link+style+.ambox,.mw-parser-output .ambox+.mw-empty-elt+link+link+.ambox{margin-top:-1px}html body.mediawiki .mw-parser-output .ambox.mbox-small-left{margin:4px 1em 4px 0;overflow:hidden;width:238px;border-collapse:collapse;font-size:88%;line-height:1.25em}.mw-parser-output .ambox-speedy{border-left:10px solid #b32424;background-color:#fee7e6}.mw-parser-output .ambox-delete{border-left:10px solid #b32424}.mw-parser-output .ambox-content{border-left:10px solid #f28500}.mw-parser-output .ambox-style{border-left:10px solid #fc3}.mw-parser-output .ambox-move{border-left:10px solid #9932cc}.mw-parser-output .ambox-protection{border-left:10px solid #a2a9b1}.mw-parser-output .ambox .mbox-text{border:none;padding:0.25em 0.5em;width:100%}.mw-parser-output .ambox .mbox-image{border:none;padding:2px 0 2px 0.5em;text-align:center}.mw-parser-output .ambox .mbox-imageright{border:none;padding:2px 0.5em 2px 0;text-align:center}.mw-parser-output .ambox .mbox-empty-cell{border:none;padding:0;width:1px}.mw-parser-output .ambox .mbox-image-div{width:52px}@media(min-width:720px){.mw-parser-output .ambox{margin:0 10%}}@media print{body.ns-0 .mw-parser-output .ambox{display:none!important}}</style><table class="box-Confusing plainlinks metadata ambox ambox-style ambox-confusing" role="presentation"><tbody><tr><td class="mbox-image"><div class="mbox-image-div"><span typeof="mw:File"><span><img alt="" class="mw-file-element" data-file-height="48" data-file-width="48" decoding="async" height="40" src="//upload.wikimedia.org/wikipedia/en/thumb/f/f2/Edit-clear.svg/40px-Edit-clear.svg.png" srcset="//upload.wikimedia.org/wikipedia/en/thumb/f/f2/Edit-clear.svg/60px-Edit-clear.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/f/f2/Edit-clear.svg/120px-Edit-clear.svg.png 2x" width="40"/></span></span></div></td><td class="mbox-text"><div class="mbox-text-span">This section <b>may be <span>confusing or unclear</span> to readers</b>.<span class="hide-when-compact"> Please help <span>clarify the section</span>. There might be a discussion about this on <span>the talk page</span>.</span> <span class="date-container"><i>(<span class="date">April 2017</span>)</i></span><span class="hide-when-compact"><i> (<small><span>Learn how and when to remove this message</span></small>)</i></span></div></td></tr></tbody></table><link href="mw-data:TemplateStyles:r1320445320" rel="mw-deduplicated-inline-style"/><div class="hatnote navigation-not-searchable" role="note">Further information: <span>Mathematics of artificial neural networks</span></div><figure class="mw-default-size mw-halign-right" typeof="mw:File/Thumb"><a class="mw-file-description"><img class="mw-file-element" data-file-height="220" data-file-width="415" decoding="async" height="180" src="//upload.wikimedia.org/wikipedia/commons/thumb/4/44/Neuron3.png/415px-Neuron3.png" srcset="//upload.wikimedia.org/wikipedia/commons/4/44/Neuron3.png 1.5x" width="340"/></a><figcaption>Neuron and myelinated axon, with signal flow from inputs at dendrites to outputs at axon terminals</figcaption></figure>
+<p>ANNs began as an attempt to exploit the architecture of the human brain to perform tasks that conventional algorithms had little success with. They soon reoriented towards improving empirical results, abandoning attempts to remain true to their biological precursors. ANNs have the ability to learn and model non-linearities and complex relationships. This is achieved by neurons being connected in various patterns, allowing the output of some neurons to become the input of others. The network forms a <span>directed</span>, <span>weighted graph</span>.<sup class="reference" id="cite_ref-Zell1994ch5.2_112-0"></sup>
+</p><p>An artificial neural network consists of simulated neurons. Each neuron is connected to other <span>nodes</span> via <span>links</span> like a biological axon-synapse-dendrite connection. All the nodes connected by links take in some data and use it to perform specific operations and tasks on the data. Each link has a weight, determining the strength of one node's influence on another,<sup class="reference" id="cite_ref-Winston_113-0"></sup> allowing weights to choose the signal between neurons.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Artificial_neurons">Artificial neurons</h3></div>
+<link href="mw-data:TemplateStyles:r1320445320" rel="mw-deduplicated-inline-style"/><div class="hatnote navigation-not-searchable" role="note">Main article: <span>Artificial neuron</span></div>
+<p>ANNs are composed of <span>artificial neurons</span> which are conceptually derived from biological <span>neurons</span>. Each artificial neuron has inputs and produces a single output which can be sent to multiple other neurons.<sup class="reference" id="cite_ref-Abbod2007_114-0"></sup> The inputs can be the feature values of a sample of external data, such as images or documents, or they can be the outputs of other neurons. The outputs of the final <i>output neurons</i> of the neural net accomplish the task, such as recognizing an object in an image.<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">[<i><span>citation needed</span></i>]</sup>
+</p><p>To find the output of the neuron we take the weighted sum of all the inputs, weighted by the <i>weights</i> of the <i>connections</i> from the inputs to the neuron. We add a <i>bias</i> term to this sum.<sup class="reference" id="cite_ref-DAWSON1998_115-0"></sup> This weighted sum is sometimes called the <i>activation</i>. This weighted sum is then passed through a (usually nonlinear) activation function to produce the output. The initial inputs are external data, such as images and documents. The ultimate outputs accomplish the task, such as recognizing an object in an image.<sup class="reference" id="cite_ref-116"></sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Organization">Organization</h3></div>
+<p>The neurons are typically organized into multiple layers, especially in deep learning. Neurons of one layer connect only to neurons of the immediately preceding and immediately following layers. The layer that receives external data is the <i>input layer</i>. The layer that produces the ultimate result is the <i>output layer</i>. In between them are zero or more <i>hidden layers</i>. Single layer and unlayered networks are also used. Between two layers, multiple connection patterns are possible. They can be 'fully connected', with every neuron in one layer connecting to every neuron in the next layer. They can be <i>pooling</i>, where a group of neurons in one layer connects to a single neuron in the next layer, thereby reducing the number of neurons in that layer.<sup class="reference" id="cite_ref-flexible_117-0"></sup> Neurons with only such connections form a <span>directed acyclic graph</span> and are known as <span>feedforward networks</span>.<sup class="reference" id="cite_ref-Zell1994p73_118-0"></sup> Alternatively, networks that allow connections between neurons in the same or previous layers are known as <span>recurrent networks</span>.<sup class="reference" id="cite_ref-119"></sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Hyperparameter">Hyperparameter</h3></div>
+<link href="mw-data:TemplateStyles:r1320445320" rel="mw-deduplicated-inline-style"/><div class="hatnote navigation-not-searchable" role="note">Main article: <span>Hyperparameter (machine learning)</span></div>
+<p>A <span>hyperparameter</span> is a constant <span>parameter</span> defining any configurable part of the learning process, whose value is set prior to training.<sup class="reference" id="cite_ref-120"></sup> Examples of hyperparameters include <span>learning rate</span>, batch size and regularization parameters.<sup class="reference" id="cite_ref-121"></sup>. The performance of a neural network is strongly influenced by the choice of hyperparameter values, and thus the hyperparameters are often optimized as part of the training process, a process called hyperparameter tuning or hyperparameter optimization.<sup class="reference" id="cite_ref-122"></sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Learning">Learning</h3></div>
+<link href="mw-data:TemplateStyles:r1305433154" rel="mw-deduplicated-inline-style"/><table class="box-No_footnotes plainlinks metadata ambox ambox-style ambox-No_footnotes" role="presentation"><tbody><tr><td class="mbox-image"><div class="mbox-image-div"><span typeof="mw:File"><span><img alt="" class="mw-file-element" data-file-height="48" data-file-width="48" decoding="async" height="40" src="//upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Text_document_with_red_question_mark.svg/40px-Text_document_with_red_question_mark.svg.png" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Text_document_with_red_question_mark.svg/60px-Text_document_with_red_question_mark.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Text_document_with_red_question_mark.svg/120px-Text_document_with_red_question_mark.svg.png 2x" width="40"/></span></span></div></td><td class="mbox-text"><div class="mbox-text-span">This section includes a <span>list of references</span>, <span>related reading</span>, or <span>external links</span>, <b>but its sources remain unclear because it lacks <span>inline citations</span></b>.<span class="hide-when-compact"> Please help <span>improve</span> this section by <span>introducing</span> more precise citations.</span> <span class="date-container"><i>(<span class="date">August 2019</span>)</i></span><span class="hide-when-compact"><i> (<small><span>Learn how and when to remove this message</span></small>)</i></span></div></td></tr></tbody></table><link href="mw-data:TemplateStyles:r1320445320" rel="mw-deduplicated-inline-style"/><div class="hatnote navigation-not-searchable" role="note">See also: <span>Mathematical optimization</span>, <span>Estimation theory</span>, and <span>Machine learning</span></div>
+<p>Learning is the adaptation of the network to better handle a task by considering sample observations. Learning involves adjusting the weights (and optional thresholds) of the network to improve the accuracy of the result. This is done by minimizing the observed errors. Learning is complete when examining additional observations does not usefully reduce the error rate. Even after learning, the error rate typically does not reach 0. If after learning, the error rate is too high, the network typically must be redesigned. Practically this is done by defining a <span>cost function</span> that is evaluated periodically during learning. As long as its output continues to decline, learning continues. The cost is frequently defined as a <span>statistic</span> whose value can only be approximated. The outputs are actually numbers, so when the error is low, the difference between the output (almost certainly a cat) and the correct answer (cat) is small. Learning attempts to reduce the total of the differences across the observations. Most learning models can be viewed as a straightforward application of <span>optimization</span> theory and <span>statistical estimation</span>.<sup class="reference" id="cite_ref-Zell1994ch5.2_112-1"></sup><sup class="reference" id="cite_ref-123"></sup>
+</p>
+<div class="mw-heading mw-heading4"><h4 id="Learning_rate">Learning rate</h4></div>
+<link href="mw-data:TemplateStyles:r1320445320" rel="mw-deduplicated-inline-style"/><div class="hatnote navigation-not-searchable" role="note">Main article: <span>Learning rate</span></div>
+<p>The learning rate defines the size of the corrective steps that the model takes to adjust for errors in each observation.<sup class="reference" id="cite_ref-124"></sup> A high learning rate shortens the training time, but with lower ultimate accuracy, while a lower learning rate takes longer, but with the potential for greater accuracy. Optimizations such as <span>Quickprop</span> are primarily aimed at speeding up error minimization, while other improvements mainly try to increase reliability. In order to avoid <span>oscillation</span> inside the network such as alternating connection weights, and to improve the rate of convergence, refinements use an <span>adaptive learning rate</span> that increases or decreases as appropriate.<sup class="reference" id="cite_ref-125"></sup> The concept of momentum allows the balance between the gradient and the previous change to be weighted such that the weight adjustment depends to some degree on the previous change. A momentum close to 0 emphasizes the gradient, while a value close to 1 emphasizes the last change.<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">[<i><span>citation needed</span></i>]</sup>
+</p>
+<div class="mw-heading mw-heading4"><h4 id="Cost_function">Cost function</h4></div>
+<p>While it is possible to define a cost function <span>ad hoc</span>, frequently the choice is determined by the function's desirable properties (such as <span>convexity</span>) because it arises from the model (e.g. in a probabilistic model, the model's <span>posterior probability</span> can be used as an inverse cost).<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">[<i><span>citation needed</span></i>]</sup>
+</p>
+<div class="mw-heading mw-heading4"><h4 id="Backpropagation_2">Backpropagation</h4></div>
+<link href="mw-data:TemplateStyles:r1320445320" rel="mw-deduplicated-inline-style"/><div class="hatnote navigation-not-searchable" role="note">Main article: <span>Backpropagation</span></div>
+<p>Backpropagation is a method used to adjust the connection weights to compensate for each error found during learning. The error amount is effectively divided among the connections. Technically, backpropagation calculates the <span>gradient</span> (the derivative) of the <span>cost function</span> associated with a given state with respect to the weights. The weight updates can be done via stochastic gradient descent or other methods, such as <i><span>extreme learning machines</span></i>,<sup class="reference" id="cite_ref-126"></sup> "no-prop" networks,<sup class="reference" id="cite_ref-127"></sup> training without backtracking,<sup class="reference" id="cite_ref-128"></sup> "weightless" networks,<sup class="reference" id="cite_ref-RBMTRAIN_129-0"></sup><sup class="reference" id="cite_ref-130"></sup> and <span>non-connectionist neural networks</span>.<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">[<i><span>citation needed</span></i>]</sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Learning_paradigms">Learning paradigms</h3></div>
+<link href="mw-data:TemplateStyles:r1305433154" rel="mw-deduplicated-inline-style"/><table class="box-No_footnotes plainlinks metadata ambox ambox-style ambox-No_footnotes" role="presentation"><tbody><tr><td class="mbox-image"><div class="mbox-image-div"><span typeof="mw:File"><span><img alt="" class="mw-file-element" data-file-height="48" data-file-width="48" decoding="async" height="40" src="//upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Text_document_with_red_question_mark.svg/40px-Text_document_with_red_question_mark.svg.png" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Text_document_with_red_question_mark.svg/60px-Text_document_with_red_question_mark.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Text_document_with_red_question_mark.svg/120px-Text_document_with_red_question_mark.svg.png 2x" width="40"/></span></span></div></td><td class="mbox-text"><div class="mbox-text-span">This section includes a <span>list of references</span>, <span>related reading</span>, or <span>external links</span>, <b>but its sources remain unclear because it lacks <span>inline citations</span></b>.<span class="hide-when-compact"> Please help <span>improve</span> this section by <span>introducing</span> more precise citations.</span> <span class="date-container"><i>(<span class="date">August 2019</span>)</i></span><span class="hide-when-compact"><i> (<small><span>Learn how and when to remove this message</span></small>)</i></span></div></td></tr></tbody></table>
+<p>Machine learning is commonly separated into three main learning paradigms, <span>supervised learning</span>,<sup class="reference" id="cite_ref-131"></sup> <span>unsupervised learning</span><sup class="reference" id="cite_ref-132"></sup> and <span>reinforcement learning</span>.<sup class="reference" id="cite_ref-133"></sup> Each corresponds to a particular learning task.
+</p>
+<div class="mw-heading mw-heading4"><h4 id="Supervised_learning">Supervised learning</h4></div>
+<p><span>Supervised learning</span> uses a set of paired inputs and desired outputs. The learning task is to produce the desired output for each input. In this case, the cost function is related to eliminating incorrect deductions.<sup class="reference" id="cite_ref-134"></sup> A commonly used cost is the <span>mean-squared error</span>, which tries to minimize the average squared error between the network's output and the desired output. Tasks suited for supervised learning are <span>pattern recognition</span> (also known as classification) and <span>regression</span> (also known as function approximation). Supervised learning is also applicable to sequential data (e.g., for handwriting, speech and <span>gesture recognition</span>). This can be thought of as learning with a "teacher", in the form of a function that provides continuous feedback on the quality of solutions obtained thus far.
+</p>
+<div class="mw-heading mw-heading4"><h4 id="Unsupervised_learning">Unsupervised learning</h4></div>
+<p>In <span>unsupervised learning</span>, input data is given along with the cost function, some function of the data <span class="mwe-math-element mwe-math-element-inline"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math alttext="{\displaystyle \textstyle x}" xmlns="http://www.w3.org/1998/Math/MathML">
+<semantics>
+<mrow class="MJX-TeXAtom-ORD">
+<mstyle displaystyle="true" scriptlevel="0">
+<mstyle displaystyle="false" scriptlevel="0">
+<mi>x</mi>
+</mstyle>
+</mstyle>
+</mrow>
+<annotation encoding="application/x-tex">{\displaystyle \textstyle x}</annotation>
+</semantics>
+</math></span><img alt="{\displaystyle \textstyle x}" aria-hidden="true" class="mwe-math-fallback-image-inline mw-invert skin-invert" src="https://wikimedia.org/api/rest_v1/media/math/render/svg/1bd1c9e87a24e459706fa8e63b9e5d94db4540b4" style="vertical-align: -0.338ex; width:1.33ex; height:1.676ex;"/></span> and the network's output. The cost function is dependent on the task (the model domain) and any <i><span>a priori</span></i> assumptions (the implicit properties of the model, its parameters and the observed variables). As a trivial example, consider the model <span class="mwe-math-element mwe-math-element-inline"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math alttext="{\displaystyle \textstyle f(x)=a}" xmlns="http://www.w3.org/1998/Math/MathML">
+<semantics>
+<mrow class="MJX-TeXAtom-ORD">
+<mstyle displaystyle="true" scriptlevel="0">
+<mstyle displaystyle="false" scriptlevel="0">
+<mi>f</mi>
+<mo stretchy="false">(</mo>
+<mi>x</mi>
+<mo stretchy="false">)</mo>
+<mo>=</mo>
+<mi>a</mi>
+</mstyle>
+</mstyle>
+</mrow>
+<annotation encoding="application/x-tex">{\displaystyle \textstyle f(x)=a}</annotation>
+</semantics>
+</math></span><img alt="{\displaystyle \textstyle f(x)=a}" aria-hidden="true" class="mwe-math-fallback-image-inline mw-invert skin-invert" src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a0e4cc2a7c5c4f65d59b669d64c7759623c648c5" style="vertical-align: -0.838ex; width:8.746ex; height:2.843ex;"/></span> where <span class="mwe-math-element mwe-math-element-inline"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math alttext="{\displaystyle \textstyle a}" xmlns="http://www.w3.org/1998/Math/MathML">
+<semantics>
+<mrow class="MJX-TeXAtom-ORD">
+<mstyle displaystyle="true" scriptlevel="0">
+<mstyle displaystyle="false" scriptlevel="0">
+<mi>a</mi>
+</mstyle>
+</mstyle>
+</mrow>
+<annotation encoding="application/x-tex">{\displaystyle \textstyle a}</annotation>
+</semantics>
+</math></span><img alt="{\displaystyle \textstyle a}" aria-hidden="true" class="mwe-math-fallback-image-inline mw-invert skin-invert" src="https://wikimedia.org/api/rest_v1/media/math/render/svg/7abc4e8a2ef67ff9b7ad050afa4cf286c3ec0cd3" style="vertical-align: -0.338ex; width:1.23ex; height:1.676ex;"/></span> is a constant and the cost <span class="mwe-math-element mwe-math-element-inline"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math alttext="{\displaystyle \textstyle C=E[(x-f(x))^{2}]}" xmlns="http://www.w3.org/1998/Math/MathML">
+<semantics>
+<mrow class="MJX-TeXAtom-ORD">
+<mstyle displaystyle="true" scriptlevel="0">
+<mstyle displaystyle="false" scriptlevel="0">
+<mi>C</mi>
+<mo>=</mo>
+<mi>E</mi>
+<mo stretchy="false">[</mo>
+<mo stretchy="false">(</mo>
+<mi>x</mi>
+<mo>-<!-- - --></mo>
+<mi>f</mi>
+<mo stretchy="false">(</mo>
+<mi>x</mi>
+<mo stretchy="false">)</mo>
+<msup>
+<mo stretchy="false">)</mo>
+<mrow class="MJX-TeXAtom-ORD">
+<mn>2</mn>
+</mrow>
+</msup>
+<mo stretchy="false">]</mo>
+</mstyle>
+</mstyle>
+</mrow>
+<annotation encoding="application/x-tex">{\displaystyle \textstyle C=E[(x-f(x))^{2}]}</annotation>
+</semantics>
+</math></span><img alt="{\displaystyle \textstyle C=E[(x-f(x))^{2}]}" aria-hidden="true" class="mwe-math-fallback-image-inline mw-invert skin-invert" src="https://wikimedia.org/api/rest_v1/media/math/render/svg/2929ecb1606fdfeaddc55477d9671e11c034e21c" style="vertical-align: -0.838ex; width:19.385ex; height:3.009ex;"/></span>. Minimizing this cost produces a value of <span class="mwe-math-element mwe-math-element-inline"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math alttext="{\displaystyle \textstyle a}" xmlns="http://www.w3.org/1998/Math/MathML">
+<semantics>
+<mrow class="MJX-TeXAtom-ORD">
+<mstyle displaystyle="true" scriptlevel="0">
+<mstyle displaystyle="false" scriptlevel="0">
+<mi>a</mi>
+</mstyle>
+</mstyle>
+</mrow>
+<annotation encoding="application/x-tex">{\displaystyle \textstyle a}</annotation>
+</semantics>
+</math></span><img alt="{\displaystyle \textstyle a}" aria-hidden="true" class="mwe-math-fallback-image-inline mw-invert skin-invert" src="https://wikimedia.org/api/rest_v1/media/math/render/svg/7abc4e8a2ef67ff9b7ad050afa4cf286c3ec0cd3" style="vertical-align: -0.338ex; width:1.23ex; height:1.676ex;"/></span> that is equal to the mean of the data. The cost function can be much more complicated. Its form depends on the application: for example, in <span>compression</span> it could be related to the <span>mutual information</span> between <span class="mwe-math-element mwe-math-element-inline"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math alttext="{\displaystyle \textstyle x}" xmlns="http://www.w3.org/1998/Math/MathML">
+<semantics>
+<mrow class="MJX-TeXAtom-ORD">
+<mstyle displaystyle="true" scriptlevel="0">
+<mstyle displaystyle="false" scriptlevel="0">
+<mi>x</mi>
+</mstyle>
+</mstyle>
+</mrow>
+<annotation encoding="application/x-tex">{\displaystyle \textstyle x}</annotation>
+</semantics>
+</math></span><img alt="{\displaystyle \textstyle x}" aria-hidden="true" class="mwe-math-fallback-image-inline mw-invert skin-invert" src="https://wikimedia.org/api/rest_v1/media/math/render/svg/1bd1c9e87a24e459706fa8e63b9e5d94db4540b4" style="vertical-align: -0.338ex; width:1.33ex; height:1.676ex;"/></span> and <span class="mwe-math-element mwe-math-element-inline"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math alttext="{\displaystyle \textstyle f(x)}" xmlns="http://www.w3.org/1998/Math/MathML">
+<semantics>
+<mrow class="MJX-TeXAtom-ORD">
+<mstyle displaystyle="true" scriptlevel="0">
+<mstyle displaystyle="false" scriptlevel="0">
+<mi>f</mi>
+<mo stretchy="false">(</mo>
+<mi>x</mi>
+<mo stretchy="false">)</mo>
+</mstyle>
+</mstyle>
+</mrow>
+<annotation encoding="application/x-tex">{\displaystyle \textstyle f(x)}</annotation>
+</semantics>
+</math></span><img alt="{\displaystyle \textstyle f(x)}" aria-hidden="true" class="mwe-math-fallback-image-inline mw-invert skin-invert" src="https://wikimedia.org/api/rest_v1/media/math/render/svg/e0fa998ae55408f7f94d08ee08a04fcf92330878" style="vertical-align: -0.838ex; width:4.418ex; height:2.843ex;"/></span>, whereas in statistical modeling, it could be related to the <span>posterior probability</span> of the model given the data (note that in both of those examples, those quantities would be maximized rather than minimized). Tasks that fall within the paradigm of unsupervised learning are in general <span>estimation</span> problems; the applications include <span>clustering</span>, the estimation of <span>statistical distributions</span>, <span>compression</span> and <span>filtering</span>.
+</p>
+<div class="mw-heading mw-heading4"><h4 id="Reinforcement_learning">Reinforcement learning</h4></div>
+<link href="mw-data:TemplateStyles:r1320445320" rel="mw-deduplicated-inline-style"/><div class="hatnote navigation-not-searchable" role="note">Main article: <span>Reinforcement learning</span></div>
+<link href="mw-data:TemplateStyles:r1320445320" rel="mw-deduplicated-inline-style"/><div class="hatnote navigation-not-searchable" role="note">See also: <span>Stochastic control</span></div>
+<p>In applications such as playing video games, an actor takes a string of actions, receiving a generally unpredictable response from the environment after each one. The goal is to win the game, i.e., generate the most positive (lowest cost) responses. In <span>reinforcement learning</span>, the aim is to weight the network (devise a policy) to perform actions that minimize long-term (expected cumulative) cost. At each point in time the agent performs an action and the environment generates an observation and an <span>instantaneous</span> cost, according to some (usually unknown) rules. The rules and the long-term cost usually only can be estimated. At any juncture, the agent decides whether to explore new actions to uncover their costs or to exploit prior learning to proceed more quickly.
+</p><p>Formally, the environment is modeled as a <span>Markov decision process</span> (MDP) with states <span class="mwe-math-element mwe-math-element-inline"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math alttext="{\displaystyle \textstyle {s_{1},...,s_{n}}\in S}" xmlns="http://www.w3.org/1998/Math/MathML">
+<semantics>
+<mrow class="MJX-TeXAtom-ORD">
+<mstyle displaystyle="true" scriptlevel="0">
+<mstyle displaystyle="false" scriptlevel="0">
+<mrow class="MJX-TeXAtom-ORD">
+<msub>
+<mi>s</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mn>1</mn>
+</mrow>
+</msub>
+<mo>,</mo>
+<mo>.</mo>
+<mo>.</mo>
+<mo>.</mo>
+<mo>,</mo>
+<msub>
+<mi>s</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>n</mi>
+</mrow>
+</msub>
+</mrow>
+<mo><!-- --></mo>
+<mi>S</mi>
+</mstyle>
+</mstyle>
+</mrow>
+<annotation encoding="application/x-tex">{\displaystyle \textstyle {s_{1},...,s_{n}}\in S}</annotation>
+</semantics>
+</math></span><img alt="{\displaystyle \textstyle {s_{1},...,s_{n}}\in S}" aria-hidden="true" class="mwe-math-fallback-image-inline mw-invert skin-invert" src="https://wikimedia.org/api/rest_v1/media/math/render/svg/594ab196af08f0326623318ae24ea08359f03c2f" style="vertical-align: -0.671ex; width:13.963ex; height:2.509ex;"/></span> and actions <span class="mwe-math-element mwe-math-element-inline"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math alttext="{\displaystyle \textstyle {a_{1},...,a_{m}}\in A}" xmlns="http://www.w3.org/1998/Math/MathML">
+<semantics>
+<mrow class="MJX-TeXAtom-ORD">
+<mstyle displaystyle="true" scriptlevel="0">
+<mstyle displaystyle="false" scriptlevel="0">
+<mrow class="MJX-TeXAtom-ORD">
+<msub>
+<mi>a</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mn>1</mn>
+</mrow>
+</msub>
+<mo>,</mo>
+<mo>.</mo>
+<mo>.</mo>
+<mo>.</mo>
+<mo>,</mo>
+<msub>
+<mi>a</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>m</mi>
+</mrow>
+</msub>
+</mrow>
+<mo><!-- --></mo>
+<mi>A</mi>
+</mstyle>
+</mstyle>
+</mrow>
+<annotation encoding="application/x-tex">{\displaystyle \textstyle {a_{1},...,a_{m}}\in A}</annotation>
+</semantics>
+</math></span><img alt="{\displaystyle \textstyle {a_{1},...,a_{m}}\in A}" aria-hidden="true" class="mwe-math-fallback-image-inline mw-invert skin-invert" src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c1a2b52db3ad57568da895b2171c90ae6e0de377" style="vertical-align: -0.671ex; width:14.942ex; height:2.509ex;"/></span>. Because the state transitions are not known, probability distributions are used instead: the instantaneous cost distribution <span class="mwe-math-element mwe-math-element-inline"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math alttext="{\displaystyle \textstyle P(c_{t}|s_{t})}" xmlns="http://www.w3.org/1998/Math/MathML">
+<semantics>
+<mrow class="MJX-TeXAtom-ORD">
+<mstyle displaystyle="true" scriptlevel="0">
+<mstyle displaystyle="false" scriptlevel="0">
+<mi>P</mi>
+<mo stretchy="false">(</mo>
+<msub>
+<mi>c</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>t</mi>
+</mrow>
+</msub>
+<mrow class="MJX-TeXAtom-ORD">
+<mo stretchy="false">|</mo>
+</mrow>
+<msub>
+<mi>s</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>t</mi>
+</mrow>
+</msub>
+<mo stretchy="false">)</mo>
+</mstyle>
+</mstyle>
+</mrow>
+<annotation encoding="application/x-tex">{\displaystyle \textstyle P(c_{t}|s_{t})}</annotation>
+</semantics>
+</math></span><img alt="{\displaystyle \textstyle P(c_{t}|s_{t})}" aria-hidden="true" class="mwe-math-fallback-image-inline mw-invert skin-invert" src="https://wikimedia.org/api/rest_v1/media/math/render/svg/d64a75ad0caf0be43f971b53a2c16b637bf8bb20" style="vertical-align: -0.838ex; width:7.951ex; height:2.843ex;"/></span>, the observation distribution <span class="mwe-math-element mwe-math-element-inline"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math alttext="{\displaystyle \textstyle P(x_{t}|s_{t})}" xmlns="http://www.w3.org/1998/Math/MathML">
+<semantics>
+<mrow class="MJX-TeXAtom-ORD">
+<mstyle displaystyle="true" scriptlevel="0">
+<mstyle displaystyle="false" scriptlevel="0">
+<mi>P</mi>
+<mo stretchy="false">(</mo>
+<msub>
+<mi>x</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>t</mi>
+</mrow>
+</msub>
+<mrow class="MJX-TeXAtom-ORD">
+<mo stretchy="false">|</mo>
+</mrow>
+<msub>
+<mi>s</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>t</mi>
+</mrow>
+</msub>
+<mo stretchy="false">)</mo>
+</mstyle>
+</mstyle>
+</mrow>
+<annotation encoding="application/x-tex">{\displaystyle \textstyle P(x_{t}|s_{t})}</annotation>
+</semantics>
+</math></span><img alt="{\displaystyle \textstyle P(x_{t}|s_{t})}" aria-hidden="true" class="mwe-math-fallback-image-inline mw-invert skin-invert" src="https://wikimedia.org/api/rest_v1/media/math/render/svg/591cc95a2eb71b92b0fc200675bc8037094a37f0" style="vertical-align: -0.838ex; width:8.274ex; height:2.843ex;"/></span> and the transition distribution <span class="mwe-math-element mwe-math-element-inline"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math alttext="{\displaystyle \textstyle P(s_{t+1}|s_{t},a_{t})}" xmlns="http://www.w3.org/1998/Math/MathML">
+<semantics>
+<mrow class="MJX-TeXAtom-ORD">
+<mstyle displaystyle="true" scriptlevel="0">
+<mstyle displaystyle="false" scriptlevel="0">
+<mi>P</mi>
+<mo stretchy="false">(</mo>
+<msub>
+<mi>s</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>t</mi>
+<mo>+</mo>
+<mn>1</mn>
+</mrow>
+</msub>
+<mrow class="MJX-TeXAtom-ORD">
+<mo stretchy="false">|</mo>
+</mrow>
+<msub>
+<mi>s</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>t</mi>
+</mrow>
+</msub>
+<mo>,</mo>
+<msub>
+<mi>a</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>t</mi>
+</mrow>
+</msub>
+<mo stretchy="false">)</mo>
+</mstyle>
+</mstyle>
+</mrow>
+<annotation encoding="application/x-tex">{\displaystyle \textstyle P(s_{t+1}|s_{t},a_{t})}</annotation>
+</semantics>
+</math></span><img alt="{\displaystyle \textstyle P(s_{t+1}|s_{t},a_{t})}" aria-hidden="true" class="mwe-math-fallback-image-inline mw-invert skin-invert" src="https://wikimedia.org/api/rest_v1/media/math/render/svg/0200f5e1c5ad6c6114027fd0f660399c8b584d71" style="vertical-align: -0.838ex; width:13.225ex; height:2.843ex;"/></span>, while a policy is defined as the conditional distribution over actions given the observations. Taken together, the two define a <span>Markov chain</span> (MC). The aim is to discover the lowest-cost MC.
+</p><p>ANNs serve as the learning component in such applications.<sup class="reference" id="cite_ref-135"></sup><sup class="reference" id="cite_ref-136"></sup> <span>Dynamic programming</span> coupled with ANNs (giving <span>neurodynamic</span> programming)<sup class="reference" id="cite_ref-137"></sup> has been applied to problems such as those involved in <span>vehicle routing</span>,<sup class="reference" id="cite_ref-138"></sup> video games, <span>natural resource management</span><sup class="reference" id="cite_ref-139"></sup><sup class="reference" id="cite_ref-140"></sup> and <span>medicine</span><sup class="reference" id="cite_ref-141"></sup> because of ANNs ability to mitigate losses of accuracy even when reducing the <span>discretization</span> grid density for numerically approximating the solution of control problems. Tasks that fall within the paradigm of reinforcement learning are control problems, <span>games</span> and other sequential decision making tasks.
+</p>
+<div class="mw-heading mw-heading4"><h4 id="Self-learning">Self-learning</h4></div>
+<p>Self-learning in neural networks was introduced in 1982 along with a neural network capable of self-learning named <i>crossbar adaptive array</i> (CAA).<sup class="reference" id="cite_ref-142"></sup> It is a system with only one input, situation s, and only one output, action (or behavior) a. It has neither external advice input nor external reinforcement input from the environment. The CAA computes, in a crossbar fashion, both decisions about actions and emotions (feelings) about encountered situations. The system is driven by the interaction between cognition and emotion.<sup class="reference" id="cite_ref-143"></sup> Given the memory matrix, W =||w(a,s)||, the crossbar self-learning algorithm in each iteration performs the following computation:
+</p>
+<pre> In situation s perform action a;
+ Receive consequence situation s';
+ Compute emotion of being in consequence situation v(s');
+ Update crossbar memory w'(a,s) = w(a,s) + v(s').
+</pre>
+<p>The backpropagated value (secondary reinforcement) is the emotion toward the consequence situation. The CAA exists in two environments, one is behavioral environment where it behaves, and the other is genetic environment, where from it receives initial emotions (only once) about to be encountered situations in the behavioral environment. Having received the genome vector (species vector) from the genetic environment, the CAA will learn a goal-seeking behavior, in the behavioral environment that contains both desirable and undesirable situations.<sup class="reference" id="cite_ref-144"></sup>
+</p>
+<div class="mw-heading mw-heading4"><h4 id="Neuroevolution">Neuroevolution</h4></div>
+<link href="mw-data:TemplateStyles:r1320445320" rel="mw-deduplicated-inline-style"/><div class="hatnote navigation-not-searchable" role="note">Main article: <a href="" onclick="message(this)" title="Neuroevolution">Neuroevolution</a></div>
+<p><a href="" onclick="message(this)" title="Neuroevolution">Neuroevolution</a> can create neural network topologies and weights using <span>evolutionary computation</span>. It is competitive with sophisticated gradient descent approaches.<sup class="reference" id="cite_ref-145"></sup><sup class="reference" id="cite_ref-146"></sup> One advantage of neuroevolution is that it may be less prone to get caught in "dead ends".<sup class="reference" id="cite_ref-147"></sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Stochastic_neural_network">Stochastic neural network</h3></div>
+<p><b>Stochastic neural networks</b> originating from <span>Sherrington-Kirkpatrick models</span> are a type of artificial neural network built by introducing random variations into the network, either by giving the network's artificial neurons <span>stochastic</span> transfer functions <sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">[<i><span>citation needed</span></i>]</sup>, or by giving them stochastic weights. This makes them useful tools for <span>optimization</span> problems, since the random fluctuations help the network escape from <span>local minima</span>.<sup class="reference" id="cite_ref-148"></sup> Stochastic neural networks trained using a <span>Bayesian</span> approach are known as <b>Bayesian neural networks</b>.<sup class="reference" id="cite_ref-149"></sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Topological_deep_learning">Topological deep learning</h3></div>
+<p><span>Topological deep learning</span>, first introduced in 2017,<sup class="reference" id="cite_ref-150"></sup> is an emerging approach in <span>machine learning</span> that integrates topology with deep neural networks to address highly intricate and high-order data. Initially rooted in <span>algebraic topology</span>, TDL has since evolved into a versatile framework incorporating tools from other mathematical disciplines, such as <span>differential topology</span> and <span>geometric topology</span>. As a successful example of mathematical deep learning, TDL continues to inspire advancements in mathematical <a href="" onclick="message(this)" title="Artificial intelligence">artificial intelligence</a>, fostering a mutually beneficial relationship between AI and <span>mathematics</span>.  
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Other">Other</h3></div>
+<p>In a <span>Bayesian</span> framework, a distribution over the set of allowed models is chosen to minimize the cost. <span>Evolutionary methods</span>,<sup class="reference" id="cite_ref-151"></sup> <span>gene expression programming</span>,<sup class="reference" id="cite_ref-152"></sup> <span>simulated annealing</span>,<sup class="reference" id="cite_ref-153"></sup> <span>expectation-maximization</span>, <span>non-parametric methods</span> and <span>particle swarm optimization</span><sup class="reference" id="cite_ref-154"></sup> are other learning algorithms. Convergent recursion is a learning algorithm for <span>cerebellar model articulation controller</span> (CMAC) neural networks.<sup class="reference" id="cite_ref-Qin1_155-0"></sup><sup class="reference" id="cite_ref-Qin2_156-0"></sup>
+</p>
+<div class="mw-heading mw-heading4"><h4 id="Modes">Modes</h4></div>
+<link href="mw-data:TemplateStyles:r1305433154" rel="mw-deduplicated-inline-style"/><table class="box-No_footnotes plainlinks metadata ambox ambox-style ambox-No_footnotes" role="presentation"><tbody><tr><td class="mbox-image"><div class="mbox-image-div"><span typeof="mw:File"><span><img alt="" class="mw-file-element" data-file-height="48" data-file-width="48" decoding="async" height="40" src="//upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Text_document_with_red_question_mark.svg/40px-Text_document_with_red_question_mark.svg.png" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Text_document_with_red_question_mark.svg/60px-Text_document_with_red_question_mark.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Text_document_with_red_question_mark.svg/120px-Text_document_with_red_question_mark.svg.png 2x" width="40"/></span></span></div></td><td class="mbox-text"><div class="mbox-text-span">This section includes a <span>list of references</span>, <span>related reading</span>, or <span>external links</span>, <b>but its sources remain unclear because it lacks <span>inline citations</span></b>.<span class="hide-when-compact"> Please help <span>improve</span> this section by <span>introducing</span> more precise citations.</span> <span class="date-container"><i>(<span class="date">August 2019</span>)</i></span><span class="hide-when-compact"><i> (<small><span>Learn how and when to remove this message</span></small>)</i></span></div></td></tr></tbody></table>
+<p>Two modes of learning are available: stochastic and batch. In stochastic learning, each input creates a weight adjustment. In batch learning, weights are adjusted based on a batch of inputs, accumulating errors over the batch. Stochastic learning introduces "noise" into the process, using the local gradient calculated from one data point; this reduces the chance of the network getting stuck in local minima. However, batch learning typically yields a faster, more stable descent to a local minimum, since each update is performed in the direction of the batch's average error. A common compromise is to use "mini-batches", small batches with samples in each batch selected stochastically from the entire data set.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Types">Types</h2></div>
+<link href="mw-data:TemplateStyles:r1320445320" rel="mw-deduplicated-inline-style"/><div class="hatnote navigation-not-searchable" role="note">Main article: <span>Types of artificial neural networks</span></div>
+<p>ANNs have evolved into a broad family of techniques that have advanced the state of the art across multiple domains. The simplest types have one or more static components, including number of units, number of layers, unit weights and <span>topology</span>. Dynamic types allow one or more of these to evolve via learning. The latter is much more complicated but can shorten learning periods and produce better results. Some types allow/require learning to be "supervised" by the operator, while others operate independently. Some types operate purely in hardware, while others are purely software and run on general purpose computers.
+</p><p>Some of the main breakthroughs include: 
+</p>
+<ul><li>Convolutional neural networks that have proven particularly successful in processing visual and other two-dimensional data;<sup class="reference" id="cite_ref-157"></sup><sup class="reference" id="cite_ref-lecun2016slides_158-0"></sup> where long short-term memory avoids the <span>vanishing gradient problem</span><sup class="reference" id="cite_ref-:03_159-0"></sup> and can handle signals that have a mix of low and high frequency components aiding large-vocabulary speech recognition,<sup class="reference" id="cite_ref-sak2014_160-0"></sup><sup class="reference" id="cite_ref-liwu2015_161-0"></sup> <span>text-to-speech synthesis</span>,<sup class="reference" id="cite_ref-162"></sup><sup class="reference" id="cite_ref-scholarpedia2_163-0"></sup><sup class="reference" id="cite_ref-zen2015_164-0"></sup> and photo-real talking heads.<sup class="reference" id="cite_ref-fan2015_165-0"></sup>Convolutional Neural Networks have also been applied to fraud detection<sup class="reference" id="cite_ref-166"></sup><sup class="reference" id="cite_ref-167"></sup>.</li>
+<li>Competitive networks such as <span>generative adversarial networks</span> in which multiple networks (of varying structure) compete with each other, on tasks such as winning a game<sup class="reference" id="cite_ref-preprint_168-0"></sup> or on deceiving the opponent about the authenticity of an input.<sup class="reference" id="cite_ref-GANnips_94-1"></sup></li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Network_design">Network design</h2></div>
+<p>Using artificial neural networks requires an understanding of their characteristics.
+</p>
+<ul><li>Choice of model: This depends on the data representation and the application. Model parameters include the number, type, and connectedness of network layers, as well as the size of each and the connection type (full, pooling, etc.). Overly complex models learn slowly.</li>
+<li><span>Learning algorithm</span>: Numerous trade-offs exist between learning algorithms. Almost any algorithm will work well with the correct hyperparameters<sup class="reference" id="cite_ref-169"></sup> for training on a particular data set. However, selecting and tuning an algorithm for training on unseen data requires significant experimentation.</li>
+<li><span>Robustness</span>: If the model, cost function and learning algorithm are selected appropriately, the resulting ANN can become robust.</li></ul>
+<p><span>Neural architecture search</span> (NAS) uses machine learning to automate ANN design. Various approaches to NAS have designed networks that compare well with hand-designed systems. The basic search algorithm is to propose a candidate model, evaluate it against a dataset, and use the results as feedback to teach the NAS network.<sup class="reference" id="cite_ref-170"></sup> Available systems include <span>AutoML</span> and AutoKeras.<sup class="reference" id="cite_ref-171"></sup> <span>scikit-learn library</span> provides functions to help with building a deep network from scratch. We can then implement a deep network with <span>TensorFlow</span> or <span>Keras</span>.
+</p><p>Hyperparameters must also be defined as part of the design (they are not learned), governing matters such as how many neurons are in each layer, learning rate, step, stride, depth, receptive field and padding (for CNNs), etc.<sup class="reference" id="cite_ref-abs1502.02127_172-0"></sup> <span class="citation-needed-content" style="padding-left:0.1em; padding-right:0.1em; color:var(--color-subtle, #54595d); border:1px solid var(--border-color-subtle, #c8ccd1);">The <span>Python</span> code snippet provides an overview of the training function, which uses the training dataset, number of hidden layer units, learning rate, and number of iterations as parameters:</span><sup class="noprint Inline-Template Template-Fact" style="margin-left:0.1em; white-space:nowrap;">[<i><span>citation needed</span></i>]</sup>
+</p>
+<div class="mw-highlight mw-highlight-lang-python3 mw-content-ltr mw-highlight-lines" dir="ltr"><pre><span></span><span class="linenos" data-line="1"></span><span class="k">def</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n_hidden</span><span class="p">,</span> <span class="n">learning_rate</span><span class="p">,</span> <span class="n">n_iter</span><span class="p">):</span>
+<span class="linenos" data-line="2"></span><span class="w">    </span><span class="sd">"""Training function.</span>
+<span class="linenos" data-line="3"></span>
+<span class="linenos" data-line="4"></span><span class="sd">    Args:</span>
+<span class="linenos" data-line="5"></span><span class="sd">      X: Argument X.</span>
+<span class="linenos" data-line="6"></span><span class="sd">      y: Argument y.</span>
+<span class="linenos" data-line="7"></span><span class="sd">      n_hidden: The number of hidden layer units.</span>
+<span class="linenos" data-line="8"></span><span class="sd">      learning_rate: The learning rate.</span>
+<span class="linenos" data-line="9"></span><span class="sd">      n_iter: The number of iterations.</span>
+<span class="linenos" data-line="10"></span>
+<span class="linenos" data-line="11"></span><span class="sd">    Returns:</span>
+<span class="linenos" data-line="12"></span><span class="sd">      dict: A dictionary.</span>
+<span class="linenos" data-line="13"></span><span class="sd">    """</span>
+<span class="linenos" data-line="14"></span>    <span class="n">m</span><span class="p">,</span> <span class="n">n_input</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+<span class="linenos" data-line="15"></span>
+<span class="linenos" data-line="16"></span>    <span class="c1"># 1. random initialize weights and biases</span>
+<span class="linenos" data-line="17"></span>    <span class="n">w1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_input</span><span class="p">,</span> <span class="n">n_hidden</span><span class="p">)</span>
+<span class="linenos" data-line="18"></span>    <span class="n">b1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_hidden</span><span class="p">))</span>
+<span class="linenos" data-line="19"></span>    <span class="n">w2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_hidden</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="linenos" data-line="20"></span>    <span class="n">b2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="linenos" data-line="21"></span>
+<span class="linenos" data-line="22"></span>    <span class="c1"># 2. in each iteration, feed all layers with the latest weights and biases</span>
+<span class="linenos" data-line="23"></span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_iter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+<span class="linenos" data-line="24"></span>        <span class="n">z2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">w1</span><span class="p">)</span> <span class="o">+</span> <span class="n">b1</span>
+<span class="linenos" data-line="25"></span>        <span class="n">a2</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">z2</span><span class="p">)</span>
+<span class="linenos" data-line="26"></span>        <span class="n">z3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a2</span><span class="p">,</span> <span class="n">w2</span><span class="p">)</span> <span class="o">+</span> <span class="n">b2</span>
+<span class="linenos" data-line="27"></span>        <span class="n">a3</span> <span class="o">=</span> <span class="n">z3</span>
+<span class="linenos" data-line="28"></span>        <span class="n">dz3</span> <span class="o">=</span> <span class="n">a3</span> <span class="o">-</span> <span class="n">y</span>
+<span class="linenos" data-line="29"></span>        <span class="n">dw2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a2</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">dz3</span><span class="p">)</span>
+<span class="linenos" data-line="30"></span>        <span class="n">db2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dz3</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="linenos" data-line="31"></span>        <span class="n">dz2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">dz3</span><span class="p">,</span> <span class="n">w2</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="n">sigmoid_derivative</span><span class="p">(</span><span class="n">z2</span><span class="p">)</span>
+<span class="linenos" data-line="32"></span>        <span class="n">dw1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">dz2</span><span class="p">)</span>
+<span class="linenos" data-line="33"></span>        <span class="n">db1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dz2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos" data-line="34"></span>
+<span class="linenos" data-line="35"></span>        <span class="c1"># 3. update weights and biases with gradients</span>
+<span class="linenos" data-line="36"></span>        <span class="n">w1</span> <span class="o">-=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">dw1</span> <span class="o">/</span> <span class="n">m</span>
+<span class="linenos" data-line="37"></span>        <span class="n">w2</span> <span class="o">-=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">dw2</span> <span class="o">/</span> <span class="n">m</span>
+<span class="linenos" data-line="38"></span>        <span class="n">b1</span> <span class="o">-=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">db1</span> <span class="o">/</span> <span class="n">m</span>
+<span class="linenos" data-line="39"></span>        <span class="n">b2</span> <span class="o">-=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">db2</span> <span class="o">/</span> <span class="n">m</span>
+<span class="linenos" data-line="40"></span>
+<span class="linenos" data-line="41"></span>        <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">1000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos" data-line="42"></span>            <span class="nb">print</span><span class="p">(</span><span class="s2">"Epoch"</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s2">"loss: "</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">dz3</span><span class="p">)))</span>
+<span class="linenos" data-line="43"></span>
+<span class="linenos" data-line="44"></span>    <span class="n">model</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"w1"</span><span class="p">:</span> <span class="n">w1</span><span class="p">,</span> <span class="s2">"b1"</span><span class="p">:</span> <span class="n">b1</span><span class="p">,</span> <span class="s2">"w2"</span><span class="p">:</span> <span class="n">w2</span><span class="p">,</span> <span class="s2">"b2"</span><span class="p">:</span> <span class="n">b2</span><span class="p">}</span>
+<span class="linenos" data-line="45"></span>    <span class="k">return</span> <span class="n">model</span>
+</pre></div>
+<p><br/>
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Monitoring_and_concept_drift_detection_of_ANNs">Monitoring and concept drift detection of ANNs</h2></div>
+<p>When neural networks are deployed in real-world applications, the statistical properties of the input data may change over time, a phenomenon known as <span>concept drift</span> or <span>non-stationarity</span>. Drift can reduce predictive accuracy and lead to unreliable or biased decisions if it is not detected and corrected. In practice, this means that the model's accuracy in deployment may differ substantially from the levels observed during training or cross-validation.  
+</p><p>Several strategies have been developed to monitor neural networks for drift and degradation:  
+</p>
+<ul><li><b>Error-based monitoring</b>: comparing current predictions against ground-truth labels when they become available. This approach directly quantifies predictive performance but may be impractical when labels are delayed or costly to obtain.</li>
+<li><b>Data distribution monitoring</b>: detecting changes in the input data distribution using statistical tests, divergence measures, or density-ratio estimation.</li>
+<li><b>Representation monitoring</b>: tracking the distribution of internal <i>embeddings</i> or hidden-layer features. Shifts in the latent representation can indicate nonstationarity even when labels are unavailable. Statistical methods such as <i><span>statistical process control</span></i> charts have been adapted for this purpose.<sup class="reference" id="cite_ref-173"></sup></li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Applications">Applications</h2></div>
+<p>Because of their ability to model and reproduce nonlinear processes, artificial neural networks have found applications in many disciplines. These include:
+</p>
+<ul><li><span>Function approximation</span>,<sup class="reference" id="cite_ref-174"></sup> or <span>regression analysis</span>,<sup class="reference" id="cite_ref-175"></sup> (including <span>time series prediction</span>, <span>fitness approximation</span>,<sup class="reference" id="cite_ref-176"></sup> and modeling)</li>
+<li><span>Data processing</span><sup class="reference" id="cite_ref-177"></sup> (including filtering, clustering, <span>blind source separation</span>,<sup class="reference" id="cite_ref-178"></sup> and compression)</li>
+<li><span>Nonlinear system identification</span><sup class="reference" id="cite_ref-SAB1_93-1"></sup> and control (including vehicle control, trajectory prediction,<sup class="reference" id="cite_ref-179"></sup> <span>adaptive control</span>, <span>process control</span>, and <span>natural resource management</span>)</li>
+<li><span>Pattern recognition</span> (including radar systems, <span>face identification</span>, signal classification,<sup class="reference" id="cite_ref-180"></sup> <span>novelty detection</span>, <span>3D reconstruction</span>,<sup class="reference" id="cite_ref-181"></sup> object recognition, and sequential decision making<sup class="reference" id="cite_ref-TurekNeuralNet_182-0"></sup>)</li>
+<li>Sequence recognition (including <span>gesture</span>, <span>speech</span>, and handwritten and printed text recognition<sup class="reference" id="cite_ref-183"></sup>)</li>
+<li>Sensor data analysis<sup class="reference" id="cite_ref-184"></sup> (including <span>image analysis</span>)</li>
+<li><span>Robotics</span> (including directing manipulators and <span>prostheses</span>)</li>
+<li><span>Data mining</span> (including <span>knowledge discovery in databases</span>)</li>
+<li>Finance<sup class="reference" id="cite_ref-185"></sup> (such as <span>ex-ante</span> models for specific financial long-run forecasts and <span>artificial financial markets</span>)</li>
+<li><span>Quantum chemistry</span><sup class="reference" id="cite_ref-Balabin_2009_186-0"></sup></li>
+<li><span>General game playing</span><sup class="reference" id="cite_ref-187"></sup></li>
+<li><span>Generative AI</span><sup class="reference" id="cite_ref-188"></sup></li>
+<li><span>Data visualization</span></li>
+<li><span>Machine translation</span></li>
+<li>Social network filtering<sup class="reference" id="cite_ref-189"></sup></li>
+<li><span>E-mail spam</span> filtering</li>
+<li><span>Medical diagnosis</span><sup class="reference" id="cite_ref-Ciaramella_190-0"></sup></li></ul>
+<p>ANNs have been used to diagnose several types of cancers<sup class="reference" id="cite_ref-191"></sup><sup class="reference" id="cite_ref-192"></sup> and to distinguish highly invasive cancer cell lines from less invasive lines using only cell shape information.<sup class="reference" id="cite_ref-193"></sup><sup class="reference" id="cite_ref-194"></sup>
+</p><p>ANNs have been used to accelerate reliability analysis of infrastructures subject to natural disasters<sup class="reference" id="cite_ref-195"></sup><sup class="reference" id="cite_ref-196"></sup> and to predict foundation settlements.<sup class="reference" id="cite_ref-197"></sup> It can also be useful to mitigate flood by the use of ANNs for modelling rainfall-runoff.<sup class="reference" id="cite_ref-198"></sup> ANNs have also been used for building black-box models in <span>geoscience</span>: <span>hydrology</span>,<sup class="reference" id="cite_ref-199"></sup><sup class="reference" id="cite_ref-200"></sup> ocean modelling and <span>coastal engineering</span>,<sup class="reference" id="cite_ref-201"></sup><sup class="reference" id="cite_ref-202"></sup> and <span>geomorphology</span>.<sup class="reference" id="cite_ref-203"></sup> ANNs have been employed in <span>cybersecurity</span>, with the objective to discriminate between legitimate activities and malicious ones. For example, machine learning has been used for classifying Android malware,<sup class="reference" id="cite_ref-204"></sup> for identifying domains belonging to threat actors and for detecting URLs posing a security risk.<sup class="reference" id="cite_ref-205"></sup> Research is underway on ANN systems designed for penetration testing, for detecting botnets,<sup class="reference" id="cite_ref-206"></sup> credit cards frauds<sup class="reference" id="cite_ref-207"></sup> and network intrusions.
+</p><p>ANNs have been proposed as a tool to solve <span>partial differential equations</span> in physics<sup class="reference" id="cite_ref-208"></sup><sup class="reference" id="cite_ref-209"></sup><sup class="reference" id="cite_ref-210"></sup> and simulate the properties of many-body <span>open quantum systems</span>.<sup class="reference" id="cite_ref-211"></sup><sup class="reference" id="cite_ref-212"></sup><sup class="reference" id="cite_ref-213"></sup><sup class="reference" id="cite_ref-214"></sup> In brain research ANNs have studied short-term behavior of <span>individual neurons</span>,<sup class="reference" id="cite_ref-215"></sup> the dynamics of neural circuitry arise from interactions between individual neurons and how behavior can arise from abstract neural modules that represent complete subsystems. Studies considered long-and short-term plasticity of neural systems and their relation to learning and memory from the individual neuron to the system level.
+</p><p>It is possible to create a profile of a user's interests from pictures, using artificial neural networks trained for object recognition.<sup class="reference" id="cite_ref-216"></sup>
+</p><p>Beyond their traditional applications, artificial neural networks are increasingly being utilized in interdisciplinary research, such as materials science. For instance, graph neural networks (GNNs) have demonstrated their capability in scaling deep learning for the discovery of new stable materials by efficiently predicting the total energy of crystals. This application underscores the adaptability and potential of ANNs in tackling complex problems beyond the realms of predictive modeling and artificial intelligence, opening new pathways for scientific discovery and innovation.<sup class="reference" id="cite_ref-217"></sup>
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Theoretical_properties">Theoretical properties</h2></div>
+<div class="mw-heading mw-heading3"><h3 id="Computational_power">Computational power</h3></div>
+<p>The <span>multilayer perceptron</span> is a <span>universal function</span> approximator, as proven by the <span>universal approximation theorem</span>. However, the proof is not constructive regarding the number of neurons required, the network topology, the weights and the learning parameters.
+</p><p>A specific recurrent architecture with <span>rational</span>-valued weights (as opposed to full precision real number-valued weights) has the power of a <span>universal Turing machine</span>,<sup class="reference" id="cite_ref-218"></sup> using a finite number of neurons and standard linear connections. Further, the use of <span>irrational</span> values for weights results in a machine with <span>super-Turing</span> power.<sup class="reference" id="cite_ref-219"></sup><sup class="reference" id="cite_ref-220"></sup><sup class="noprint Inline-Template" style="white-space:nowrap;">[<i><span>failed verification</span></i>]</sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Capacity">Capacity</h3></div>
+<p>A model's "capacity" property corresponds to its ability to model any given function. It is related to the amount of information that can be stored in the network and to the notion of complexity.
+Two notions of capacity are known by the community. The information capacity and the VC Dimension. The information capacity of a perceptron is intensively discussed in <span>Sir David MacKay</span>'s book<sup class="reference" id="cite_ref-auto_221-0"></sup> which summarizes work by <span>Thomas Cover</span>.<sup class="reference" id="cite_ref-222"></sup> The capacity of a network of standard neurons (not convolutional) can be derived by four rules<sup class="reference" id="cite_ref-223"></sup> that derive from understanding a neuron as an electrical element. The information capacity captures the functions modelable by the network given any data as input. The second notion, is the <span>VC dimension</span>. VC Dimension uses the principles of <span>measure theory</span> and finds the maximum capacity under the best possible circumstances. This is, given input data in a specific form. As noted in,<sup class="reference" id="cite_ref-auto_221-1"></sup> the VC Dimension for arbitrary inputs is half the information capacity of a perceptron. The VC Dimension for arbitrary points is sometimes referred to as Memory Capacity.<sup class="reference" id="cite_ref-224"></sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Convergence">Convergence</h3></div>
+<p>Models may not consistently converge on a single solution, firstly because local minima may exist, depending on the cost function and the model. Secondly, the optimization method used might not guarantee to converge when it begins far from any local minimum. Thirdly, for sufficiently large data or parameters, some methods become impractical.
+</p><p>Another issue worthy to mention is that training may cross some <span>saddle point</span> which may lead the convergence to the wrong direction.
+</p><p>The convergence behavior of certain types of ANN architectures are more understood than others. When the width of network approaches to infinity, the ANN is well described by its first order <span>Taylor expansion</span> throughout training, and so inherits the <span>convergence</span> behavior of <span>affine models</span>.<sup class="reference" id="cite_ref-225"></sup><sup class="reference" id="cite_ref-226"></sup> Another example is when parameters are small, it is observed that ANNs often fit target functions from low to high frequencies. This behavior is referred to as the spectral bias, or frequency principle, of neural networks.<sup class="reference" id="cite_ref-227"></sup><sup class="reference" id="cite_ref-228"></sup><sup class="reference" id="cite_ref-229"></sup><sup class="reference" id="cite_ref-230"></sup> This phenomenon is the opposite to the behavior of some well studied iterative numerical schemes such as <span>Jacobi method</span>. Deeper neural networks have been observed to be more biased towards low frequency functions.<sup class="reference" id="cite_ref-231"></sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Generalization_and_statistics">Generalization and statistics</h3></div>
+<link href="mw-data:TemplateStyles:r1305433154" rel="mw-deduplicated-inline-style"/><table class="box-No_footnotes plainlinks metadata ambox ambox-style ambox-No_footnotes" role="presentation"><tbody><tr><td class="mbox-image"><div class="mbox-image-div"><span typeof="mw:File"><span><img alt="" class="mw-file-element" data-file-height="48" data-file-width="48" decoding="async" height="40" src="//upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Text_document_with_red_question_mark.svg/40px-Text_document_with_red_question_mark.svg.png" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Text_document_with_red_question_mark.svg/60px-Text_document_with_red_question_mark.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Text_document_with_red_question_mark.svg/120px-Text_document_with_red_question_mark.svg.png 2x" width="40"/></span></span></div></td><td class="mbox-text"><div class="mbox-text-span">This section includes a <span>list of references</span>, <span>related reading</span>, or <span>external links</span>, <b>but its sources remain unclear because it lacks <span>inline citations</span></b>.<span class="hide-when-compact"> Please help <span>improve</span> this section by <span>introducing</span> more precise citations.</span> <span class="date-container"><i>(<span class="date">August 2019</span>)</i></span><span class="hide-when-compact"><i> (<small><span>Learn how and when to remove this message</span></small>)</i></span></div></td></tr></tbody></table>
+<p>Applications whose goal is to create a system that generalizes well to unseen examples, face the possibility of <span>over-training</span>. This arises in convoluted or over-specified systems when the network capacity significantly exceeds the needed free parameters. 
+</p><p>Two approaches address over-training. The first is to use <span>cross-validation</span> and similar techniques to check for the presence of over-training and to select hyperparameters to minimize the generalization error. The second is to use some form of <i><span>regularization</span></i>. This concept emerges in a probabilistic (Bayesian) framework, where regularization can be performed by selecting a larger prior probability over simpler models; but also in statistical learning theory, where the goal is to minimize over two quantities: the 'empirical risk' and the 'structural risk', which roughly corresponds to the error over the training set and the predicted error in unseen data due to overfitting.
+</p>
+<figure class="mw-default-size mw-halign-right" typeof="mw:File/Thumb"><a class="mw-file-description"><img class="mw-file-element" data-file-height="786" data-file-width="1024" decoding="async" height="223" src="//upload.wikimedia.org/wikipedia/commons/thumb/2/22/Synapse_deployment.jpg/330px-Synapse_deployment.jpg" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/2/22/Synapse_deployment.jpg/500px-Synapse_deployment.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/2/22/Synapse_deployment.jpg/960px-Synapse_deployment.jpg 2x" width="290"/></a><figcaption>Confidence analysis of a neural network</figcaption></figure>
+<p>Supervised neural networks that use a <span>mean squared error</span> (MSE) cost function can use formal statistical methods to determine the confidence of the trained model. The MSE on a validation set can be used as an estimate for variance. This value can then be used to calculate the <span>confidence interval</span> of network output, assuming a <span>normal distribution</span>. A confidence analysis made this way is statistically valid as long as the output <span>probability distribution</span> stays the same and the network is not modified.
+</p><p>By assigning a <span>softmax activation function</span>, a generalization of the <span>logistic function</span>, on the output layer of the neural network (or a softmax component in a component-based network) for categorical target variables, the outputs can be interpreted as posterior probabilities. This is useful in classification as it gives a certainty measure on classifications.
+</p><p>The softmax activation function is:
+</p>
+<dl><dd><span class="mwe-math-element mwe-math-element-inline"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math alttext="{\displaystyle y_{i}={\frac {e^{x_{i}}}{\sum _{j=1}^{c}e^{x_{j}}}}}" xmlns="http://www.w3.org/1998/Math/MathML">
+<semantics>
+<mrow class="MJX-TeXAtom-ORD">
+<mstyle displaystyle="true" scriptlevel="0">
+<msub>
+<mi>y</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>i</mi>
+</mrow>
+</msub>
+<mo>=</mo>
+<mrow class="MJX-TeXAtom-ORD">
+<mfrac>
+<msup>
+<mi>e</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<msub>
+<mi>x</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>i</mi>
+</mrow>
+</msub>
+</mrow>
+</msup>
+<mrow>
+<munderover>
+<mo><!-- --></mo>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>j</mi>
+<mo>=</mo>
+<mn>1</mn>
+</mrow>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>c</mi>
+</mrow>
+</munderover>
+<msup>
+<mi>e</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<msub>
+<mi>x</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>j</mi>
+</mrow>
+</msub>
+</mrow>
+</msup>
+</mrow>
+</mfrac>
+</mrow>
+</mstyle>
+</mrow>
+<annotation encoding="application/x-tex">{\displaystyle y_{i}={\frac {e^{x_{i}}}{\sum _{j=1}^{c}e^{x_{j}}}}}</annotation>
+</semantics>
+</math></span><img alt="{\displaystyle y_{i}={\frac {e^{x_{i}}}{\sum _{j=1}^{c}e^{x_{j}}}}}" aria-hidden="true" class="mwe-math-fallback-image-inline mw-invert skin-invert" src="https://wikimedia.org/api/rest_v1/media/math/render/svg/481884e3588b192020e8d0aafe16b41c0ed26007" style="vertical-align: -3.171ex; width:14.695ex; height:6.509ex;"/></span></dd></dl>
+<p><br/>
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Criticism">Criticism</h2></div>
+<div class="mw-heading mw-heading3"><h3 id="Training_2">Training</h3></div>
+<p>A common criticism of neural networks, particularly in robotics, is that they require too many training samples for real-world operation.<sup class="reference" id="cite_ref-232"></sup>
+Any learning machine needs sufficient representative examples in order to capture the underlying structure that allows it to generalize to new cases. Potential solutions include randomly shuffling training examples, by using a numerical optimization algorithm that does not take too large steps when changing the network connections following an example, grouping examples in so-called mini-batches and/or introducing a recursive least squares algorithm for <span>CMAC</span>.<sup class="reference" id="cite_ref-Qin1_155-1"></sup>
+Dean Pomerleau uses a neural network to train a robotic vehicle to drive on multiple types of roads (single lane, multi-lane, dirt, etc.), and a large amount of his research is devoted to extrapolating multiple training scenarios from a single training experience, and preserving past training diversity so that the system does not become overtrained (if, for example, it is presented with a series of right turns--it should not learn to always turn right).<sup class="reference" id="cite_ref-233"></sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Theory">Theory</h3></div>
+<p>A central claim<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">[<i><span>citation needed</span></i>]</sup> of ANNs is that they embody new and powerful general principles for processing information. These principles are <span>ill-defined</span>. This allows simple statistical association (the basic function of artificial neural networks) to be described as learning or recognition. In 1997, <span>Alexander Dewdney</span>, a former <i><span>Scientific American</span></i> columnist, commented that as a result, artificial neural networks have a 
+</p>
+<style data-mw-deduplicate="TemplateStyles:r1244412712">.mw-parser-output .templatequote{overflow:hidden;margin:1em 0;padding:0 32px}.mw-parser-output .templatequotecite{line-height:1.5em;text-align:left;margin-top:0}@media(min-width:500px){.mw-parser-output .templatequotecite{padding-left:1.6em}}</style><blockquote class="templatequote"><p>something-for-nothing quality, one that imparts a peculiar aura of laziness and a distinct lack of curiosity about just how good these computing systems are. No human hand (or mind) intervenes; solutions are found as if by magic; and no one, it seems, has learned anything.<sup class="reference" id="cite_ref-234"></sup></p></blockquote><p> One response to Dewdney is that neural networks have been successfully used to handle many complex and diverse tasks, ranging from autonomously flying aircraft<sup class="reference" id="cite_ref-235"></sup> to detecting credit card fraud to mastering the game of <span>Go</span>.
+</p><p>Technology writer Roger Bridgman commented:
+</p>
+<link href="mw-data:TemplateStyles:r1244412712" rel="mw-deduplicated-inline-style"/><blockquote class="templatequote"><p>Neural networks, for instance, are in the dock not only because they have been hyped to high heaven, (what hasn't?) but also because you could create a successful net without understanding how it worked: the bunch of numbers that captures its behaviour would in all probability be "an opaque, unreadable table...valueless as a scientific resource".
+</p><p>In spite of his emphatic declaration that science is not technology, Dewdney seems here to pillory neural nets as bad science when most of those devising them are just trying to be good engineers. An unreadable table that a useful machine could read would still be well worth having.<sup class="reference" id="cite_ref-236"></sup>
+</p>
+</blockquote>
+<p>Although it is true that analyzing what has been learned by an artificial neural network is difficult, it is much easier to do so than to analyze what has been learned by a biological neural network. Moreover, recent emphasis on the <span>explainability</span> of AI has contributed towards the development of methods, notably those based on <span>attention</span> mechanisms, for visualizing and explaining learned neural networks. Furthermore, researchers involved in exploring learning algorithms for neural networks are gradually uncovering generic principles that allow a learning machine to be successful. For example, Bengio and LeCun (2007) wrote an article regarding local vs non-local learning, as well as shallow vs deep architecture.<sup class="reference" id="cite_ref-237"></sup>
+</p><p>Biological brains use both shallow and deep circuits as reported by brain anatomy,<sup class="reference" id="cite_ref-VanEssen1991_238-0"></sup> displaying a wide variety of invariance. Weng<sup class="reference" id="cite_ref-Weng2012_239-0"></sup> argued that the brain self-wires largely according to signal statistics and therefore, a serial cascade cannot catch all major statistical dependencies.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Hardware">Hardware</h3></div>
+<p>Large and effective neural networks require considerable computing resources.<sup class="reference" id="cite_ref-:0_240-0"></sup> While the brain has hardware tailored to the task of processing signals through a <span>graph</span> of neurons, simulating even a simplified neuron on <span>von Neumann architecture</span> may consume vast amounts of <span>memory</span> and storage. Furthermore, the designer often needs to transmit signals through many of these connections and their associated neurons -  which require enormous <span>CPU</span> power and time.<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">[<i><span>citation needed</span></i>]</sup>
+</p><p>Some argue that the resurgence of neural networks in the twenty-first century is largely attributable to advances in hardware: from 1991 to 2015, computing power, especially as delivered by <span>GPGPUs</span> (on <span>GPUs</span>), has increased around a million-fold, making the standard backpropagation algorithm feasible for training networks that are several layers deeper than before.<sup class="reference" id="cite_ref-SCHIDHUB4_38-2"></sup> The use of accelerators such as <span>FPGAs</span> and GPUs can reduce training times from months to days.<sup class="reference" id="cite_ref-:0_240-1"></sup><sup class="reference" id="cite_ref-241"></sup>
+</p><p><span>Neuromorphic engineering</span> or a <span>physical neural network</span> addresses the hardware difficulty directly, by constructing non-von-Neumann chips to directly implement neural networks in circuitry. Another type of chip optimized for neural network processing is called a <span>Tensor Processing Unit</span>, or TPU.<sup class="reference" id="cite_ref-242"></sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Practical_counterexamples">Practical counterexamples</h3></div>
+<p>Analyzing what has been learned by an ANN is much easier than analyzing what has been learned by a biological neural network. Furthermore, researchers involved in exploring learning algorithms for neural networks are gradually uncovering general principles that allow a learning machine to be successful. For example, local vs. non-local learning and shallow vs. deep architecture.<sup class="reference" id="cite_ref-243"></sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Hybrid_approaches">Hybrid approaches</h3></div>
+<p>Advocates of <span>hybrid</span> models (combining neural networks and symbolic approaches) say that such a mixture can better capture the mechanisms of the human mind.<sup class="reference" id="cite_ref-244"></sup><sup class="reference" id="cite_ref-245"></sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Dataset_bias">Dataset bias</h3></div>
+<p>Neural networks are dependent on the quality of the data they are trained on, thus low quality data with imbalanced representativeness can lead to the model learning and perpetuating societal biases.<sup class="reference" id="cite_ref-:010_246-0"></sup><sup class="reference" id="cite_ref-:17_247-0"></sup> These inherited biases become especially critical when the ANNs are integrated into real-world scenarios where the training data may be imbalanced due to the scarcity of data for a specific race, gender or other attribute.<sup class="reference" id="cite_ref-:010_246-1"></sup> This imbalance can result in the model having inadequate representation and understanding of underrepresented groups, leading to discriminatory outcomes that exacerbate societal inequalities, especially in applications like <span>facial recognition</span>, hiring processes, and <span>law enforcement</span>.<sup class="reference" id="cite_ref-:17_247-1"></sup><sup class="reference" id="cite_ref-:22_248-0"></sup> For example, in 2018, <span>Amazon</span> had to scrap a recruiting tool because the model favored men over women for jobs in software engineering due to the higher number of male workers in the field.<sup class="reference" id="cite_ref-:22_248-1"></sup> The program would penalize any resume with the word "woman" or the name of any women's college. However, the use of <span>synthetic data</span> can help reduce dataset bias and increase representation in datasets.<sup class="reference" id="cite_ref-249"></sup>
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Gallery">Gallery</h2></div>
+<ul class="gallery mw-gallery-traditional">
+<li class="gallerybox" style="width: 255px">
+<div class="thumb" style="width: 250px; height: 150px;"><span typeof="mw:File"><a class="mw-file-description" title="A single-layer feedforward artificial neural network. Arrows originating from '&quot;`UNIQ--postMath-0000000E-QINU`&quot;' are omitted for clarity. There are p inputs to this network and q outputs. In this system, the value of the qth output, '&quot;`UNIQ--postMath-0000000F-QINU`&quot;', is calculated as '&quot;`UNIQ--postMath-00000010-QINU`&quot;'"><img alt="A single-layer feedforward artificial neural network. Arrows originating from '&quot;`UNIQ--postMath-0000000E-QINU`&quot;' are omitted for clarity. There are p inputs to this network and q outputs. In this system, the value of the qth output, '&quot;`UNIQ--postMath-0000000F-QINU`&quot;', is calculated as '&quot;`UNIQ--postMath-00000010-QINU`&quot;'" class="mw-file-element" data-file-height="230" data-file-width="329" decoding="async" height="120" src="//upload.wikimedia.org/wikipedia/commons/thumb/b/be/Single_layer_ann.svg/250px-Single_layer_ann.svg.png" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/b/be/Single_layer_ann.svg/330px-Single_layer_ann.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/b/be/Single_layer_ann.svg/500px-Single_layer_ann.svg.png 2x" width="172"/></a></span></div>
+<div class="gallerytext">A single-layer feedforward artificial neural network. Arrows originating from <span class="mwe-math-element mwe-math-element-inline"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math alttext="{\displaystyle x_{2}}" xmlns="http://www.w3.org/1998/Math/MathML">
+<semantics>
+<mrow class="MJX-TeXAtom-ORD">
+<mstyle displaystyle="true" scriptlevel="0">
+<msub>
+<mi>x</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mn>2</mn>
+</mrow>
+</msub>
+</mstyle>
+</mrow>
+<annotation encoding="application/x-tex">{\displaystyle x_{2}}</annotation>
+</semantics>
+</math></span><img alt="{\displaystyle x_{2}}" aria-hidden="true" class="mwe-math-fallback-image-inline mw-invert skin-invert" src="https://wikimedia.org/api/rest_v1/media/math/render/svg/d7af1b928f06e4c7e3e8ebfd60704656719bd766" style="vertical-align: -0.671ex; width:2.384ex; height:2.009ex;"/></span> are omitted for clarity. There are <i>p</i> inputs to this network and <i>q</i> outputs. In this system, the value of the <i>q</i>th output, <span class="mwe-math-element mwe-math-element-inline"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math alttext="{\displaystyle y_{q}}" xmlns="http://www.w3.org/1998/Math/MathML">
+<semantics>
+<mrow class="MJX-TeXAtom-ORD">
+<mstyle displaystyle="true" scriptlevel="0">
+<msub>
+<mi>y</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>q</mi>
+</mrow>
+</msub>
+</mstyle>
+</mrow>
+<annotation encoding="application/x-tex">{\displaystyle y_{q}}</annotation>
+</semantics>
+</math></span><img alt="{\displaystyle y_{q}}" aria-hidden="true" class="mwe-math-fallback-image-inline mw-invert skin-invert" src="https://wikimedia.org/api/rest_v1/media/math/render/svg/62e77051e3953cdf3818c7c8458d4f515eb5f79c" style="vertical-align: -1.005ex; width:2.128ex; height:2.343ex;"/></span>, is calculated as <span class="mwe-math-element mwe-math-element-inline"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math alttext="{\displaystyle y_{q}=K\cdot \left(\sum _{i}(x_{i}w_{iq})-b_{q}\right).}" xmlns="http://www.w3.org/1998/Math/MathML">
+<semantics>
+<mrow class="MJX-TeXAtom-ORD">
+<mstyle displaystyle="true" scriptlevel="0">
+<msub>
+<mi>y</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>q</mi>
+</mrow>
+</msub>
+<mo>=</mo>
+<mi>K</mi>
+<mo><!-- --></mo>
+<mrow>
+<mo>(</mo>
+<mrow>
+<munder>
+<mo><!-- --></mo>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>i</mi>
+</mrow>
+</munder>
+<mo stretchy="false">(</mo>
+<msub>
+<mi>x</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>i</mi>
+</mrow>
+</msub>
+<msub>
+<mi>w</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>i</mi>
+<mi>q</mi>
+</mrow>
+</msub>
+<mo stretchy="false">)</mo>
+<mo>-<!-- - --></mo>
+<msub>
+<mi>b</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>q</mi>
+</mrow>
+</msub>
+</mrow>
+<mo>)</mo>
+</mrow>
+<mo>.</mo>
+</mstyle>
+</mrow>
+<annotation encoding="application/x-tex">{\displaystyle y_{q}=K\cdot \left(\sum _{i}(x_{i}w_{iq})-b_{q}\right).}</annotation>
+</semantics>
+</math></span><img alt="{\displaystyle y_{q}=K\cdot \left(\sum _{i}(x_{i}w_{iq})-b_{q}\right).}" aria-hidden="true" class="mwe-math-fallback-image-inline mw-invert skin-invert" src="https://wikimedia.org/api/rest_v1/media/math/render/svg/dab100682f6d20bf79661b3423684c5e2cdd18dc" style="vertical-align: -3.171ex; width:29.027ex; height:7.509ex;"/></span></div>
+</li>
+<li class="gallerybox" style="width: 255px">
+<div class="thumb" style="width: 250px; height: 150px;"><span typeof="mw:File"><a class="mw-file-description" title="A two-layer feedforward artificial neural network"><img alt="A two-layer feedforward artificial neural network" class="mw-file-element" data-file-height="421" data-file-width="331" decoding="async" height="120" src="//upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Two_layer_ann.svg/120px-Two_layer_ann.svg.png" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Two_layer_ann.svg/250px-Two_layer_ann.svg.png 1.5x" width="94"/></a></span></div>
+<div class="gallerytext">A two-layer feedforward artificial neural network</div>
+</li>
+<li class="gallerybox" style="width: 255px">
+<div class="thumb" style="width: 250px; height: 150px;"><span typeof="mw:File"><a class="mw-file-description" title="An artificial neural network"><img alt="An artificial neural network" class="mw-file-element" data-file-height="500" data-file-width="560" decoding="async" height="120" src="//upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Artificial_neural_network.svg/250px-Artificial_neural_network.svg.png" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Artificial_neural_network.svg/330px-Artificial_neural_network.svg.png 2x" width="134"/></a></span></div>
+<div class="gallerytext">An artificial neural network</div>
+</li>
+<li class="gallerybox" style="width: 255px">
+<div class="thumb" style="width: 250px; height: 150px;"><span typeof="mw:File"><a class="mw-file-description" title="An ANN dependency graph"><img alt="An ANN dependency graph" class="mw-file-element" data-file-height="127" data-file-width="178" decoding="async" height="120" src="//upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Ann_dependency_%28graph%29.svg/250px-Ann_dependency_%28graph%29.svg.png" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Ann_dependency_%28graph%29.svg/330px-Ann_dependency_%28graph%29.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Ann_dependency_%28graph%29.svg/500px-Ann_dependency_%28graph%29.svg.png 2x" width="168"/></a></span></div>
+<div class="gallerytext">An ANN dependency graph</div>
+</li>
+<li class="gallerybox" style="width: 255px">
+<div class="thumb" style="width: 250px; height: 150px;"><span typeof="mw:File"><a class="mw-file-description" title="A single-layer feedforward artificial neural network with 4 inputs, 6 hidden nodes and 2 outputs. Given position state and direction, it outputs wheel based control values."><img alt="A single-layer feedforward artificial neural network with 4 inputs, 6 hidden nodes and 2 outputs. Given position state and direction, it outputs wheel based control values." class="mw-file-element" data-file-height="720" data-file-width="1280" decoding="async" height="120" src="//upload.wikimedia.org/wikipedia/commons/thumb/3/32/Single-layer_feedforward_artificial_neural_network.png/250px-Single-layer_feedforward_artificial_neural_network.png" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/3/32/Single-layer_feedforward_artificial_neural_network.png/330px-Single-layer_feedforward_artificial_neural_network.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/3/32/Single-layer_feedforward_artificial_neural_network.png/500px-Single-layer_feedforward_artificial_neural_network.png 2x" width="214"/></a></span></div>
+<div class="gallerytext">A single-layer feedforward artificial neural network with 4 inputs, 6 hidden nodes and 2 outputs. Given position state and direction, it outputs wheel based control values.</div>
+</li>
+<li class="gallerybox" style="width: 255px">
+<div class="thumb" style="width: 250px; height: 150px;"><span typeof="mw:File"><a class="mw-file-description" title="A two-layer feedforward artificial neural network with 8 inputs, 2x8 hidden nodes and 2 outputs. Given position state, direction and other environment values, it outputs thruster based control values."><img alt="A two-layer feedforward artificial neural network with 8 inputs, 2x8 hidden nodes and 2 outputs. Given position state, direction and other environment values, it outputs thruster based control values." class="mw-file-element" data-file-height="720" data-file-width="1280" decoding="async" height="120" src="//upload.wikimedia.org/wikipedia/commons/thumb/5/58/Two-layer_feedforward_artificial_neural_network.png/250px-Two-layer_feedforward_artificial_neural_network.png" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/5/58/Two-layer_feedforward_artificial_neural_network.png/330px-Two-layer_feedforward_artificial_neural_network.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/5/58/Two-layer_feedforward_artificial_neural_network.png/500px-Two-layer_feedforward_artificial_neural_network.png 2x" width="214"/></a></span></div>
+<div class="gallerytext">A two-layer feedforward artificial neural network with 8 inputs, 2x8 hidden nodes and 2 outputs. Given position state, direction and other environment values, it outputs thruster based control values.</div>
+</li>
+<li class="gallerybox" style="width: 255px">
+<div class="thumb" style="width: 250px; height: 150px;"><span typeof="mw:File"><a class="mw-file-description" title="Parallel pipeline structure of CMAC neural network. This learning algorithm can converge in one step."><img alt="Parallel pipeline structure of CMAC neural network. This learning algorithm can converge in one step." class="mw-file-element" data-file-height="609" data-file-width="899" decoding="async" height="120" src="//upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Cmac.jpg/250px-Cmac.jpg" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Cmac.jpg/330px-Cmac.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Cmac.jpg/500px-Cmac.jpg 2x" width="177"/></a></span></div>
+<div class="gallerytext">Parallel pipeline structure of CMAC neural network. This learning algorithm can converge in one step. </div>
+</li>
+</ul>
+<div class="mw-heading mw-heading2"><h2 id="Recent_advancements_and_future_directions">Recent advancements and future directions</h2></div>
+<p>Artificial neural networks (ANNs) have undergone significant advancements, particularly in their ability to model complex systems, handle large data sets, and adapt to various types of applications. Their evolution over the past few decades has been marked by a broad range of applications in fields such as image processing, speech recognition, natural language processing, finance, and medicine.<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">[<i><span>citation needed</span></i>]</sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Image_processing">Image processing</h3></div>
+<p>In the realm of image processing, ANNs are employed in tasks such as image classification, object recognition, and image segmentation. For instance, deep convolutional neural networks (CNNs) have been important in handwritten digit recognition, achieving state-of-the-art performance.<sup class="reference" id="cite_ref-:07_250-0"></sup> This demonstrates the ability of ANNs to effectively process and interpret complex visual information, leading to advancements in fields ranging from automated surveillance to medical imaging.<sup class="reference" id="cite_ref-:07_250-1"></sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Speech_recognition">Speech recognition</h3></div>
+<p>By modeling speech signals, ANNs are used for tasks like speaker identification and speech-to-text conversion. Deep neural network architectures have introduced significant improvements in large vocabulary continuous speech recognition, outperforming traditional techniques.<sup class="reference" id="cite_ref-:07_250-2"></sup><sup class="reference" id="cite_ref-:15_251-0"></sup> These advancements have enabled the development of more accurate and efficient voice-activated systems, enhancing user interfaces in technology products.<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">[<i><span>citation needed</span></i>]</sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Natural_language_processing">Natural language processing</h3></div>
+<p>In natural language processing, ANNs are used for tasks such as text classification, sentiment analysis, and machine translation. They have enabled the development of models that can accurately translate between languages, understand the context and sentiment in textual data, and categorize text based on content.<sup class="reference" id="cite_ref-:07_250-3"></sup><sup class="reference" id="cite_ref-:15_251-1"></sup> This has implications for automated customer service, content moderation, and language understanding technologies.<sup class="reference" id="cite_ref-252"></sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Control_systems">Control systems</h3></div>
+<p>In the domain of control systems, ANNs are used to model dynamic systems for tasks such as system identification, control design, and optimization. For instance, deep feedforward neural networks are important in system identification and control applications.<sup class="reference" id="cite_ref-253"></sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Finance">Finance</h3></div>
+<link href="mw-data:TemplateStyles:r1320445320" rel="mw-deduplicated-inline-style"/><div class="hatnote navigation-not-searchable" role="note">Further information: <span>Applications of artificial intelligence SS Trading and investment</span></div>
+<p>ANNs are used for <span>stock market prediction</span> and <span>credit scoring</span>: 
+</p>
+<ul><li>In investing, ANNs can process vast amounts of financial data, recognize complex patterns, and forecast stock market trends, aiding investors and risk managers in making informed decisions.<sup class="reference" id="cite_ref-:07_250-4"></sup></li>
+<li>In credit scoring, ANNs offer data-driven, personalized assessments of creditworthiness, improving the accuracy of default predictions and automating the lending process.<sup class="reference" id="cite_ref-:15_251-2"></sup></li></ul>
+<p>ANNs require high-quality data and careful tuning, and their "black-box" nature can pose challenges in interpretation. Nevertheless, ongoing advancements suggest that ANNs continue to play a role in finance, offering valuable insights and enhancing <span>risk management strategies</span>.<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">[<i><span>citation needed</span></i>]</sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Medicine">Medicine</h3></div>
+<p>ANNs are able to process and analyze vast medical datasets. They enhance diagnostic accuracy, especially by interpreting complex <span>medical imaging</span> for early disease detection, and by predicting patient outcomes for personalized treatment planning.<sup class="reference" id="cite_ref-:15_251-3"></sup> In <span>drug discovery</span>, ANNs speed up the identification of potential drug candidates and predict their efficacy and safety, significantly reducing development time and costs.<sup class="reference" id="cite_ref-:07_250-5"></sup> Additionally, their application in personalized medicine and healthcare data analysis allows tailored therapies and efficient patient care management.<sup class="reference" id="cite_ref-:15_251-4"></sup> Ongoing research is aimed at addressing remaining challenges such as data privacy and model interpretability, as well as expanding the scope of ANN applications in medicine.<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">[<i><span>citation needed</span></i>]</sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Content_creation">Content creation</h3></div>
+<p>ANNs such as generative adversarial networks (GAN) and <span>transformers</span> are used for <span>content creation</span> across numerous industries.<sup class="reference" id="cite_ref-:09_254-0"></sup> This is because deep learning models are able to learn the style of an artist or musician from huge datasets and generate completely new artworks and music compositions. For instance, <span>DALL-E</span> is a deep neural network trained on 650 million pairs of images and texts across the internet that can create artworks based on text entered by the user.<sup class="reference" id="cite_ref-255"></sup> In the field of music, transformers are used to create original music for commercials and documentaries through companies such as <span>AIVA</span> and <span>Jukedeck</span>.<sup class="reference" id="cite_ref-256"></sup> In the marketing industry, generative models are used to create personalized advertisements for consumers.<sup class="reference" id="cite_ref-:09_254-1"></sup> Additionally, major film companies are partnering with technology companies to analyze the financial success of a film, such as the partnership between Warner Bros and technology company Cinelytic established in 2020.<sup class="reference" id="cite_ref-257"></sup> Furthermore, neural networks have found uses in video game creation, where non-player characters (NPCs) can make decisions based on all the characters currently in the game.<sup class="reference" id="cite_ref-258"></sup>
+</p>
+<div class="mw-heading mw-heading2"><h2 id="See_also">See also</h2></div>
+<style data-mw-deduplicate="TemplateStyles:r1184024115">.mw-parser-output .div-col{margin-top:0.3em;column-width:30em}.mw-parser-output .div-col-small{font-size:90%}.mw-parser-output .div-col-rules{column-rule:1px solid #aaa}.mw-parser-output .div-col dl,.mw-parser-output .div-col ol,.mw-parser-output .div-col ul{margin-top:0}.mw-parser-output .div-col li,.mw-parser-output .div-col dd{page-break-inside:avoid;break-inside:avoid-column}</style><div class="div-col" style="column-width: 18em;">
+<ul><li><span>ADALINE</span></li>
+<li><span>Autoencoder</span></li>
+<li><span>Bio-inspired computing</span></li>
+<li><span>Blue Brain Project</span></li>
+<li><span>Catastrophic interference</span></li>
+<li><span>Cognitive architecture</span></li>
+<li><span>Connectionist expert system</span></li>
+<li><span>Connectomics</span></li>
+<li><span>Deep image prior</span></li>
+<li><span>Digital morphogenesis</span></li>
+<li><span>Efficiently updatable neural network</span></li>
+<li><span>Evolutionary algorithm</span></li>
+<li><span>Family of curves</span></li>
+<li><span>Genetic algorithm</span></li>
+<li><span>Hyperdimensional computing</span></li>
+<li><span>In situ adaptive tabulation</span></li>
+<li><span>Large width limits of neural networks</span></li>
+<li><span>List of machine learning concepts</span></li>
+<li><span>Memristor</span></li>
+<li><a href="" onclick="message(this)" title="Mind uploading">Mind uploading</a></li>
+<li><span>Neural gas</span></li>
+<li><span>Neural network software</span></li>
+<li><span>Optical neural network</span></li>
+<li><span>Parallel distributed processing</span></li>
+<li><span>Philosophy of artificial intelligence</span></li>
+<li><span>Predictive analytics</span></li>
+<li><span>Quantum neural network</span></li>
+<li><span>Support vector machine</span></li>
+<li><span>Spiking neural network</span></li>
+<li><a href="" onclick="message(this)" title="Stochastic parrot">Stochastic parrot</a></li>
+<li><span>Tensor product network</span></li>
+<li><span>Topological deep learning</span></li></ul>
+</div>
+
+<div class="navbox-styles"><style data-mw-deduplicate="TemplateStyles:r1314944253">.mw-parser-output .navbox{box-sizing:border-box;border:1px solid #a2a9b1;width:100%;clear:both;font-size:88%;text-align:center;padding:1px;margin:1em auto 0}.mw-parser-output .navbox .navbox{margin-top:0}.mw-parser-output .navbox+.navbox,.mw-parser-output .navbox+.navbox-styles+.navbox{margin-top:-1px}.mw-parser-output .navbox-inner,.mw-parser-output .navbox-subgroup{width:100%}.mw-parser-output .navbox-group,.mw-parser-output .navbox-title,.mw-parser-output .navbox-abovebelow{padding:0.25em 1em;line-height:1.5em;text-align:center}.mw-parser-output .navbox-group{white-space:nowrap;text-align:right}.mw-parser-output .navbox,.mw-parser-output .navbox-subgroup{background-color:#fdfdfd;color:inherit}.mw-parser-output .navbox-list{line-height:1.5em;border-color:#fdfdfd}.mw-parser-output .navbox-list-with-group{text-align:left;border-left-width:2px;border-left-style:solid}.mw-parser-output tr+tr>.navbox-abovebelow,.mw-parser-output tr+tr>.navbox-group,.mw-parser-output tr+tr>.navbox-image,.mw-parser-output tr+tr>.navbox-list{border-top:2px solid #fdfdfd}.mw-parser-output .navbox-title{background-color:#ccf;color:inherit}.mw-parser-output .navbox-abovebelow,.mw-parser-output .navbox-group,.mw-parser-output .navbox-subgroup .navbox-title{background-color:#ddf;color:inherit}.mw-parser-output .navbox-subgroup .navbox-group,.mw-parser-output .navbox-subgroup .navbox-abovebelow{background-color:#e6e6ff;color:inherit}.mw-parser-output .navbox-even{background-color:#f7f7f7;color:inherit}.mw-parser-output .navbox-odd{background-color:transparent;color:inherit}.mw-parser-output .navbox .hlist td dl,.mw-parser-output .navbox .hlist td ol,.mw-parser-output .navbox .hlist td ul,.mw-parser-output .navbox td.hlist dl,.mw-parser-output .navbox td.hlist ol,.mw-parser-output .navbox td.hlist ul{padding:0.125em 0}.mw-parser-output .navbox .navbar{display:block;font-size:100%}.mw-parser-output .navbox-title .navbar{float:left;text-align:left;margin-right:0.5em}body.skin--responsive .mw-parser-output .navbox-image img{max-width:none!important}@media print{body.ns-0 .mw-parser-output .navbox{display:none!important}}</style></div>
+<div class="navbox-styles"><link href="mw-data:TemplateStyles:r1333133064" rel="mw-deduplicated-inline-style"/><link href="mw-data:TemplateStyles:r1314944253" rel="mw-deduplicated-inline-style"/><style data-mw-deduplicate="TemplateStyles:r1038841319">.mw-parser-output .tooltip-dotted{border-bottom:1px dotted;cursor:help}</style></div></div><script>
+                        function message(element) {
+                            window.parent.postMessage(element.title);
+                    }
+                        
+                    </script></body>
+                    </html>

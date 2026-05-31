@@ -1,0 +1,368 @@
+html, body {
+  margin: 0; 
+  height: 100vh; 
+  overflow:hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  background-color:white;
+
+}
+
+#holeanimdiv {
+  width:0;
+  height:0;
+  background-image:url("/public/blackhole.jpg");
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+}
+
+#blackholder {
+  position: absolute;
+
+  width:100%;
+  height:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index:-1;
+}
+
+.endnar {
+  color:white;
+  font-weight:bold;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#endholder {
+  position: absolute;
+
+  width:100%;
+  height:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index:5;
+  flex-direction: column;
+}
+
+.hidden {
+  display:none;
+}
+
+#blackhole {
+
+  border:none;
+
+}
+
+#scroller {
+  overflow-y:scroll;
+  display: flex;
+  flex-direction: column;
+  height:99vh;
+}
+
+#puzbox {
+  position:absolute;
+  bottom:-40px;
+  height:fit-content;
+  scale:1;
+  z-index:1;
+}
+
+#puzbox2 {
+  position:absolute;
+  bottom:-40px;
+  height:fit-content;
+  scale:1;
+  z-index:1;
+}
+
+#puzxx {
+  position:absolute;
+  height:20px;
+  width: 20px;
+  left:220px;
+  top:10px;
+}
+
+#puztext {
+  background-image:url("/public/puz/textbox.png");
+  background-repeat:no-repeat;
+  background-size:100% 100%;
+  width:200px;
+  height:200px;
+  padding:20px;
+  padding-left:30px;
+  font-style:Tahoma;
+  position:relative;
+  top:100px;
+}
+
+.skillbutton {
+  border: 1px solid;
+  padding:4px;
+  box-shadow: 4px 4px;
+  margin-bottom:10px;
+
+}
+
+.skillbutton:hover {
+  box-shadow: 4px 4px #0E65C0;
+}
+
+.skillbutton:active {
+  box-shadow: none;
+  position:relative;
+  top: 4px;
+  left: 4px;
+}
+
+.contain2 {
+  width:100vh;
+  display:flex;
+  margin-left:50px;
+}
+
+#leftcol {
+  padding: 20px;
+  border-right: 1px solid #c8ccd1;
+  width: 40vh;
+  min-width:300px;
+}
+
+#leftcol2 {
+  padding: 20px;
+  border-right: 1px solid #c8ccd1;
+  width: 40vh;
+  
+}
+
+.row2 {
+  flex-direction:row;
+  display:flex;
+
+}
+
+#wikialertdiv {
+  width: 100%;
+  padding:0px;
+  margin: 0px;
+  display: flex;
+  align-items: center;
+  text-align:center;
+  
+  
+}
+
+#wikicol {
+  width: 100%;
+}
+
+
+
+#wikih1 {
+	font-size: 1.8em;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-weight: normal;
+	border-bottom: 1px solid var(--border-color-base,#a2a9b1);
+  width: 100%;
+  margin-top:15px;
+  margin-left:15px;
+
+}
+
+.skillbar {
+  background-color:black;
+  height:100%;
+  
+}
+
+.skillbarHolder {
+  height:20px;
+  border: solid black 1px;
+  margin-bottom:20px;
+  margin-top:5px;
+}
+
+#questHolder {
+ text-align:center;
+  padding-top:10px;
+}
+
+#tablist {
+  text-align:center;
+}
+
+.puz {
+  height:27px;
+  width:28px;
+}
+
+.questName {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight:bold;
+  font-size:0.85em;
+}
+
+.questBox {
+  margin:auto;
+  text-align:center;
+  max-width:150px;
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 8px 8px;
+  margin-bottom:20px;
+  font-size: 1.3em;
+  line-height:1.3em;
+}
+
+
+
+a.validList {
+  cursor:pointer;
+}
+
+a.validList:hover {
+  text-decoration:underline;
+}
+
+.questBox:hover {
+  box-shadow: 8px 8px #0E65C0;
+}
+
+.questBox:active {
+  box-shadow: none;
+  position:relative;
+  top: 8px;
+  left: 8px;
+}
+
+.questBox h5 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight:bold;
+}
+
+.goright {
+
+  text-align:right;
+  font-size:1.24em;
+}
+
+.fakea {
+  color:blue;
+}
+
+
+
+#topQuests {
+  text-align:center;
+}
+
+#pageframe {
+  height: calc(95vh - 20px);
+  border: none;
+  overflow-x:wrap;
+}
+
+#pageframe2 {
+  height: calc(95vh - 20px);
+  border: none;
+  overflow-x:wrap;
+}
+
+
+.mapheader {
+  font-weight:bold;
+  font-size:1.25em;
+	font-family: Arial, Helvetica, sans-serif;
+  line-height:1.75em;
+}
+
+div span {
+  margin:0px;
+}
+
+div ul {
+  margin:0px;
+}
+
+div h2 {
+  margin:0px;
+}
+
+div p {
+  margin-top:8px;
+  margin-bottom:20px;
+}
+
+div#mapsidebar {
+  height:88vh;
+  overflow-y:scroll;
+}
+
+div#pagesidebar {
+  height:88vh;
+  overflow-y:scroll;
+}
+
+div#questHolder {
+  height:88vh;
+  overflow-y:scroll;
+}
+
+ul {
+  list-style-type: "> ";
+}
+
+span.unknown {
+  color: rgba(174, 186, 216,0.5);
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+li.empty {
+  color: gray;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+q {
+	quotes: '"' '"' "'" "'";
+}
