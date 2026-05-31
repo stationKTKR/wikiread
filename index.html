@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+            overflow: hidden;
+        }
+
+        iframe {
+            height: 100vh;
+            width: 100%;
+            border:none;
+        }
+
+        button {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            height: 40px;
+            width: 40px;
+        }
+
+        .is-dark {
+            filter: invert(80%);
+        }
+    </style>
+</head>
+
+<body>
+    <iframe src="https://stationktkr.github.io/wikiread/"></iframe>
+   
+</body>
+<script>
+    const iframes = document.querySelectorAll('iframe');
+
+    function toggleTheme() {
+        for (let i = 0; i < iframes.length; i++) {
+            iframes[i].classList.toggle('is-dark');
+        }
+    }
+</script>
+
+</html>
